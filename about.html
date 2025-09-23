@@ -1,0 +1,48 @@
+---
+layout: default
+title: About
+name: Alejandro Martínez
+role: Software Engineer
+avatar: 
+intro: |
+  I’m Alejandro, a developer who enjoys building robust systems,
+  writing about what I learn, and exploring the craft of software.
+  This site is my notebook for experiments, notes, and longer posts.
+links:
+  - label: GitHub
+    url: https://github.com/AlejandroUPC
+    icon: bi-github
+  - label: Email
+    url: mailto:amartinezotal@gmail.com
+    icon: bi-envelope
+  - label: RSS
+    url: /blog/atom.xml
+    icon: bi-rss
+---
+<section class="container py-3">
+  <div class="row align-items-center g-4">
+    <div class="col-auto">
+      {% if page.avatar %}
+        <img src="{{ page.avatar }}" alt="{{ page.name }} avatar" class="rounded-circle" style="width:88px;height:88px;object-fit:cover;border:1px solid var(--border);"/>
+      {% else %}
+        <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:88px;height:88px;border:1px solid var(--border);background:var(--surface);">🙂</div>
+      {% endif %}
+    </div>
+    <div class="col">
+      <h1 class="h3 mb-1">{{ page.name | default: site.title | default: "About" }}</h1>
+      <div class="text-muted">{{ page.role | default: "Developer" }}</div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <p class="lead" style="white-space:pre-wrap">{{ page.intro }}</p>
+  </div>
+  <div class="mt-3 d-flex flex-wrap gap-3">
+    {% for link in page.links %}
+      <a class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2" href="{{ link.url }}" {% if link.url contains 'http' %}target="_blank" rel="noopener"{% endif %}>
+        {% if link.icon %}<i class="bi {{ link.icon }}"></i>{% endif %}
+        <span>{{ link.label }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+

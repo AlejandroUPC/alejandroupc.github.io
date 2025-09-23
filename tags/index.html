@@ -1,0 +1,30 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+<section class="container py-3">
+  <h1 class="h3 mb-4">Tags</h1>
+
+  {% assign sorted_tags = site.tags | sort %}
+  <div class="mb-3">
+    {% for tag in sorted_tags %}
+      {% assign tag_name = tag[0] %}
+      <a class="badge rounded-pill text-decoration-none me-2 mb-2" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="#{{ tag_name | slugify }}">#{{ tag_name }} ({{ tag[1].size }})</a>
+    {% endfor %}
+  </div>
+
+  {% for tag in sorted_tags %}
+    {% assign tag_name = tag[0] %}
+    <h2 id="{{ tag_name | slugify }}" class="h5 mt-4">#{{ tag_name }}</h2>
+    <div class="list-group list-group-flush">
+      {% for post in tag[1] %}
+        <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ post.url }}" title="{{ post.title }}" style="border-color: var(--border);">
+          <span class="me-3">{{ post.title }}</span>
+          <span class="text-muted small">{{ post.date | date: "%b %-d, %Y" }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</section>
+

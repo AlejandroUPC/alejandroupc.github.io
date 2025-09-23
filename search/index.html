@@ -1,0 +1,65 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+<section class="container py-3">
+  <h1 class="h3 mb-3">Search</h1>
+  <div class="mb-3">
+    <input id="search-input" class="form-control bg-transparent text-light" type="search" placeholder="Search posts..." aria-label="Search posts" autocomplete="off">
+  </div>
+  <div id="search-results" class="list-group list-group-flush"></div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/lunr/lunr.min.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('search-input');
+  const resultsEl = document.getElementById('search-results');
+  let idx = null;
+  let store = [];
+
+  function render(results) {
+    resultsEl.innerHTML = '';
+    if (!results.length) return;
+    results.forEach(r => {
+      const item = store.find(p => p.id === r.ref);
+      if (!item) return;
+      const a = document.createElement('a');
+      a.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent';
+      a.href = item.url; a.title = item.title; a.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border');
+      const title = document.createElement('span'); title.className = 'me-3'; title.textContent = item.title;
+      const date = document.createElement('span'); date.className = 'text-muted small'; date.textContent = item.date;
+      a.appendChild(title); a.appendChild(date);
+      resultsEl.appendChild(a);
+    });
+  }
+
+  fetch('{{ '/search.json' | relative_url }}')
+    .then(r => r.json())
+    .then(data => {
+      store = data.map((p, i) => ({ id: String(i), title: p.title, url: p.url, date: p.date, content: p.content, tags: p.tags || [] }));
+      idx = lunr(function () {
+        this.ref('id');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        this.field('tags', { boost: 5 });
+        store.forEach(doc => this.add(doc));
+      });
+    });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    if (!idx || !q) { resultsEl.innerHTML = ''; return; }
+    try {
+      const results = idx.search(q);
+      render(results);
+    } catch (e) {
+      const results = store
+        .map((doc, i) => ({ ref: String(i), doc }))
+        .filter(x => (x.doc.title + ' ' + x.doc.content + ' ' + (x.doc.tags||[]).join(' ')).toLowerCase().includes(q.toLowerCase()));
+      render(results);
+    }
+  });
+})();
+</script>

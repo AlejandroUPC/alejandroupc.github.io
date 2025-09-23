@@ -1,0 +1,37 @@
+name: Alejandro Martínez
+title: Software Engineer
+location: Barcelona, ES
+email: amartinezotal@gmail.com
+github: AlejandroUPC
+website: 
+
+summary: |
+
+skills:
+  - category: Languages
+    items: []
+  - category: Frameworks
+    items: []
+  - category: Tools
+    items: []
+
+experience:
+  - role: Software Engineer
+    company: Example Co
+    period: 2023 — Present
+    location: Remote
+    bullets:
+      - Designed, built, and maintained backend services and tooling.
+      - Collaborated with product and infra to ship features reliably.
+  - role: Developer
+    company: Another Co
+    period: 2021 — 2023
+    location: Remote
+    bullets:
+      - Worked across stack to improve performance and quality.
+
+education:
+  - school: University
+    degree: B.Sc. in Computer Science
+    period: 2017 — 2021
+

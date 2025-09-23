@@ -2,7 +2,16 @@
 layout: default
 ---
 <h1> {{ page.title }} </h1>
-<p class="meta">Written the {{ page.date | date_to_string }}</p>
+<p class="meta">{{ page.date | date: "%b %-d, %Y" }}</p>
+
+{% if page.tags and page.tags.size > 0 %}
+<div class="mb-3">
+  {% for tag in page.tags %}
+    <a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="{{ '/tags/#' | append: tag | slugify | relative_url }}">#{{ tag }}</a>
+  {% endfor %}
+  <a class="ms-2 small text-muted" href="{{ '/tags/' | relative_url }}">All tags</a>
+  </div>
+{% endif %}
 
 <div class="post">
 	{{ content }}

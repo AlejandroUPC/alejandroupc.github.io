@@ -1,6 +1,26 @@
+---
+layout: post
+title: "Starting a blog"
+date: 2025-09-23
+tags: [jekyll, github, git, docker, html, css]
+permalink: /blog/2025/09/23/setting-this-up
+---
+
 # Starting a blog
 
 _In this, more than ever, fast changing times in tech I decided to set up a blog. I am not sure what will come out of this other than me writing down stuff and trying to explain what I learn._
+
+
+## TL;DR
+
+- Use GitHub Pages + Jekyll for a simple, free blog
+- Create posts under `_posts/` with `YYYY-MM-DD-title.md`
+- Add a blog index page and optional `/blog/` permalinks
+- Run locally with Docker for faster iteration
+
+## Contents
+
+{:toc}
 
 
 
@@ -59,7 +79,7 @@ We will be adding some Cascading Style Sheet (CSS) which can be understood as a 
 
 In order to avoid having all of our files lying around we will be creating a specific folder for storing our css files and create our first file under `css/main.css`, which will look like:
 
-```ccs
+```css
 body {
 	background-color: "#F0F8FF";
 }
@@ -144,6 +164,7 @@ If everything went fine (e.g I missed up and forgot the `_` before the `posts` d
 
 In order to do so, we need an additional directory named `blog`, where we are adding the following html file (note that this is not "pure" (whatever this means) HTML it self, it contains some templating), in this case we are going to loop for all the files under our post directory and list them in the file `index.html` (under blog dir):
 
+{% raw %}
 ```html
 ---
 layout: default
@@ -158,6 +179,7 @@ title: AlejandroUPC's Blog
 	  {% endfor %}
 	</ul>
 ```
+{% endraw %}
 
 Now if you just access your page and add `/blog` at the end you should see at least one post that we just created earlier!
 
@@ -171,6 +193,7 @@ Now you should be able to access your posts as `http://username.github.io/blog/Y
 
 Finally one of the last steps could be to set up a [RSS](https://en.wikipedia.org/wiki/RSS) feed for your blog, this is quite easy and you simply create a file named `atom.xml` under the `blog/` dir.
 
+{% raw %}
 ```xml
 ---
 layout: feed
@@ -200,6 +223,7 @@ layout: feed
 
 </feed>
 ```
+{% endraw %}
 
 So that's it pretty much, now you can add posts to your blog, add it to RSS and share it with whoever (As Jmcglone recommends do not ofroget to create the `about/index.html` and `cv/index.html` pages for  the links we added before in our header/footer)
 
@@ -216,7 +240,7 @@ This where Docker comes into play, which is a tool that allows you to containeri
 From here we assume you are familiar with Docker enough to deploy and run containers locally,
 you can set up the following Dockerfile:
 
-```sh
+```dockerfile
 FROM ruby:3.1-slim
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
@@ -236,7 +260,7 @@ CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--watch"]
 
 We will need to create a `Gemfile` (what is a [Gemfile](https://jekyllrb.com/docs/ruby-101/)) with this content:
 
-```sh
+```ruby
 source "https://rubygems.org"
 
 gem "jekyll"
@@ -249,7 +273,7 @@ end
 And finally run the command
 
 ```sh
-docker run -p 4000:4000 jekyll-site
+docker run -p 4000:4000 -v "$PWD":/usr/src/app jekyll-site
 ```
 
 Now you should be able to go to `http://localhost:4000/blog` and you should be able to see the same as will be later on your site in github.
@@ -260,15 +284,11 @@ Now you should be able to go to `http://localhost:4000/blog` and you should be a
 
 This is the process I used to set up this blog, which leaves it in a quite basic state. If any improvements there will probably in a future entry. The process (if familiar with the tech stack involved) is quite straight forward and the authors of the articles I used (and linked) did an amazing job.
 
-## Tags
-
-Git, Github, Jekyll, HTML, CCS, Javascript
-
 ### Additional resources
 
 - [Git documentation]()
 - [HTML](https://developer.mozilla.org/es/docs/Web/HTML)
-- [CSS Mozilla Docs](https://developer.mozilla.org/es/docs/Web/CSS).
-- [Jekyll] (https://jekyllrb.com/)
-- [Docker] (https://www.docker.com/)
+- [CSS Mozilla Docs](https://developer.mozilla.org/es/docs/Web/CSS)
+- [Jekyll](https://jekyllrb.com/)
+- [Docker](https://www.docker.com/)
 - [Dockerize your Jekyll site](https://jogendra.dev/dockerize-your-jekyll-site-for-local-development)

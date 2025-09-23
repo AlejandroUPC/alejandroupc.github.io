@@ -1,0 +1,89 @@
+---
+layout: default
+title: CV
+---
+{% assign cv = site.data.cv %}
+
+<section class="container py-3">
+  <header class="mb-4">
+    <h1 class="h3 mb-1">{{ cv.name | default: site.title | default: "Curriculum Vitae" }}</h1>
+    <div class="text-muted">{{ cv.title | default: "Software Engineer" }}</div>
+    <div class="small text-muted mt-1">
+      {% if cv.location %}<span class="me-3"><i class="bi bi-geo-alt"></i> {{ cv.location }}</span>{% endif %}
+      {% if cv.email %}<span class="me-3"><i class="bi bi-envelope"></i> <a href="mailto:{{ cv.email }}">{{ cv.email }}</a></span>{% endif %}
+      {% if cv.github %}<span class="me-3"><i class="bi bi-github"></i> <a href="https://github.com/{{ cv.github }}" target="_blank" rel="noopener">{{ cv.github }}</a></span>{% endif %}
+      {% if cv.website %}<span class="me-3"><i class="bi bi-globe"></i> <a href="{{ cv.website }}" target="_blank" rel="noopener">{{ cv.website }}</a></span>{% endif %}
+    </div>
+  </header>
+
+  {% if cv.summary %}
+  <section class="mb-4">
+    <h2 class="h5">Summary</h2>
+    <p class="mb-0" style="white-space:pre-wrap">{{ cv.summary }}</p>
+  </section>
+  {% endif %}
+
+  {% if cv.skills %}
+  <section class="mb-4">
+    <h2 class="h5">Skills</h2>
+    <div class="row">
+      {% for group in cv.skills %}
+        <div class="col-12 col-md-6 mb-2">
+          <div class="text-muted small">{{ group.category }}</div>
+          <div>
+            {% for s in group.items %}
+              <span class="badge text-bg-dark border" style="border-color:var(--border) !important; background:var(--surface); color:var(--text);">{{ s }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if cv.experience %}
+  <section class="mb-4">
+    <h2 class="h5">Experience</h2>
+    <div class="list-group list-group-flush">
+      {% for job in cv.experience %}
+        <div class="list-group-item bg-transparent" style="border-color: var(--border);">
+          <div class="d-flex justify-content-between flex-wrap gap-2">
+            <div>
+              <div class="fw-semibold">{{ job.role }}</div>
+              <div class="text-muted">{{ job.company }}</div>
+            </div>
+            <div class="text-muted small">{{ job.period }}</div>
+          </div>
+          {% if job.bullets %}
+          <ul class="mt-2 mb-0">
+            {% for b in job.bullets %}
+              <li>{{ b }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if cv.education %}
+  <section class="mb-4">
+    <h2 class="h5">Education</h2>
+    <div class="list-group list-group-flush">
+      {% for ed in cv.education %}
+        <div class="list-group-item bg-transparent" style="border-color: var(--border);">
+          <div class="d-flex justify-content-between flex-wrap gap-2">
+            <div>
+              <div class="fw-semibold">{{ ed.school }}</div>
+              <div class="text-muted">{{ ed.degree }}</div>
+            </div>
+            <div class="text-muted small">{{ ed.period }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</section>
+
