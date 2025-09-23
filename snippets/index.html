@@ -1,0 +1,17 @@
+---
+layout: default
+title: Snippets
+permalink: /snippets/
+---
+<section class="container py-3">
+  <h1 class="h3 mb-4">{{ page.title }}</h1>
+  <div class="list-group list-group-flush">
+    {% assign items = site.posts | where_exp: 'p', 'p.tags contains "snippet"' %}
+    {% for post in items %}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ post.url }}" title="{{ post.title }}" style="border-color: var(--border);">
+        <span class="me-3">{{ post.title }}</span>
+        <span class="text-muted small">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>

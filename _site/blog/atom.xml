@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+	<title>Hank Quinlan's Blog</title>
+	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
+	<link href="http://alejandroupc.github.io/blog"/>
+	<updated>2025-09-23T14:14:42+00:00</updated>
+	<id>http://alejandroupc.github.io/blog</id>
+	<author>
+		<name>AlejandroUPC</name>
+		<email>amartinezotal@gmail.com</email>
+	</author>
+
+	
+		<entry>
+			<title>Starting a blog</title>
+			<link href="http://alejandroupc.github.io/blog/2025/09/23/setting-this-up"/>
+			<updated>2025-09-23T00:00:00+00:00</updated>
+			<id>http://alejandroupc.github.io/blog/2025/09/23/setting-this-up</id>
+			<content type="html">&lt;h1 id=&quot;starting-a-blog&quot;&gt;Starting a blog&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;In this, more than ever, fast changing times in tech I decided to set up a blog. I am not sure what will come out of this other than me writing down stuff and trying to explain what I learn.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use GitHub Pages + Jekyll for a simple, free blog&lt;/li&gt;
+  &lt;li&gt;Create posts under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts/&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-title.md&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add a blog index page and optional &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/blog/&lt;/code&gt; permalinks&lt;/li&gt;
+  &lt;li&gt;Run locally with Docker for faster iteration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;After looking around seems like github pages might be the best resource, like its simplicity and I dont like this kind of monetized-paywalls like medium and so on.&lt;/p&gt;
+
+&lt;p&gt;The list of resources I used so far is:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/cardano/creating-an-engineering-blog-with-github-pages-4e9bf423c1d0&quot;&gt;Creating an Engineering Blog with GitHub Pages&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jmcglone.com/guides/github-pages/&quot;&gt;Creating and Hosting a Personal Site on GitHub&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/&quot;&gt;Build A Blog With Jekyll And Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This assumes you are qutie familiar already with tools like Git, Github and can understand some basic web development cocnepts using HTML/CSS/Javascript.&lt;/p&gt;
+
+&lt;h2 id=&quot;git--github&quot;&gt;Git &amp;amp; Github&lt;/h2&gt;
+
+&lt;p&gt;Git is an OSS tool to keep track of the state of a file (VCS, Version Control System) and understand all of its transformations over time, making it easy to jump back and forth between those (think of those university projects that kept getting created &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project.doc&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project_v2.doc&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project_v2_final.doc&lt;/code&gt;, but you dont need to create multiple files and can jump back and forth somewhat easily).
+It is a very powerful tool, it can really do a lot of things and I probably only use around 5% of its commands but you can find more information in &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git’s page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Github is a service that (among other things) offers you to host those projects online, so makes it easy to collaborate with other people online (happens a lot in software), there are similar platforms also such as Gitlab.&lt;/p&gt;
+
+&lt;p&gt;Although all of those Git + whatever might be confusing, the distinction between the actual technology(Git) and the platforms (Github, Gitlab) offering its services its important, and you need to beceome somewhat familiar with it over your career.&lt;/p&gt;
+
+&lt;h2 id=&quot;github-pages&quot;&gt;Github pages&lt;/h2&gt;
+
+&lt;p&gt;Github pages are a way to create a free website (or subdomain) in their page, its quite tech oriented (given that Github is a tech company) and easy to set up. My personal thoughts on why its great:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Free.&lt;/li&gt;
+  &lt;li&gt;You will get familiar with git.&lt;/li&gt;
+  &lt;li&gt;Simple&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;creating-the-blog&quot;&gt;Creating the blog&lt;/h2&gt;
+
+&lt;p&gt;The first step is quite easy, assuming you have a github account just create a new repository with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yourusername.github.io&lt;/code&gt;, visibility public and I recommend marking the option add README.&lt;/p&gt;
+
+&lt;p&gt;After creating it update a file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; on the root folder of the repository (hint, if you don’t know git at this point would be great if you pause and learn how to pull a repository locally, add files and upload(push) them, or the least recommended option is to use the UI).&lt;/p&gt;
+
+&lt;p&gt;The file could be as simple as:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;Hello World&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Welcome&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now going to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yourusername.github.io&lt;/code&gt; should show a very simple ugly page welcoming you.
+Here is where you can get some insipration going on and feel free to use HTML, CSS to make it look fancier (see &lt;a href=&quot;#additional-resources&quot;&gt;Additional resources&lt;/a&gt;), we will just be covering some very basics below.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-fancy&quot;&gt;Getting fancy&lt;/h2&gt;
+
+&lt;p&gt;We will be adding some Cascading Style Sheet (CSS) which can be understood as a way to define styles for HTML documents, modifying fonts, size, color of HTML elements.&lt;/p&gt;
+
+&lt;p&gt;In order to avoid having all of our files lying around we will be creating a specific folder for storing our css files and create our first file under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;css/main.css&lt;/code&gt;, which will look like:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;#F0F8FF&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&apos;Comic Sans MS&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now after having this file uploaded (pushed) to your repository, if you wait a little and refresh your page things should look slightly different. You can really get some cool stuff done with just HTML/CSS so I’d recommend you playing a little bit around before if you are not familiar yet.&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h2&gt;
+
+&lt;p&gt;Jekyll is a new tech for me, so we will be learning together. 
+It seems to be a way to go from plainetxt to some cool websites and blogs, so we are just going to set up some structure in our repository (folder where our website conents are) and it will automatically pick it up and save us some time.
+It fits very well with Github pages simplicty where we can just upload the files directly and no need of a database.&lt;/p&gt;
+
+&lt;p&gt;One of the advantages is using templates (layouts) so you can save some time avoiding some repetitive tasks, the folder structure is defined &lt;a href=&quot;https://jekyllrb.com/docs/structure/&quot;&gt;here&lt;/a&gt;, I will kinda speed run this but the link to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Creating and Hosting a Personal Site on GitHub&lt;/code&gt; in the &lt;a href=&quot;#introduction&quot;&gt;introduction&lt;/a&gt; explains it with more details.&lt;/p&gt;
+
+&lt;p&gt;An important file is the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;._config.yml&lt;/code&gt;, I recommend checking the official docs &lt;a href=&quot;https://jekyllrb.com/docs/configuration/&quot;&gt;here&lt;/a&gt; and also its &lt;a href=&quot;https://jekyllrb.com/docs/configuration/default/&quot;&gt;defaults values&lt;/a&gt;, as you explore the tool and feel you are missing something go and explore if its already implemented.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;lsi&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;safe&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;gist&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;noscript&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;math_engine&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mathjax&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The next step is creating the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; folder, where we will create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default.html&lt;/code&gt; which will be added on every post, so it makes sense for us to define a header and a footer (HTML tags).&lt;/p&gt;
+
+&lt;p&gt;The cool thing of the layouts is you can reference then them anywhere from another html file, so we can do the following on our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+title: This is the first attempt
+---
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Welcome&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Notice at the top of the file? Yhose are called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Front-matter&lt;/code&gt; in Jekyll and this means every file starting with those characters will be processed by the framework, and basically we are just calling it to use our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layouts/_default&lt;/code&gt; to craete a new HTML page where the content will be replaced in the ``.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-blog-itself&quot;&gt;The blog itself&lt;/h2&gt;
+
+&lt;p&gt;Jekyll has a lot out of the box features to create a blog and allows for customization but the tutorials that we followed will cover the basics to creat a post, a page to index our posts, creating permalinks for our posts and finally RRS feed.&lt;/p&gt;
+
+&lt;p&gt;To creat a post layout we go back to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layouts&lt;/code&gt; and create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post.html&lt;/code&gt; file, something as simple as:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+---
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt; Starting a blog &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;meta&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Written the 23 Sep 2025&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We need to create a directory posts where we will store our posts &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts/&lt;/code&gt; and now its important we are very strict with the name of the files under and follow the convention as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-title-of-post.md&lt;/code&gt;, so we can do something like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2025-09-21-first-post.md&lt;/code&gt;with the content:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;We&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;our&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;post&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2025-21-09&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+This is where we try our first post following mostly jmcglone&apos;s tutorial
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice some of the elements between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;---&lt;/code&gt;, like title or date, those should be familiar with our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post.html&lt;/code&gt; template.
+If everything went fine (e.g I missed up and forgot the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt; before the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts&lt;/code&gt; directory), you should be able to see your post in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-title-of-my-post.html&lt;/code&gt;, great! But having to remember all of this is quite annoying so let’s first build a page where we canlist all of our post and just click to access them.&lt;/p&gt;
+
+&lt;p&gt;In order to do so, we need an additional directory named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blog&lt;/code&gt;, where we are adding the following html file (note that this is not “pure” (whatever this means) HTML it self, it contains some templating), in this case we are going to loop for all the files under our post directory and list them in the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; (under blog dir):&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+title: AlejandroUPC&apos;s Blog
+---
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+	  {% for post in site.posts %}
+	    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;{{ post.date | date_to_string }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+              &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ post.url }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ post.title }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+	  {% endfor %}
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now if you just access your page and add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/blog&lt;/code&gt; at the end you should see at least one post that we just created earlier!&lt;/p&gt;
+
+&lt;p&gt;You probably have seen the post links do not contain the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/blog&lt;/code&gt; directory under the URL, this might or not be relevant to you but it might make sense to change the way the URLs are built under posts to include it, you can go back to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file and add this to modify how the permalinks are created:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/blog/:year/:month/:day/:title&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you should be able to access your posts as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://username.github.io/blog/YYYY/MM/DD/name-of-your-post.&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally one of the last steps could be to set up a &lt;a href=&quot;https://en.wikipedia.org/wiki/RSS&quot;&gt;RSS&lt;/a&gt; feed for your blog, this is quite easy and you simply create a file named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;atom.xml&lt;/code&gt; under the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blog/&lt;/code&gt; dir.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: feed
+---
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;feed&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2005/Atom&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Hank Quinlan&apos;s Blog&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://alejandroupc.github.io/blog/atom.xml&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;self&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://alejandroupc.github.io/blog&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;updated&amp;gt;&lt;/span&gt;{{ site.time | date_to_xmlschema }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/updated&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;http://alejandroupc.github.io/blog&lt;span class=&quot;nt&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;author&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;AlejandroUPC&lt;span class=&quot;nt&quot;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;email&amp;gt;&lt;/span&gt;amartinezotal@gmail.com&lt;span class=&quot;nt&quot;&gt;&amp;lt;/email&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/author&amp;gt;&lt;/span&gt;
+
+	{% for post in site.posts %}
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;entry&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://alejandroupc.github.io{{ post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;updated&amp;gt;&lt;/span&gt;{{ post.date | date_to_xmlschema }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/updated&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;http://alejandroupc.github.io{{ post.id }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;content&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ post.content | xml_escape }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/content&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/entry&amp;gt;&lt;/span&gt;
+	{% endfor %}
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/feed&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So that’s it pretty much, now you can add posts to your blog, add it to RSS and share it with whoever (As Jmcglone recommends do not ofroget to create the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;about/index.html&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cv/index.html&lt;/code&gt; pages for  the links we added before in our header/footer)&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-a-local-environment&quot;&gt;Setting up a local environment&lt;/h2&gt;
+
+&lt;p&gt;All of this setup is cool, but in order to see the results we need to commit our code, github runs some steps in the background (a pipeline) and then publishes it to “the internet”, there might be a few things that can be improved here:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The feedback loop feels slow, maybe we could see what it looks like before it reaches the internet and review for typos, format issues, etc …&lt;/li&gt;
+  &lt;li&gt;We might break something from Jekyll and the pipeline will fail, changes will not show, we will have to keep committing until fixed and this can be tedious.&lt;/li&gt;
+  &lt;li&gt;We might want to test also stuff before uploading it.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This where Docker comes into play, which is a tool that allows you to containerize software and run it into isolated environments. Basically if you are not very familiar what we are going to try to do is follow the same steps that Github does in their own pipeline and be able to see the website in our computer before pushing the changes.&lt;/p&gt;
+
+&lt;p&gt;From here we assume you are familiar with Docker enough to deploy and run containers locally,
+you can set up the following Dockerfile:&lt;/p&gt;
+
+&lt;div class=&quot;language-dockerfile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ruby:3.1-slim&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; LANG=C.UTF-8 \&lt;/span&gt;
+    LC_ALL=C.UTF-8 \
+    DEBIAN_FRONTEND=noninteractive
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    build-essential &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    git &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    curl &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /usr/src/app&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Gemfile* ./&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; . .&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;EXPOSE&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 4000&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [&quot;bundle&quot;, &quot;exec&quot;, &quot;jekyll&quot;, &quot;serve&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--watch&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We will need to create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; (what is a &lt;a href=&quot;https://jekyllrb.com/docs/ruby-101/&quot;&gt;Gemfile&lt;/a&gt;) with this content:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:jekyll_plugins&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-feed&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-seo-tag&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And finally run the command&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 4000:4000 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;:/usr/src/app jekyll-site
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you should be able to go to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4000/blog&lt;/code&gt; and you should be able to see the same as will be later on your site in github.&lt;/p&gt;
+
+&lt;h2 id=&quot;closing&quot;&gt;Closing&lt;/h2&gt;
+
+&lt;p&gt;This is the process I used to set up this blog, which leaves it in a quite basic state. If any improvements there will probably in a future entry. The process (if familiar with the tech stack involved) is quite straight forward and the authors of the articles I used (and linked) did an amazing job.&lt;/p&gt;
+
+&lt;h3 id=&quot;additional-resources&quot;&gt;Additional resources&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;Git documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/es/docs/Web/HTML&quot;&gt;HTML&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/es/docs/Web/CSS&quot;&gt;CSS Mozilla Docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jogendra.dev/dockerize-your-jekyll-site-for-local-development&quot;&gt;Dockerize your Jekyll site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		</entry>
+	
+
+</feed>

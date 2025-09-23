@@ -1,2 +1,3 @@
 _site/* # Jekyll builds output here
 _drafts/
+.DS_Store
