@@ -273,8 +273,8 @@ end
 And finally run the command
 
 ```sh
-docker run -p 4000:4000 -v "$PWD":/usr/src/app jekyll-site
-```
+ docker run --rm -p 4000:4000 -v "$PWD":/usr/src/app jekyll-site
+ ```
 
 Now you should be able to go to `http://localhost:4000/blog` and you should be able to see the same as will be later on your site in github.
 

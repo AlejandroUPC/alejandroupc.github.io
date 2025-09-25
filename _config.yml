@@ -8,6 +8,15 @@ defaults:
       type: "posts"
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "snippets"
+    values:
+      layout: post
+collections:
+  snippets:
+    output: true
+    permalink: /snippets/:name/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

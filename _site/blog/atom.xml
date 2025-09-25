@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-09-25T11:06:51+00:00</updated>
+	<updated>2025-09-25T12:17:41+00:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -266,7 +266,7 @@ you can set up the following Dockerfile:&lt;/p&gt;
 
 &lt;p&gt;And finally run the command&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 4000:4000 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;:/usr/src/app jekyll-site
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 4000:4000 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;:/usr/src/app jekyll-site
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Now you should be able to go to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4000/blog&lt;/code&gt; and you should be able to see the same as will be later on your site in github.&lt;/p&gt;

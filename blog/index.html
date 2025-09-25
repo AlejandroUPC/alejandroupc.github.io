@@ -7,10 +7,12 @@ title: AlejandroUPC's Blog
   <div class="list-group list-group-flush">
     {% assign posts = paginator.posts | default: site.posts %}
     {% for post in posts %}
-      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ post.url }}" title="{{ post.title }}" style="border-color: var(--border);">
-        <span class="me-3">{{ post.title }}</span>
-        <span class="text-muted small">{{ post.date | date: "%b %-d, %Y" }}</span>
-      </a>
+      {% unless post.tags contains 'snippet' %}
+        <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ post.url }}" title="{{ post.title }}" style="border-color: var(--border);">
+          <span class="me-3">{{ post.title }}</span>
+          <span class="text-muted small">{{ post.date | date: "%b %-d, %Y" }}</span>
+        </a>
+      {% endunless %}
     {% endfor %}
   </div>
   {% if paginator %}

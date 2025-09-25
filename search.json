@@ -3,7 +3,8 @@ layout: null
 permalink: /search.json
 ---
 [
-{% for doc in site.posts %}
+{% assign docs = site.posts | concat: site.snippets %}
+{% for doc in docs %}
   {
     "title": {{ doc.title | jsonify }},
     "url": {{ doc.url | relative_url | jsonify }},
