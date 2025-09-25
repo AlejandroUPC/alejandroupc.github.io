@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-23T14:14:42+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><entry><title type="html">Starting a blog</title><link href="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up" rel="alternate" type="text/html" title="Starting a blog" /><published>2025-09-23T00:00:00+00:00</published><updated>2025-09-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/blog/2025/09/23/setting-this-up</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up"><![CDATA[<h1 id="starting-a-blog">Starting a blog</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-25T11:06:51+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC</title><subtitle>Personal notes on engineering and learning</subtitle><entry><title type="html">Starting a blog</title><link href="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up" rel="alternate" type="text/html" title="Starting a blog" /><published>2025-09-23T00:00:00+00:00</published><updated>2025-09-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/blog/2025/09/23/setting-this-up</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up"><![CDATA[<h1 id="starting-a-blog">Starting a blog</h1>
 
 <p><em>In this, more than ever, fast changing times in tech I decided to set up a blog. I am not sure what will come out of this other than me writing down stuff and trying to explain what I learn.</em></p>
 
@@ -134,11 +134,11 @@ layout: default
 
 <p>We need to create a directory posts where we will store our posts <code class="language-plaintext highlighter-rouge">_posts/</code> and now its important we are very strict with the name of the files under and follow the convention as <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title-of-post.md</code>, so we can do something like <code class="language-plaintext highlighter-rouge">2025-09-21-first-post.md</code>with the content:</p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">We</span><span class="nv"> </span><span class="s">try</span><span class="nv"> </span><span class="s">our</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">post"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2025-21-09</span>
-<span class="nn">---</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: post
+title: "We try our first post"
+date: 2025-21-09
+---
 This is where we try our first post following mostly jmcglone's tutorial
 </code></pre></div></div>
 

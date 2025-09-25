@@ -150,3 +150,7 @@ img { max-width: 100%; height: auto; border-radius: .25rem; }
 .copy-btn:hover { color: var(--accent-2); border-color: var(--accent-2); }
 .copy-btn i { pointer-events: none; font-size: 1rem; line-height: 1; }
 .copy-btn:focus { outline: 2px solid var(--accent-2); outline-offset: 1px; }
+
+figure.figure { margin: 1.25rem 0; text-align: center; }
+.figure img { display: block; margin: 0 auto; }
+.figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; }

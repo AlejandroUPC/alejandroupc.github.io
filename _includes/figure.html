@@ -1,0 +1,14 @@
+{% assign src = include.src | relative_url %}
+<figure class="figure">
+  {% if include.link %}
+    <a href="{{ include.link | default: src }}"{% if include.newtab != false %} target="_blank" rel="noopener"{% endif %}>
+      <img src="{{ src }}" alt="{{ include.alt | escape }}" loading="{{ include.loading | default: 'lazy' }}"{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.img_class %} class="{{ include.img_class }}"{% endif %}>
+    </a>
+  {% else %}
+    <img src="{{ src }}" alt="{{ include.alt | escape }}" loading="{{ include.loading | default: 'lazy' }}"{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.img_class %} class="{{ include.img_class }}"{% endif %}>
+  {% endif %}
+  {% if include.caption %}
+    <figcaption class="figcaption">{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>
+

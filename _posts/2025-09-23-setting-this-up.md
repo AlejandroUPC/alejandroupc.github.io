@@ -150,7 +150,7 @@ layout: default
 
 We need to create a directory posts where we will store our posts `_posts/` and now its important we are very strict with the name of the files under and follow the convention as `YYYY-MM-DD-title-of-post.md`, so we can do something like `2025-09-21-first-post.md`with the content:
 
-```markdown
+```plaintext
 ---
 layout: post
 title: "We try our first post"
