@@ -6,8 +6,6 @@ tags: [python, neovim, lua]
 permalink: /blog/2025/09/24/nvim-for-python
 ---
 
-# Setting up Neovim for Python
-
 **Disclaimer** by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.
 
 I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
