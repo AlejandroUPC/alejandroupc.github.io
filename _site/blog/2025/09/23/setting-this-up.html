@@ -200,7 +200,158 @@ title: This is the first attempt
   <span class="nt">&lt;h1&gt;</span>Welcome<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
-<p>Notice at the top of the file? Yhose are called <code class="language-plaintext highlighter-rouge">Front-matter</code> in Jekyll and this means every file starting with those characters will be processed by the framework, and basically we are just calling it to use our <code class="language-plaintext highlighter-rouge">layouts/_default</code> to craete a new HTML page where the content will be replaced in the ``.</p>
+<p>Notice at the top of the file? Yhose are called <code class="language-plaintext highlighter-rouge">Front-matter</code> in Jekyll and this means every file starting with those characters will be processed by the framework, and basically we are just calling it to use our <code class="language-plaintext highlighter-rouge">layouts/_default</code> to craete a new HTML page where the content will be replaced in the `&lt;h1&gt; Setting up Nvim for Python &lt;/h1&gt;</p>
+<p class="meta">Sep 24, 2024</p>
+
+<div class="mb-3">
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="/tags-python"&gt;#python&lt;/a&gt;
+  
+&lt;a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="/tags-neovim"&gt;#neovim&lt;/a&gt;
+  
+&lt;a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="/tags-lua"&gt;#lua&lt;/a&gt;
+</code></pre></div>  </div>
+
+  <p><a class="ms-2 small text-muted" href="/tags/">All tags</a></p>
+</div>
+
+<div class="post">
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;h1 id="setting-up-neovim-for-python"&gt;Setting up Neovim for Python&lt;/h1&gt;
+</code></pre></div>  </div>
+
+  <p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
+
+  <p>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
+Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.</p>
+
+  <p>I’d recommend everyone trying to learn it, there’s plenty of resources and people in the <a href="#additional-resources">additional resources</a> sections from people who knows a lot and have great tutorials.</p>
+
+  <h2 id="introduction">Introduction</h2>
+
+  <p>Neovim (an extension of another text editor, vim) is a relatively simple (by default) text editor that is thought to be used mostly just using the keyboard. Over the time it has gained popularity as it allows (with time and practice) for incredible efficiency to code.</p>
+
+  <p>If its so good why is not that popular though? Well it has a kind of learning curve, it can be somewhat hard to maintain (when you extend functionalities with plugins).</p>
+
+  <p>I really recommend that if you come across this post and have not tried yet, give it a shot and jump directly to any tutorial and if you decide to embrace the journey you will find yourself creating something very personal, your own config that allows you to be very effective when navigating and working with code.</p>
+
+  <h2 id="installation">Installation</h2>
+
+  <p>This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:</p>
+
+  <div class="language-sh highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>brew <span class="nb">install </span>neovim ripgrep fd
+</code></pre>
+    </div>
+  </div>
+  <p>The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
+If you run then in your terminal <code class="language-plaintext highlighter-rouge">nvim</code> you should be greeted by a very simple window:
+<img src="/assets/images/00_nvim_intro.png" alt="Neovim start" /></p>
+
+  <p>And this would be the simplest version of Neovim, if you run <code class="language-plaintext highlighter-rouge">neovim test.txt</code> this will create a file (will not be saved by default) where you could start writing, but lets start for one of the hardest parts in Neovim; how to close it? First press <code class="language-plaintext highlighter-rouge">esc</code> to make sure you are in normal mode and then:</p>
+
+  <ol>
+  <li><code class="language-plaintext highlighter-rouge">:q</code> -&gt; Will quit if there are no unsaved changes.</li>
+  <li><code class="language-plaintext highlighter-rouge">:q!</code> -&gt; Force quit, without saving.</li>
+  <li><code class="language-plaintext highlighter-rouge">:wq</code> or <code class="language-plaintext highlighter-rouge">:x</code> -&gt; save and quit.</li>
+  <li><code class="language-plaintext highlighter-rouge">ZZ</code> -&gt; write and quit.</li>
+</ol>
+
+  <p><img src="/assets/images/01_exit_working_quit.png" alt="Exiting Neovim" class="d-block mx-auto" /></p>
+
+  <p>Note that there are several ways more, but those are the ones I have used over time, note that for the ones starting with semicolon <code class="language-plaintext highlighter-rouge">:</code> is that it will show at the bottom right the editor the characters you enter and then just press enter when you are done.</p>
+
+  <p>In order to open neovim in an existing directory you can just go <code class="language-plaintext highlighter-rouge">nvim (path)</code> which I usally cd in to the project and write <code class="language-plaintext highlighter-rouge">nvim .</code>.</p>
+
+  <h2 id="moving-forward">Moving forward</h2>
+
+  <p>We are moving now a leap forward and assuming you are familiar with neovim modes and concepts such as buffers, windows, tabs… And jumping directly to <a href="https://www.youtube.com/watch?v=m8C0Cq9Uv9o">TJ DeVries video - The Only Video You need to Get Started With Neovim</a>.</p>
+
+  <p>It basically lets you set up a pretty complete set up using kickstart.nvim and ge you started, it is very important that you watch the video and google a little bit around, play around with the <code class="language-plaintext highlighter-rouge">:Tutor</code> and watch a few videos.</p>
+
+  <p>If you ever feel stuck or feel like a feature is missing as we progress in this post, investigate and see how feasible is to implemenet it (it probably is, the question is how hard).</p>
+
+  <h2 id="setting-up-a-python-nvim-installation">Setting up a Python Nvim installation</h2>
+
+  <p>Using <code class="language-plaintext highlighter-rouge">Lazy</code> its quite easy, we are looking for the following features in our IDE:</p>
+
+  <ol>
+  <li>Linter: We use <code class="language-plaintext highlighter-rouge">ruff</code> from astral.</li>
+  <li>Typing: We use <code class="language-plaintext highlighter-rouge">ty</code> from astral.</li>
+  <li>Support for testing.</li>
+  <li>Support for debugging.</li>
+  <li>Manage virtual environments</li>
+</ol>
+
+  <h3 id="linter-and-typing">Linter and typing</h3>
+
+  <p>We will be tackling those two at once given that they are kinda related, one is going to make our code look pretty and the other make sure the types in our code match the signature of our methods.</p>
+
+  <p>This should be quite easy and wherever we are declaring all of our plugins using <code class="language-plaintext highlighter-rouge">Lazy</code>, you should look something like <code class="language-plaintext highlighter-rouge">require('lazy').setup</code> in your code, in the server table:</p>
+
+  <div class="language-lua highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>        <span class="n">ruff</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="n">on_attach</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">c</span><span class="p">.</span><span class="n">server_capabilities</span><span class="p">.</span><span class="n">hoverProvider</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">-- ty takes over hover</span>
+          <span class="k">end</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">ty</span> <span class="o">=</span> <span class="p">{},</span>
+
+</code></pre>
+    </div>
+  </div>
+
+  <p>This will just make sure that both ruff and ty are set up in our LSP, we just set the hover priority over <code class="language-plaintext highlighter-rouge">ty</code> for types rather than <code class="language-plaintext highlighter-rouge">ruff</code>. Other than that you can find the lsp configurations for each of the plugins and see all the options that can be passed.</p>
+
+  <p>Really the work of <code class="language-plaintext highlighter-rouge">ruff</code> is mostly automatic and it will basically format on save or when pressing <code class="language-plaintext highlighter-rouge">leader+f</code>. For <code class="language-plaintext highlighter-rouge">ty</code> we will be getting warnings whenever, for example, there is a type missmatch:</p>
+
+  <p><img src="/assets/images/03_ty_typin.png" alt="Ty Typing" class="d-block mx-auto" /></p>
+
+  <h3 id="testing">Testing</h3>
+
+  <p>For testing I really wanted a visual way to understand how the tests are doing and the output of the testing incase it fails, this really comes out of the box for <code class="language-plaintext highlighter-rouge">neotest</code> and <code class="language-plaintext highlighter-rouge">neotest-python</code>, for example with such a dummy test files if we just push <code class="language-plaintext highlighter-rouge">leader+t+f</code> as per test file we can see the status of the tests on the left:</p>
+
+  <p><img src="/assets/images/04_failing_test.png" alt="Failed test on file" class="d-block mx-auto" /></p>
+
+  <p>Also you can do test summary with <code class="language-plaintext highlighter-rouge">leader+t+s</code> to see this fancy tab (see the pattern of leader+keystrokes that match our intention?):</p>
+
+  <p><img src="/assets/images/05_test_resume.png" alt="Test resume" class="d-block mx-auto" /></p>
+
+  <h3 id="debugging">Debugging</h3>
+
+  <p>Debugging is critical, very similar, at any point in code if we push <code class="language-plaintext highlighter-rouge">leader+d+b</code> it toggles a breakpoint, see the small <code class="language-plaintext highlighter-rouge">B</code> on the left:</p>
+
+  <p><img src="/assets/images/06_debug_breakpoint.png" alt="Add break point" class="d-block mx-auto" /></p>
+
+  <p>Then if we just launch a session <code class="language-plaintext highlighter-rouge">leader+d+c</code> and it will stop and you will be able to explore the entire debug session:</p>
+
+  <p><img src="/assets/images/07_debug_session.png" alt="Debug session" class="d-block mx-auto" /></p>
+
+  <h3 id="virtual-environment">Virtual Environment</h3>
+
+  <p>Quite simple, pressing <code class="language-plaintext highlighter-rouge">leader+c+v</code> will prompt you for which venv to use:</p>
+
+  <p><img src="/assets/images/08_venv_select.png" alt="Debug session" class="d-block mx-auto" /></p>
+
+  <h2 id="going-forward">Going forward</h2>
+
+  <p>This was just a simple guide of someone who is kinda familiar with Neovim, if you decide to reuse the <code class="language-plaintext highlighter-rouge">init.lua</code> I have on my repo –TODO add link, I also recommend checking on snippets the neovim one to get familiar with the commands.</p>
+
+  <p>I probably also need to post a second part talking about oil, but please try Neovim and have the cheathseet opened in another tab to have quick access to the commands.</p>
+
+  <p>Again, Neovim can be hard at the beginning, the set up and the motions but I encourage you to give it a shot, if you come from VSCode enable <code class="language-plaintext highlighter-rouge">vim</code> mode there and try to use neovim later on directly.</p>
+
+  <h3 id="additional-resources">Additional resources</h3>
+
+  <ul>
+  <li><a href="https://neovim.io/">Neovim official page</a></li>
+  <li><a href="https://www.youtube.com/@teej_dv/videos">Teej Dv Youtube chanel</a></li>
+  <li><a href="https://www.youtube.com/watch?v=iqdCshrIKIg">Telescope nvim</a></li>
+</ul>
+
+</div>
+<p>`.</p>
 
 <h2 id="the-blog-itself">The blog itself</h2>
 
@@ -215,7 +366,150 @@ layout: default
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"meta"</span><span class="nt">&gt;</span>Written the 23 Sep 2025<span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post"</span><span class="nt">&gt;</span>
-	
+	<span class="nt">&lt;h1&gt;</span> Setting up Nvim for Python <span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"meta"</span><span class="nt">&gt;</span>Sep 24, 2024<span class="nt">&lt;/p&gt;</span>
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-3"</span><span class="nt">&gt;</span>
+  
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"badge rounded-pill text-decoration-none"</span> <span class="na">style=</span><span class="s">"background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);"</span> <span class="na">href=</span><span class="s">"/tags-python"</span><span class="nt">&gt;</span>#python<span class="nt">&lt;/a&gt;</span>
+  
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"badge rounded-pill text-decoration-none"</span> <span class="na">style=</span><span class="s">"background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);"</span> <span class="na">href=</span><span class="s">"/tags-neovim"</span><span class="nt">&gt;</span>#neovim<span class="nt">&lt;/a&gt;</span>
+  
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"badge rounded-pill text-decoration-none"</span> <span class="na">style=</span><span class="s">"background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);"</span> <span class="na">href=</span><span class="s">"/tags-lua"</span><span class="nt">&gt;</span>#lua<span class="nt">&lt;/a&gt;</span>
+  
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"ms-2 small text-muted"</span> <span class="na">href=</span><span class="s">"/tags/"</span><span class="nt">&gt;</span>All tags<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"setting-up-neovim-for-python"</span><span class="nt">&gt;</span>Setting up Neovim for Python<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;strong&gt;</span>Disclaimer<span class="nt">&lt;/strong&gt;</span> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
+Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>I’d recommend everyone trying to learn it, there’s plenty of resources and people in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#additional-resources"</span><span class="nt">&gt;</span>additional resources<span class="nt">&lt;/a&gt;</span> sections from people who knows a lot and have great tutorials.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"introduction"</span><span class="nt">&gt;</span>Introduction<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Neovim (an extension of another text editor, vim) is a relatively simple (by default) text editor that is thought to be used mostly just using the keyboard. Over the time it has gained popularity as it allows (with time and practice) for incredible efficiency to code.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>If its so good why is not that popular though? Well it has a kind of learning curve, it can be somewhat hard to maintain (when you extend functionalities with plugins).<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>I really recommend that if you come across this post and have not tried yet, give it a shot and jump directly to any tutorial and if you decide to embrace the journey you will find yourself creating something very personal, your own config that allows you to be very effective when navigating and working with code.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"installation"</span><span class="nt">&gt;</span>Installation<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-sh highlighter-rouge"</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;code&gt;</span>brew <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nb"</span><span class="nt">&gt;</span>install <span class="nt">&lt;/span&gt;</span>neovim ripgrep fd
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
+If you run then in your terminal <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>nvim<span class="nt">&lt;/code&gt;</span> you should be greeted by a very simple window:
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/00_nvim_intro.png"</span> <span class="na">alt=</span><span class="s">"Neovim start"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>And this would be the simplest version of Neovim, if you run <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>neovim test.txt<span class="nt">&lt;/code&gt;</span> this will create a file (will not be saved by default) where you could start writing, but lets start for one of the hardest parts in Neovim; how to close it? First press <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>esc<span class="nt">&lt;/code&gt;</span> to make sure you are in normal mode and then:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>:q<span class="nt">&lt;/code&gt;</span> -<span class="ni">&amp;gt;</span> Will quit if there are no unsaved changes.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>:q!<span class="nt">&lt;/code&gt;</span> -<span class="ni">&amp;gt;</span> Force quit, without saving.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>:wq<span class="nt">&lt;/code&gt;</span> or <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>:x<span class="nt">&lt;/code&gt;</span> -<span class="ni">&amp;gt;</span> save and quit.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ZZ<span class="nt">&lt;/code&gt;</span> -<span class="ni">&amp;gt;</span> write and quit.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/01_exit_working_quit.png"</span> <span class="na">alt=</span><span class="s">"Exiting Neovim"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Note that there are several ways more, but those are the ones I have used over time, note that for the ones starting with semicolon <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>:<span class="nt">&lt;/code&gt;</span> is that it will show at the bottom right the editor the characters you enter and then just press enter when you are done.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>In order to open neovim in an existing directory you can just go <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>nvim (path)<span class="nt">&lt;/code&gt;</span> which I usally cd in to the project and write <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>nvim .<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"moving-forward"</span><span class="nt">&gt;</span>Moving forward<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>We are moving now a leap forward and assuming you are familiar with neovim modes and concepts such as buffers, windows, tabs… And jumping directly to <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.youtube.com/watch?v=m8C0Cq9Uv9o"</span><span class="nt">&gt;</span>TJ DeVries video - The Only Video You need to Get Started With Neovim<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>It basically lets you set up a pretty complete set up using kickstart.nvim and ge you started, it is very important that you watch the video and google a little bit around, play around with the <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>:Tutor<span class="nt">&lt;/code&gt;</span> and watch a few videos.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>If you ever feel stuck or feel like a feature is missing as we progress in this post, investigate and see how feasible is to implemenet it (it probably is, the question is how hard).<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"setting-up-a-python-nvim-installation"</span><span class="nt">&gt;</span>Setting up a Python Nvim installation<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Using <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>Lazy<span class="nt">&lt;/code&gt;</span> its quite easy, we are looking for the following features in our IDE:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Linter: We use <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ruff<span class="nt">&lt;/code&gt;</span> from astral.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Typing: We use <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ty<span class="nt">&lt;/code&gt;</span> from astral.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Support for testing.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Support for debugging.<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Manage virtual environments<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"linter-and-typing"</span><span class="nt">&gt;</span>Linter and typing<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>We will be tackling those two at once given that they are kinda related, one is going to make our code look pretty and the other make sure the types in our code match the signature of our methods.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This should be quite easy and wherever we are declaring all of our plugins using <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>Lazy<span class="nt">&lt;/code&gt;</span>, you should look something like <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>require('lazy').setup<span class="nt">&lt;/code&gt;</span> in your code, in the server table:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-lua highlighter-rouge"</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;code&gt;</span>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>ruff<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>{<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>on_attach<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>function<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>c<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>c<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>server_capabilities<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>hoverProvider<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"kc"</span><span class="nt">&gt;</span>false<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"c1"</span><span class="nt">&gt;</span>-- ty takes over hover<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>end<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>,<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>},<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>ty<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>{},<span class="nt">&lt;/span&gt;</span>
+
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This will just make sure that both ruff and ty are set up in our LSP, we just set the hover priority over <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ty<span class="nt">&lt;/code&gt;</span> for types rather than <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ruff<span class="nt">&lt;/code&gt;</span>. Other than that you can find the lsp configurations for each of the plugins and see all the options that can be passed.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Really the work of <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ruff<span class="nt">&lt;/code&gt;</span> is mostly automatic and it will basically format on save or when pressing <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>leader+f<span class="nt">&lt;/code&gt;</span>. For <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>ty<span class="nt">&lt;/code&gt;</span> we will be getting warnings whenever, for example, there is a type missmatch:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/03_ty_typin.png"</span> <span class="na">alt=</span><span class="s">"Ty Typing"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"testing"</span><span class="nt">&gt;</span>Testing<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>For testing I really wanted a visual way to understand how the tests are doing and the output of the testing incase it fails, this really comes out of the box for <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>neotest<span class="nt">&lt;/code&gt;</span> and <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>neotest-python<span class="nt">&lt;/code&gt;</span>, for example with such a dummy test files if we just push <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>leader+t+f<span class="nt">&lt;/code&gt;</span> as per test file we can see the status of the tests on the left:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/04_failing_test.png"</span> <span class="na">alt=</span><span class="s">"Failed test on file"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Also you can do test summary with <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>leader+t+s<span class="nt">&lt;/code&gt;</span> to see this fancy tab (see the pattern of leader+keystrokes that match our intention?):<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/05_test_resume.png"</span> <span class="na">alt=</span><span class="s">"Test resume"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"debugging"</span><span class="nt">&gt;</span>Debugging<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Debugging is critical, very similar, at any point in code if we push <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>leader+d+b<span class="nt">&lt;/code&gt;</span> it toggles a breakpoint, see the small <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>B<span class="nt">&lt;/code&gt;</span> on the left:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/06_debug_breakpoint.png"</span> <span class="na">alt=</span><span class="s">"Add break point"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Then if we just launch a session <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>leader+d+c<span class="nt">&lt;/code&gt;</span> and it will stop and you will be able to explore the entire debug session:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/07_debug_session.png"</span> <span class="na">alt=</span><span class="s">"Debug session"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"virtual-environment"</span><span class="nt">&gt;</span>Virtual Environment<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Quite simple, pressing <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>leader+c+v<span class="nt">&lt;/code&gt;</span> will prompt you for which venv to use:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/08_venv_select.png"</span> <span class="na">alt=</span><span class="s">"Debug session"</span> <span class="na">class=</span><span class="s">"d-block mx-auto"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"going-forward"</span><span class="nt">&gt;</span>Going forward<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This was just a simple guide of someone who is kinda familiar with Neovim, if you decide to reuse the <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>init.lua<span class="nt">&lt;/code&gt;</span> I have on my repo –TODO add link, I also recommend checking on snippets the neovim one to get familiar with the commands.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>I probably also need to post a second part talking about oil, but please try Neovim and have the cheathseet opened in another tab to have quick access to the commands.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Again, Neovim can be hard at the beginning, the set up and the motions but I encourage you to give it a shot, if you come from VSCode enable <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>vim<span class="nt">&lt;/code&gt;</span> mode there and try to use neovim later on directly.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"additional-resources"</span><span class="nt">&gt;</span>Additional resources<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://neovim.io/"</span><span class="nt">&gt;</span>Neovim official page<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://www.youtube.com/@teej_dv/videos"</span><span class="nt">&gt;</span>Teej Dv Youtube chanel<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://www.youtube.com/watch?v=iqdCshrIKIg"</span><span class="nt">&gt;</span>Telescope nvim<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 

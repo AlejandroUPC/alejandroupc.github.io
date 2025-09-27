@@ -2,6 +2,7 @@
 title: "Python split: using maxsplit"
 date: 2025-09-25
 tags: [python, tips]
+permalink: /snippets/python-maxsplit/
 ---
 
 ## Using maxsplit for str.split
