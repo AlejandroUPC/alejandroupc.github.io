@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-27T22:54:54+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC</title><subtitle>Personal notes on engineering and learning</subtitle><entry><title type="html">Starting a blog</title><link href="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up" rel="alternate" type="text/html" title="Starting a blog" /><published>2025-09-23T00:00:00+00:00</published><updated>2025-09-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/blog/2025/09/23/setting-this-up</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up"><![CDATA[<h1 id="starting-a-blog">Starting a blog</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-28T00:29:12+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC</title><subtitle>Personal notes on engineering and learning</subtitle><entry><title type="html">Starting a blog</title><link href="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up" rel="alternate" type="text/html" title="Starting a blog" /><published>2025-09-23T00:00:00+00:00</published><updated>2025-09-23T00:00:00+00:00</updated><id>http://0.0.0.0:4000/blog/2025/09/23/setting-this-up</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/23/setting-this-up"><![CDATA[<h1 id="starting-a-blog">Starting a blog</h1>
 
 <p><em>In this, more than ever, fast changing times in tech I decided to set up a blog. I am not sure what will come out of this other than me writing down stuff and trying to explain what I learn.</em></p>
 
@@ -129,10 +129,8 @@ title: This is the first attempt
 </div>
 
 <div class="post">
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;h1 id="setting-up-neovim-for-python"&gt;Setting up Neovim for Python&lt;/h1&gt;
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;/p&gt;
 </code></pre></div>  </div>
-
-  <p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
 
   <p>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.</p>
@@ -296,9 +294,7 @@ layout: default
 
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"setting-up-neovim-for-python"</span><span class="nt">&gt;</span>Setting up Neovim for Python<span class="nt">&lt;/h1&gt;</span>
-
-<span class="nt">&lt;p&gt;&lt;strong&gt;</span>Disclaimer<span class="nt">&lt;/strong&gt;</span> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.<span class="nt">&lt;/p&gt;</span>
+	<span class="nt">&lt;p&gt;&lt;strong&gt;</span>Disclaimer<span class="nt">&lt;/strong&gt;</span> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.<span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.<span class="nt">&lt;/p&gt;</span>
@@ -559,9 +555,7 @@ you can set up the following Dockerfile:</p>
   <li><a href="https://jekyllrb.com/">Jekyll</a></li>
   <li><a href="https://www.docker.com/">Docker</a></li>
   <li><a href="https://jogendra.dev/dockerize-your-jekyll-site-for-local-development">Dockerize your Jekyll site</a></li>
-</ul>]]></content><author><name></name></author><category term="jekyll" /><category term="github" /><category term="git" /><category term="docker" /><category term="html" /><category term="css" /><summary type="html"><![CDATA[Starting a blog]]></summary></entry><entry><title type="html">Setting up Nvim for Python</title><link href="http://0.0.0.0:4000/blog/2025/09/24/nvim-for-python" rel="alternate" type="text/html" title="Setting up Nvim for Python" /><published>2024-09-24T00:00:00+00:00</published><updated>2024-09-24T00:00:00+00:00</updated><id>http://0.0.0.0:4000/blog/2025/09/24/setting-up-nvim-for-python</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/24/nvim-for-python"><![CDATA[<h1 id="setting-up-neovim-for-python">Setting up Neovim for Python</h1>
-
-<p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
+</ul>]]></content><author><name></name></author><category term="jekyll" /><category term="github" /><category term="git" /><category term="docker" /><category term="html" /><category term="css" /><summary type="html"><![CDATA[Starting a blog]]></summary></entry><entry><title type="html">Setting up Nvim for Python</title><link href="http://0.0.0.0:4000/blog/2025/09/24/nvim-for-python" rel="alternate" type="text/html" title="Setting up Nvim for Python" /><published>2024-09-24T00:00:00+00:00</published><updated>2024-09-24T00:00:00+00:00</updated><id>http://0.0.0.0:4000/blog/2025/09/24/setting-up-nvim-for-python</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/24/nvim-for-python"><![CDATA[<p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
 
 <p>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.</p>
@@ -682,4 +676,4 @@ If you run then in your terminal <code class="language-plaintext highlighter-rou
   <li><a href="https://neovim.io/">Neovim official page</a></li>
   <li><a href="https://www.youtube.com/@teej_dv/videos">Teej Dv Youtube chanel</a></li>
   <li><a href="https://www.youtube.com/watch?v=iqdCshrIKIg">Telescope nvim</a></li>
-</ul>]]></content><author><name></name></author><category term="python" /><category term="neovim" /><category term="lua" /><summary type="html"><![CDATA[Setting up Neovim for Python]]></summary></entry></feed>
+</ul>]]></content><author><name></name></author><category term="python" /><category term="neovim" /><category term="lua" /><summary type="html"><![CDATA[Disclaimer by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.]]></summary></entry></feed>

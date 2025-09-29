@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-09-27T22:54:54+00:00</updated>
+	<updated>2025-09-28T00:29:12+00:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -148,10 +148,8 @@ title: This is the first attempt
 &lt;/div&gt;
 
 &lt;div class=&quot;post&quot;&gt;
-  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;h1 id=&quot;setting-up-neovim-for-python&quot;&amp;gt;Setting up Neovim for Python&amp;lt;/h1&amp;gt;
+  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Disclaimer&amp;lt;/strong&amp;gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&amp;lt;/p&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-
-  &lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;/p&gt;
 
   &lt;p&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;/p&gt;
@@ -315,9 +313,7 @@ layout: default
 
 
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;setting-up-neovim-for-python&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Setting up Neovim for Python&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Disclaimer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Disclaimer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
@@ -587,9 +583,7 @@ you can set up the following Dockerfile:&lt;/p&gt;
 			<link href="http://alejandroupc.github.io/blog/2025/09/24/nvim-for-python"/>
 			<updated>2024-09-24T00:00:00+00:00</updated>
 			<id>http://alejandroupc.github.io/blog/2025/09/24/setting-up-nvim-for-python</id>
-			<content type="html">&lt;h1 id=&quot;setting-up-neovim-for-python&quot;&gt;Setting up Neovim for Python&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;/p&gt;
+			<content type="html">&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;/p&gt;
 
 &lt;p&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;/p&gt;
