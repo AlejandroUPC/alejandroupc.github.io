@@ -65,6 +65,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+      // Add lazy-loading to images that don't specify it
+      (function(){
+        function lazyImgs(){
+          var imgs = document.querySelectorAll('img');
+          imgs.forEach(function(img){
+            if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+            if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+          });
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lazyImgs);
+        else lazyImgs();
+      })();
+    </script>
+    <script>
       (function() {
         function addCopyButtons() {
           var blocks = document.querySelectorAll('.highlight');

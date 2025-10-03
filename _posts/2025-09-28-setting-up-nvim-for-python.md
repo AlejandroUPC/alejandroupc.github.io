@@ -1,9 +1,11 @@
 ---
 layout: post
 title: Setting up Nvim for Python
-date: 2024-09-24
+date: 2025-09-28
+description: Practical Neovim setup for Python with ruff, ty, testing, debugging, and virtual environments.
 tags: [python, neovim, lua]
-permalink: /blog/2025/09/24/nvim-for-python
+redirect_from:
+  - /blog/2025/09/24/nvim-for-python
 ---
 
 **Disclaimer** by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.

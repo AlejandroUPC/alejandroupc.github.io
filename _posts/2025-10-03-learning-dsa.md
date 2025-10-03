@@ -1,9 +1,11 @@
 ---
 layout: post
 title: Learning DSA
-date: 2024-10-03
+date: 2025-10-03
+description: A structured plan to learn data structures and algorithms with resources, practice, and goals.
 tags: [cs, dsa, data-structures]
-permalink: /blog/2025/10/03/learning-dsa
+redirect_from:
+  - /blog/2025/10/03/learning-dsa
 ---
 
 Am I too old to learn DSA? I dont know, been programming for a while and I feel like I just know the basics, would really like to master this topic, find it interesting and its an underlying foundation for a lot of stuff used daily.
@@ -162,6 +164,4 @@ Additional disclaimer, ignore the problems and its #, I just added leetcode beca
 - Build a **mental classifier**: given a problem, know immediately → “Graph BFS,” “Heap top-k,” “DP table,” etc.  
 - Write **concise, clean code**.  
 - Compete at **LeetCode contest level**, but with deep DS/Algo knowledge.  
-
-
 

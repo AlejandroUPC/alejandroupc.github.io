@@ -2,8 +2,10 @@
 layout: post
 title: "Starting a blog"
 date: 2025-09-23
+description: How I set up a simple Jekyll blog on GitHub Pages with local Docker dev and basics like posts, permalinks, and RSS.
 tags: [jekyll, github, git, docker, html, css]
-permalink: /blog/2025/09/23/setting-this-up
+redirect_from:
+  - /blog/2025/09/23/setting-this-up
 ---
 
 # Starting a blog

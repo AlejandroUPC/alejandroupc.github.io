@@ -1,6 +1,6 @@
-title: "AlejandroUPC"
-description: Personal notes on engineering and learning
-url: ""
+title: "AlejandroUPC — Software Engineering Notes"
+description: Personal notes on software engineering, Python, Neovim, DSA.
+url: "https://alejandroupc.github.io"
 baseurl: ""
 defaults:
   - scope:
@@ -22,6 +22,8 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-redirect-from
+permalink: /blog/:year/:month/:day/:title/
 paginate: 10
 paginate_path: "/blog/page:num"
 markdown: kramdown
@@ -31,3 +33,10 @@ kramdown:
   syntax_highlighter: rouge
   parse_block_html: true
 highlighter: rouge
+timezone: Europe/Madrid
+
+# Site author and social
+author:
+  name: Alejandro Martínez
+  url: "/about"
+github_username: AlejandroUPC
