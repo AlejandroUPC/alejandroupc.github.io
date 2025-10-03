@@ -17,21 +17,38 @@ layout: default
 	{{ content }}
 </div>
 
-{% assign related = site.posts | where_exp: 'p', 'p.url != page.url' %}
-{% if page.tags %}
-  {% assign related = related | where_exp: 'p', 'p.tags' %}
-  {% assign related = related | where_exp: 'p', 'p.tags | array & page.tags | size > 0' %}
-{% endif %}
-{% assign related = related | slice: 0, 3 %}
-{% if related and related.size > 0 %}
-  <hr />
-  <h2 class="h5">Related posts</h2>
-  <div class="list-group list-group-flush">
-    {% for rp in related %}
-      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ rp.url }}" title="{{ rp.title }}" style="border-color: var(--border);">
-        <span class="me-3">{{ rp.title }}</span>
-        <span class="text-muted small">{{ rp.date | date: "%b %-d, %Y" }}</span>
-      </a>
-    {% endfor %}
-  </div>
+{% if page.tags and page.tags.size > 0 %}
+  {% assign related_count = 0 %}
+  {% for rp in site.posts %}
+    {% if rp.url != page.url and rp.tags %}
+      {% for t in page.tags %}
+        {% if rp.tags contains t %}
+          {% assign related_count = related_count | plus: 1 %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  {% if related_count > 0 %}
+    <hr />
+    <h2 class="h5">Related posts</h2>
+    <div class="list-group list-group-flush">
+      {% assign shown = 0 %}
+      {% for rp in site.posts %}
+        {% if shown >= 3 %}{% break %}{% endif %}
+        {% if rp.url != page.url and rp.tags %}
+          {% for t in page.tags %}
+            {% if rp.tags contains t %}
+              <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ rp.url }}" title="{{ rp.title }}" style="border-color: var(--border);">
+                <span class="me-3">{{ rp.title }}</span>
+                <span class="text-muted small">{{ rp.date | date: "%b %-d, %Y" }}</span>
+              </a>
+              {% assign shown = shown | plus: 1 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endif %}

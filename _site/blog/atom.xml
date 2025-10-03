@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-09-28T00:29:12+00:00</updated>
+	<updated>2025-10-03T21:57:06+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -13,9 +13,365 @@
 
 	
 		<entry>
+			<title>Learning DSA</title>
+			<link href="http://alejandroupc.github.io/blog/2025/10/03/learning-dsa/"/>
+			<updated>2025-10-03T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/blog/2025/10/03/learning-dsa</id>
+			<content type="html">&lt;p&gt;Am I too old to learn DSA? I dont know, been programming for a while and I feel like I just know the basics, would really like to master this topic, find it interesting and its an underlying foundation for a lot of stuff used daily.&lt;/p&gt;
+
+&lt;p&gt;Tried to half LLM a learning plan to be somewhat competent w/ DSA, I plan to do one post with every phase or chapter, depending how long it takes and go from there, hopefully you can learn something.&lt;/p&gt;
+
+&lt;p&gt;Each chapter contains:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Core concepts&lt;/strong&gt; (what to learn)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources&lt;/strong&gt; (videos, articles, books)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Practice&lt;/strong&gt; (LeetCode problems)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal&lt;/strong&gt; (what you should master that)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Should structure the learning by making a post per chater or phase not sure.&lt;/p&gt;
+
+&lt;p&gt;Additional disclaimer, ignore the problems and its #, I just added leetcode because I know the website but this might change in the future and probably will add a link to every problem I do.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;phase-1-core-data-structures&quot;&gt;Phase 1: Core Data Structures&lt;/h2&gt;
+
+&lt;h3 id=&quot;chapter-1-arrays--strings&quot;&gt;Chapter 1: Arrays &amp;amp; Strings&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; indexing, iteration, two pointers, sliding window, prefix/suffix sums.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=GrV3MTR_Uk0&quot;&gt;Neetcode Arrays &amp;amp; Hashing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/array-and-string/&quot;&gt;LeetCode Array &amp;amp; String Explore&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 2 (&lt;em&gt;Getting Started&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; confidently apply sliding window and two-pointer patterns.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-2-hashing-sets--maps&quot;&gt;Chapter 2: Hashing (Sets &amp;amp; Maps)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; hashmaps, sets, frequency counting, collisions, when to trade space for time.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=shs0KM3wKv8&quot;&gt;Neetcode Hashing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/hashing-data-structure/&quot;&gt;Hashing article (GeeksforGeeks)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 11 (&lt;em&gt;Hash Tables&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; solve grouping, frequency, and uniqueness problems with hashing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-3-linked-lists-stacks-queues&quot;&gt;Chapter 3: Linked Lists, Stacks, Queues&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; pointers, reversal, cycle detection, monotonic stack, BFS with queue.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Hj_rA0dhr2I&quot;&gt;Neetcode Linked List&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wjI1WNcIntg&quot;&gt;Neetcode Stack&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=okr-XE8yTO8&quot;&gt;Neetcode Queue&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/linked-list/&quot;&gt;LeetCode Linked List Explore&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 10 (&lt;em&gt;Elementary Data Structures&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; quickly implement stack/queue logic, spot monotonic stack problems.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;phase-2-trees--graphs&quot;&gt;Phase 2: Trees &amp;amp; Graphs&lt;/h2&gt;
+
+&lt;h3 id=&quot;chapter-4-binary-trees&quot;&gt;Chapter 4: Binary Trees&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; recursion, traversals (pre/in/post-order), height, diameter, LCA.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=fAAZixBzIAI&quot;&gt;Neetcode Trees&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/data-structure-tree/&quot;&gt;LeetCode Tree Explore&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 12 (&lt;em&gt;Binary Search Trees&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; reduce problems into recursive traversals.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-5-bsts--heaps&quot;&gt;Chapter 5: BSTs &amp;amp; Heaps&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; BST invariants, balanced BSTs, min-heap/max-heap, priority queues.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=K0u_JqrbJeY&quot;&gt;Neetcode BST&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=HqPJF2L5h9U&quot;&gt;Neetcode Heap&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 6 (&lt;em&gt;Heapsort&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; recognize when to use heap for “top-k” and scheduling problems.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-6-graph-traversals&quot;&gt;Chapter 6: Graph Traversals&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; adjacency list/matrix, BFS, DFS, connected components, topological sort.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tWVWeAqZ0WU&quot;&gt;Neetcode Graphs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/graph/&quot;&gt;LeetCode Graph Explore&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 22 (&lt;em&gt;Graph Algorithms&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; map graph problems to BFS/DFS patterns.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-7-shortest-paths--union-find&quot;&gt;Chapter 7: Shortest Paths &amp;amp; Union-Find&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; Dijkstra, Bellman-Ford, Kruskal/Prim MST, disjoint sets (union-find).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=EFg3u_E6eHU&quot;&gt;Neetcode Dijkstra&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/union-find/&quot;&gt;Union-Find (GeeksforGeeks)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 23–24 (&lt;em&gt;MST &amp;amp; Shortest Paths&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; solve weighted graphs &amp;amp; connectivity efficiently.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;phase-3-sorting--searching&quot;&gt;Phase 3: Sorting &amp;amp; Searching&lt;/h2&gt;
+
+&lt;h3 id=&quot;chapter-8-sorting&quot;&gt;Chapter 8: Sorting&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; merge sort, quicksort, heap sort, interval scheduling, greedy sort.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=PgBzjlCcFvc&quot;&gt;Neetcode Sorting&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 7 (&lt;em&gt;Quicksort&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; identify sorting as preprocessing step.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-9-binary-search&quot;&gt;Chapter 9: Binary Search&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; binary search patterns, lower/upper bound, search-on-answer.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=U4yPae3GEO0&quot;&gt;Neetcode Binary Search&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/binary-search/&quot;&gt;LeetCode Binary Search Explore&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; master binary search variants.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;phase-4-dynamic-programming&quot;&gt;Phase 4: Dynamic Programming&lt;/h2&gt;
+
+&lt;h3 id=&quot;chapter-10-1d-dp&quot;&gt;Chapter 10: 1D DP&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; recursion → memoization → tabulation.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=tyB0ztf0DNY&quot;&gt;Neetcode DP Intro&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;chapter-11-2d-dp&quot;&gt;Chapter 11: 2D DP&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; grids, subsequences, edit distance.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=h6FmiyYDjmk&quot;&gt;Neetcode 2D DP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;chapter-12-knapsack--variants&quot;&gt;Chapter 12: Knapsack &amp;amp; Variants&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt; CLRS, Ch. 15 (&lt;em&gt;Dynamic Programming&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;chapter-13-state-compression&quot;&gt;Chapter 13: State Compression&lt;/h3&gt;
+
+&lt;h3 id=&quot;chapter-14-mixed-hard-dp&quot;&gt;Chapter 14: Mixed Hard DP&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Practice: hard DP problems from LeetCode&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; reduce recursion → memoization → tabulation; solve any DP-tagged LC problem.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;phase-5-advanced-topics&quot;&gt;Phase 5: Advanced Topics&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Greedy:&lt;/strong&gt; 55, 45, 135&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Backtracking:&lt;/strong&gt; 78, 46, 51&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Segment Trees / Fenwick Trees:&lt;/strong&gt; 307, 315&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Strings (KMP, Trie):&lt;/strong&gt; 208, 211, 14, 28&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bit Manipulation:&lt;/strong&gt; 136, 191, 338&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;learn-workflow&quot;&gt;Learn workflow&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Theory (1–2h):&lt;/strong&gt; watch videos, skim article/book chapter.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Notes (30m):&lt;/strong&gt; write definitions, time complexities, patterns.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Practice (5–10 problems):&lt;/strong&gt; solve progressively harder LC.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reflection (15m):&lt;/strong&gt; tag problem → data structure/algorithm used.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;endgame&quot;&gt;Endgame&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Build a &lt;strong&gt;mental classifier&lt;/strong&gt;: given a problem, know immediately → “Graph BFS,” “Heap top-k,” “DP table,” etc.&lt;/li&gt;
+  &lt;li&gt;Write &lt;strong&gt;concise, clean code&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Compete at &lt;strong&gt;LeetCode contest level&lt;/strong&gt;, but with deep DS/Algo knowledge.&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+		</entry>
+	
+		<entry>
+			<title>Setting up Nvim for Python</title>
+			<link href="http://alejandroupc.github.io/blog/2025/09/28/setting-up-nvim-for-python/"/>
+			<updated>2025-09-28T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/blog/2025/09/28/setting-up-nvim-for-python</id>
+			<content type="html">&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;/p&gt;
+
+&lt;p&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
+Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;/p&gt;
+
+&lt;p&gt;I’d recommend everyone trying to learn it, there’s plenty of resources and people in the &lt;a href=&quot;#additional-resources&quot;&gt;additional resources&lt;/a&gt; sections from people who knows a lot and have great tutorials.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Neovim (an extension of another text editor, vim) is a relatively simple (by default) text editor that is thought to be used mostly just using the keyboard. Over the time it has gained popularity as it allows (with time and practice) for incredible efficiency to code.&lt;/p&gt;
+
+&lt;p&gt;If its so good why is not that popular though? Well it has a kind of learning curve, it can be somewhat hard to maintain (when you extend functionalities with plugins).&lt;/p&gt;
+
+&lt;p&gt;I really recommend that if you come across this post and have not tried yet, give it a shot and jump directly to any tutorial and if you decide to embrace the journey you will find yourself creating something very personal, your own config that allows you to be very effective when navigating and working with code.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;neovim ripgrep fd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
+If you run then in your terminal &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim&lt;/code&gt; you should be greeted by a very simple window:
+&lt;img src=&quot;/assets/images/00_nvim_intro.png&quot; alt=&quot;Neovim start&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And this would be the simplest version of Neovim, if you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neovim test.txt&lt;/code&gt; this will create a file (will not be saved by default) where you could start writing, but lets start for one of the hardest parts in Neovim; how to close it? First press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esc&lt;/code&gt; to make sure you are in normal mode and then:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt; -&amp;gt; Will quit if there are no unsaved changes.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt; -&amp;gt; Force quit, without saving.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:x&lt;/code&gt; -&amp;gt; save and quit.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZZ&lt;/code&gt; -&amp;gt; write and quit.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/01_exit_working_quit.png&quot; alt=&quot;Exiting Neovim&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that there are several ways more, but those are the ones I have used over time, note that for the ones starting with semicolon &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; is that it will show at the bottom right the editor the characters you enter and then just press enter when you are done.&lt;/p&gt;
+
+&lt;p&gt;In order to open neovim in an existing directory you can just go &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim (path)&lt;/code&gt; which I usally cd in to the project and write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim .&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h2&gt;
+
+&lt;p&gt;We are moving now a leap forward and assuming you are familiar with neovim modes and concepts such as buffers, windows, tabs… And jumping directly to &lt;a href=&quot;https://www.youtube.com/watch?v=m8C0Cq9Uv9o&quot;&gt;TJ DeVries video - The Only Video You need to Get Started With Neovim&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It basically lets you set up a pretty complete set up using kickstart.nvim and ge you started, it is very important that you watch the video and google a little bit around, play around with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Tutor&lt;/code&gt; and watch a few videos.&lt;/p&gt;
+
+&lt;p&gt;If you ever feel stuck or feel like a feature is missing as we progress in this post, investigate and see how feasible is to implemenet it (it probably is, the question is how hard).&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-a-python-nvim-installation&quot;&gt;Setting up a Python Nvim installation&lt;/h2&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy&lt;/code&gt; its quite easy, we are looking for the following features in our IDE:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Linter: We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt; from astral.&lt;/li&gt;
+  &lt;li&gt;Typing: We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; from astral.&lt;/li&gt;
+  &lt;li&gt;Support for testing.&lt;/li&gt;
+  &lt;li&gt;Support for debugging.&lt;/li&gt;
+  &lt;li&gt;Manage virtual environments&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;linter-and-typing&quot;&gt;Linter and typing&lt;/h3&gt;
+
+&lt;p&gt;We will be tackling those two at once given that they are kinda related, one is going to make our code look pretty and the other make sure the types in our code match the signature of our methods.&lt;/p&gt;
+
+&lt;p&gt;This should be quite easy and wherever we are declaring all of our plugins using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy&lt;/code&gt;, you should look something like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;require(&apos;lazy&apos;).setup&lt;/code&gt; in your code, in the server table:&lt;/p&gt;
+
+&lt;div class=&quot;language-lua highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &lt;span class=&quot;n&quot;&gt;ruff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;on_attach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server_capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hoverProvider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- ty takes over hover&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will just make sure that both ruff and ty are set up in our LSP, we just set the hover priority over &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; for types rather than &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt;. Other than that you can find the lsp configurations for each of the plugins and see all the options that can be passed.&lt;/p&gt;
+
+&lt;p&gt;Really the work of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt; is mostly automatic and it will basically format on save or when pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+f&lt;/code&gt;. For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; we will be getting warnings whenever, for example, there is a type missmatch:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/03_ty_typin.png&quot; alt=&quot;Ty Typing&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;For testing I really wanted a visual way to understand how the tests are doing and the output of the testing incase it fails, this really comes out of the box for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neotest&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neotest-python&lt;/code&gt;, for example with such a dummy test files if we just push &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+t+f&lt;/code&gt; as per test file we can see the status of the tests on the left:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/04_failing_test.png&quot; alt=&quot;Failed test on file&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also you can do test summary with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+t+s&lt;/code&gt; to see this fancy tab (see the pattern of leader+keystrokes that match our intention?):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/05_test_resume.png&quot; alt=&quot;Test resume&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
+
+&lt;p&gt;Debugging is critical, very similar, at any point in code if we push &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+d+b&lt;/code&gt; it toggles a breakpoint, see the small &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B&lt;/code&gt; on the left:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/06_debug_breakpoint.png&quot; alt=&quot;Add break point&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then if we just launch a session &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+d+c&lt;/code&gt; and it will stop and you will be able to explore the entire debug session:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/07_debug_session.png&quot; alt=&quot;Debug session&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;virtual-environment&quot;&gt;Virtual Environment&lt;/h3&gt;
+
+&lt;p&gt;Quite simple, pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+c+v&lt;/code&gt; will prompt you for which venv to use:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/08_venv_select.png&quot; alt=&quot;Debug session&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;going-forward&quot;&gt;Going forward&lt;/h2&gt;
+
+&lt;p&gt;This was just a simple guide of someone who is kinda familiar with Neovim, if you decide to reuse the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init.lua&lt;/code&gt; I have on my repo –TODO add link, I also recommend checking on snippets the neovim one to get familiar with the commands.&lt;/p&gt;
+
+&lt;p&gt;I probably also need to post a second part talking about oil, but please try Neovim and have the cheathseet opened in another tab to have quick access to the commands.&lt;/p&gt;
+
+&lt;p&gt;Again, Neovim can be hard at the beginning, the set up and the motions but I encourage you to give it a shot, if you come from VSCode enable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim&lt;/code&gt; mode there and try to use neovim later on directly.&lt;/p&gt;
+
+&lt;h3 id=&quot;additional-resources&quot;&gt;Additional resources&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://neovim.io/&quot;&gt;Neovim official page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/@teej_dv/videos&quot;&gt;Teej Dv Youtube chanel&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iqdCshrIKIg&quot;&gt;Telescope nvim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		</entry>
+	
+		<entry>
 			<title>Starting a blog</title>
-			<link href="http://alejandroupc.github.io/blog/2025/09/23/setting-this-up"/>
-			<updated>2025-09-23T00:00:00+00:00</updated>
+			<link href="http://alejandroupc.github.io/blog/2025/09/23/setting-this-up/"/>
+			<updated>2025-09-23T00:00:00+02:00</updated>
 			<id>http://alejandroupc.github.io/blog/2025/09/23/setting-this-up</id>
 			<content type="html">&lt;h1 id=&quot;starting-a-blog&quot;&gt;Starting a blog&lt;/h1&gt;
 
@@ -132,156 +488,7 @@ title: This is the first attempt
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Welcome&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Notice at the top of the file? Yhose are called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Front-matter&lt;/code&gt; in Jekyll and this means every file starting with those characters will be processed by the framework, and basically we are just calling it to use our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layouts/_default&lt;/code&gt; to craete a new HTML page where the content will be replaced in the `&amp;lt;h1&amp;gt; Setting up Nvim for Python &amp;lt;/h1&amp;gt;&lt;/p&gt;
-&lt;p class=&quot;meta&quot;&gt;Sep 24, 2024&lt;/p&gt;
-
-&lt;div class=&quot;mb-3&quot;&gt;
-
-  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;a class=&quot;badge rounded-pill text-decoration-none&quot; style=&quot;background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);&quot; href=&quot;/tags-python&quot;&amp;gt;#python&amp;lt;/a&amp;gt;
-  
-&amp;lt;a class=&quot;badge rounded-pill text-decoration-none&quot; style=&quot;background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);&quot; href=&quot;/tags-neovim&quot;&amp;gt;#neovim&amp;lt;/a&amp;gt;
-  
-&amp;lt;a class=&quot;badge rounded-pill text-decoration-none&quot; style=&quot;background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);&quot; href=&quot;/tags-lua&quot;&amp;gt;#lua&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-
-  &lt;p&gt;&lt;a class=&quot;ms-2 small text-muted&quot; href=&quot;/tags/&quot;&gt;All tags&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;post&quot;&gt;
-  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Disclaimer&amp;lt;/strong&amp;gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-
-  &lt;p&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
-Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;/p&gt;
-
-  &lt;p&gt;I’d recommend everyone trying to learn it, there’s plenty of resources and people in the &lt;a href=&quot;#additional-resources&quot;&gt;additional resources&lt;/a&gt; sections from people who knows a lot and have great tutorials.&lt;/p&gt;
-
-  &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-  &lt;p&gt;Neovim (an extension of another text editor, vim) is a relatively simple (by default) text editor that is thought to be used mostly just using the keyboard. Over the time it has gained popularity as it allows (with time and practice) for incredible efficiency to code.&lt;/p&gt;
-
-  &lt;p&gt;If its so good why is not that popular though? Well it has a kind of learning curve, it can be somewhat hard to maintain (when you extend functionalities with plugins).&lt;/p&gt;
-
-  &lt;p&gt;I really recommend that if you come across this post and have not tried yet, give it a shot and jump directly to any tutorial and if you decide to embrace the journey you will find yourself creating something very personal, your own config that allows you to be very effective when navigating and working with code.&lt;/p&gt;
-
-  &lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
-
-  &lt;p&gt;This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:&lt;/p&gt;
-
-  &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;
-    &lt;div class=&quot;highlight&quot;&gt;
-      &lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;neovim ripgrep fd
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;p&gt;The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
-If you run then in your terminal &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim&lt;/code&gt; you should be greeted by a very simple window:
-&lt;img src=&quot;/assets/images/00_nvim_intro.png&quot; alt=&quot;Neovim start&quot; /&gt;&lt;/p&gt;
-
-  &lt;p&gt;And this would be the simplest version of Neovim, if you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neovim test.txt&lt;/code&gt; this will create a file (will not be saved by default) where you could start writing, but lets start for one of the hardest parts in Neovim; how to close it? First press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esc&lt;/code&gt; to make sure you are in normal mode and then:&lt;/p&gt;
-
-  &lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt; -&amp;gt; Will quit if there are no unsaved changes.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt; -&amp;gt; Force quit, without saving.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:x&lt;/code&gt; -&amp;gt; save and quit.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZZ&lt;/code&gt; -&amp;gt; write and quit.&lt;/li&gt;
-&lt;/ol&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/01_exit_working_quit.png&quot; alt=&quot;Exiting Neovim&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;p&gt;Note that there are several ways more, but those are the ones I have used over time, note that for the ones starting with semicolon &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; is that it will show at the bottom right the editor the characters you enter and then just press enter when you are done.&lt;/p&gt;
-
-  &lt;p&gt;In order to open neovim in an existing directory you can just go &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim (path)&lt;/code&gt; which I usally cd in to the project and write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim .&lt;/code&gt;.&lt;/p&gt;
-
-  &lt;h2 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h2&gt;
-
-  &lt;p&gt;We are moving now a leap forward and assuming you are familiar with neovim modes and concepts such as buffers, windows, tabs… And jumping directly to &lt;a href=&quot;https://www.youtube.com/watch?v=m8C0Cq9Uv9o&quot;&gt;TJ DeVries video - The Only Video You need to Get Started With Neovim&lt;/a&gt;.&lt;/p&gt;
-
-  &lt;p&gt;It basically lets you set up a pretty complete set up using kickstart.nvim and ge you started, it is very important that you watch the video and google a little bit around, play around with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Tutor&lt;/code&gt; and watch a few videos.&lt;/p&gt;
-
-  &lt;p&gt;If you ever feel stuck or feel like a feature is missing as we progress in this post, investigate and see how feasible is to implemenet it (it probably is, the question is how hard).&lt;/p&gt;
-
-  &lt;h2 id=&quot;setting-up-a-python-nvim-installation&quot;&gt;Setting up a Python Nvim installation&lt;/h2&gt;
-
-  &lt;p&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy&lt;/code&gt; its quite easy, we are looking for the following features in our IDE:&lt;/p&gt;
-
-  &lt;ol&gt;
-  &lt;li&gt;Linter: We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt; from astral.&lt;/li&gt;
-  &lt;li&gt;Typing: We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; from astral.&lt;/li&gt;
-  &lt;li&gt;Support for testing.&lt;/li&gt;
-  &lt;li&gt;Support for debugging.&lt;/li&gt;
-  &lt;li&gt;Manage virtual environments&lt;/li&gt;
-&lt;/ol&gt;
-
-  &lt;h3 id=&quot;linter-and-typing&quot;&gt;Linter and typing&lt;/h3&gt;
-
-  &lt;p&gt;We will be tackling those two at once given that they are kinda related, one is going to make our code look pretty and the other make sure the types in our code match the signature of our methods.&lt;/p&gt;
-
-  &lt;p&gt;This should be quite easy and wherever we are declaring all of our plugins using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy&lt;/code&gt;, you should look something like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;require(&apos;lazy&apos;).setup&lt;/code&gt; in your code, in the server table:&lt;/p&gt;
-
-  &lt;div class=&quot;language-lua highlighter-rouge&quot;&gt;
-    &lt;div class=&quot;highlight&quot;&gt;
-      &lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &lt;span class=&quot;n&quot;&gt;ruff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;on_attach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server_capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hoverProvider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- ty takes over hover&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;p&gt;This will just make sure that both ruff and ty are set up in our LSP, we just set the hover priority over &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; for types rather than &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt;. Other than that you can find the lsp configurations for each of the plugins and see all the options that can be passed.&lt;/p&gt;
-
-  &lt;p&gt;Really the work of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt; is mostly automatic and it will basically format on save or when pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+f&lt;/code&gt;. For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; we will be getting warnings whenever, for example, there is a type missmatch:&lt;/p&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/03_ty_typin.png&quot; alt=&quot;Ty Typing&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
-
-  &lt;p&gt;For testing I really wanted a visual way to understand how the tests are doing and the output of the testing incase it fails, this really comes out of the box for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neotest&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neotest-python&lt;/code&gt;, for example with such a dummy test files if we just push &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+t+f&lt;/code&gt; as per test file we can see the status of the tests on the left:&lt;/p&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/04_failing_test.png&quot; alt=&quot;Failed test on file&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;p&gt;Also you can do test summary with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+t+s&lt;/code&gt; to see this fancy tab (see the pattern of leader+keystrokes that match our intention?):&lt;/p&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/05_test_resume.png&quot; alt=&quot;Test resume&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
-
-  &lt;p&gt;Debugging is critical, very similar, at any point in code if we push &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+d+b&lt;/code&gt; it toggles a breakpoint, see the small &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B&lt;/code&gt; on the left:&lt;/p&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/06_debug_breakpoint.png&quot; alt=&quot;Add break point&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;p&gt;Then if we just launch a session &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+d+c&lt;/code&gt; and it will stop and you will be able to explore the entire debug session:&lt;/p&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/07_debug_session.png&quot; alt=&quot;Debug session&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;h3 id=&quot;virtual-environment&quot;&gt;Virtual Environment&lt;/h3&gt;
-
-  &lt;p&gt;Quite simple, pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+c+v&lt;/code&gt; will prompt you for which venv to use:&lt;/p&gt;
-
-  &lt;p&gt;&lt;img src=&quot;/assets/images/08_venv_select.png&quot; alt=&quot;Debug session&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-  &lt;h2 id=&quot;going-forward&quot;&gt;Going forward&lt;/h2&gt;
-
-  &lt;p&gt;This was just a simple guide of someone who is kinda familiar with Neovim, if you decide to reuse the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init.lua&lt;/code&gt; I have on my repo –TODO add link, I also recommend checking on snippets the neovim one to get familiar with the commands.&lt;/p&gt;
-
-  &lt;p&gt;I probably also need to post a second part talking about oil, but please try Neovim and have the cheathseet opened in another tab to have quick access to the commands.&lt;/p&gt;
-
-  &lt;p&gt;Again, Neovim can be hard at the beginning, the set up and the motions but I encourage you to give it a shot, if you come from VSCode enable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim&lt;/code&gt; mode there and try to use neovim later on directly.&lt;/p&gt;
-
-  &lt;h3 id=&quot;additional-resources&quot;&gt;Additional resources&lt;/h3&gt;
-
-  &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://neovim.io/&quot;&gt;Neovim official page&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/@teej_dv/videos&quot;&gt;Teej Dv Youtube chanel&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iqdCshrIKIg&quot;&gt;Telescope nvim&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-&lt;p&gt;`.&lt;/p&gt;
+&lt;p&gt;Notice at the top of the file? Yhose are called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Front-matter&lt;/code&gt; in Jekyll and this means every file starting with those characters will be processed by the framework, and basically we are just calling it to use our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layouts/_default&lt;/code&gt; to craete a new HTML page where the content will be replaced in the ``.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-blog-itself&quot;&gt;The blog itself&lt;/h2&gt;
 
@@ -296,148 +503,7 @@ layout: default
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;meta&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Written the 23 Sep 2025&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt; Setting up Nvim for Python &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;meta&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sep 24, 2024&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mb-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;badge rounded-pill text-decoration-none&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tags-python&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#python&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;badge rounded-pill text-decoration-none&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tags-neovim&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#neovim&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;badge rounded-pill text-decoration-none&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tags-lua&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#lua&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ms-2 small text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tags/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;All tags&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Disclaimer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
-Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I’d recommend everyone trying to learn it, there’s plenty of resources and people in the &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#additional-resources&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;additional resources&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; sections from people who knows a lot and have great tutorials.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;introduction&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Introduction&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Neovim (an extension of another text editor, vim) is a relatively simple (by default) text editor that is thought to be used mostly just using the keyboard. Over the time it has gained popularity as it allows (with time and practice) for incredible efficiency to code.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If its so good why is not that popular though? Well it has a kind of learning curve, it can be somewhat hard to maintain (when you extend functionalities with plugins).&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I really recommend that if you come across this post and have not tried yet, give it a shot and jump directly to any tutorial and if you decide to embrace the journey you will find yourself creating something very personal, your own config that allows you to be very effective when navigating and working with code.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;installation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Installation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-sh highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nb&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;install &lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;neovim ripgrep fd
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
-If you run then in your terminal &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;nvim&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; you should be greeted by a very simple window:
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/00_nvim_intro.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Neovim start&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;And this would be the simplest version of Neovim, if you run &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;neovim test.txt&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; this will create a file (will not be saved by default) where you could start writing, but lets start for one of the hardest parts in Neovim; how to close it? First press &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;esc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; to make sure you are in normal mode and then:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;:q&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; -&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt; Will quit if there are no unsaved changes.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;:q!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; -&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt; Force quit, without saving.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;:wq&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; or &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;:x&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; -&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt; save and quit.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ZZ&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; -&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt; write and quit.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/01_exit_working_quit.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Exiting Neovim&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Note that there are several ways more, but those are the ones I have used over time, note that for the ones starting with semicolon &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; is that it will show at the bottom right the editor the characters you enter and then just press enter when you are done.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;In order to open neovim in an existing directory you can just go &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;nvim (path)&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; which I usally cd in to the project and write &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;nvim .&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;moving-forward&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Moving forward&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;We are moving now a leap forward and assuming you are familiar with neovim modes and concepts such as buffers, windows, tabs… And jumping directly to &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube.com/watch?v=m8C0Cq9Uv9o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;TJ DeVries video - The Only Video You need to Get Started With Neovim&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;It basically lets you set up a pretty complete set up using kickstart.nvim and ge you started, it is very important that you watch the video and google a little bit around, play around with the &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;:Tutor&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; and watch a few videos.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If you ever feel stuck or feel like a feature is missing as we progress in this post, investigate and see how feasible is to implemenet it (it probably is, the question is how hard).&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;setting-up-a-python-nvim-installation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Setting up a Python Nvim installation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Using &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lazy&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; its quite easy, we are looking for the following features in our IDE:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Linter: We use &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ruff&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; from astral.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Typing: We use &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ty&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; from astral.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Support for testing.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Support for debugging.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Manage virtual environments&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;linter-and-typing&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Linter and typing&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;We will be tackling those two at once given that they are kinda related, one is going to make our code look pretty and the other make sure the types in our code match the signature of our methods.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This should be quite easy and wherever we are declaring all of our plugins using &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lazy&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;, you should look something like &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;require(&apos;lazy&apos;).setup&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; in your code, in the server table:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-lua highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ruff&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;=&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;on_attach&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;=&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;k&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;function&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;(&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;c&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;)&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;c&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;server_capabilities&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;hoverProvider&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;=&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kc&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;false&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;c1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;-- ty takes over hover&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;k&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;end&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;,&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;},&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ty&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;=&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{},&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This will just make sure that both ruff and ty are set up in our LSP, we just set the hover priority over &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ty&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; for types rather than &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ruff&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;. Other than that you can find the lsp configurations for each of the plugins and see all the options that can be passed.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Really the work of &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ruff&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; is mostly automatic and it will basically format on save or when pressing &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;leader+f&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;. For &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;ty&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; we will be getting warnings whenever, for example, there is a type missmatch:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/03_ty_typin.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ty Typing&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;testing&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Testing&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;For testing I really wanted a visual way to understand how the tests are doing and the output of the testing incase it fails, this really comes out of the box for &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;neotest&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; and &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;neotest-python&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;, for example with such a dummy test files if we just push &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;leader+t+f&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; as per test file we can see the status of the tests on the left:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/04_failing_test.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failed test on file&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Also you can do test summary with &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;leader+t+s&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; to see this fancy tab (see the pattern of leader+keystrokes that match our intention?):&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/05_test_resume.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Test resume&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;debugging&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Debugging&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Debugging is critical, very similar, at any point in code if we push &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;leader+d+b&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; it toggles a breakpoint, see the small &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;B&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; on the left:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/06_debug_breakpoint.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Add break point&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Then if we just launch a session &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;leader+d+c&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; and it will stop and you will be able to explore the entire debug session:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/07_debug_session.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Debug session&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;virtual-environment&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Virtual Environment&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Quite simple, pressing &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;leader+c+v&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; will prompt you for which venv to use:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/images/08_venv_select.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Debug session&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-block mx-auto&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;going-forward&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Going forward&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This was just a simple guide of someone who is kinda familiar with Neovim, if you decide to reuse the &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;init.lua&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; I have on my repo –TODO add link, I also recommend checking on snippets the neovim one to get familiar with the commands.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I probably also need to post a second part talking about oil, but please try Neovim and have the cheathseet opened in another tab to have quick access to the commands.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Again, Neovim can be hard at the beginning, the set up and the motions but I encourage you to give it a shot, if you come from VSCode enable &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-plaintext highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;vim&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; mode there and try to use neovim later on directly.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;additional-resources&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Additional resources&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://neovim.io/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Neovim official page&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube.com/@teej_dv/videos&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Teej Dv Youtube chanel&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube.com/watch?v=iqdCshrIKIg&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Telescope nvim&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
+	
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -574,136 +640,6 @@ you can set up the following Dockerfile:&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://jogendra.dev/dockerize-your-jekyll-site-for-local-development&quot;&gt;Dockerize your Jekyll site&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-		</entry>
-	
-		<entry>
-			<title>Setting up Nvim for Python</title>
-			<link href="http://alejandroupc.github.io/blog/2025/09/24/nvim-for-python"/>
-			<updated>2024-09-24T00:00:00+00:00</updated>
-			<id>http://alejandroupc.github.io/blog/2025/09/24/setting-up-nvim-for-python</id>
-			<content type="html">&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt; by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.&lt;/p&gt;
-
-&lt;p&gt;I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
-Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.&lt;/p&gt;
-
-&lt;p&gt;I’d recommend everyone trying to learn it, there’s plenty of resources and people in the &lt;a href=&quot;#additional-resources&quot;&gt;additional resources&lt;/a&gt; sections from people who knows a lot and have great tutorials.&lt;/p&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Neovim (an extension of another text editor, vim) is a relatively simple (by default) text editor that is thought to be used mostly just using the keyboard. Over the time it has gained popularity as it allows (with time and practice) for incredible efficiency to code.&lt;/p&gt;
-
-&lt;p&gt;If its so good why is not that popular though? Well it has a kind of learning curve, it can be somewhat hard to maintain (when you extend functionalities with plugins).&lt;/p&gt;
-
-&lt;p&gt;I really recommend that if you come across this post and have not tried yet, give it a shot and jump directly to any tutorial and if you decide to embrace the journey you will find yourself creating something very personal, your own config that allows you to be very effective when navigating and working with code.&lt;/p&gt;
-
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
-
-&lt;p&gt;This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;neovim ripgrep fd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
-If you run then in your terminal &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim&lt;/code&gt; you should be greeted by a very simple window:
-&lt;img src=&quot;/assets/images/00_nvim_intro.png&quot; alt=&quot;Neovim start&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And this would be the simplest version of Neovim, if you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neovim test.txt&lt;/code&gt; this will create a file (will not be saved by default) where you could start writing, but lets start for one of the hardest parts in Neovim; how to close it? First press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esc&lt;/code&gt; to make sure you are in normal mode and then:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt; -&amp;gt; Will quit if there are no unsaved changes.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt; -&amp;gt; Force quit, without saving.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:x&lt;/code&gt; -&amp;gt; save and quit.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZZ&lt;/code&gt; -&amp;gt; write and quit.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/01_exit_working_quit.png&quot; alt=&quot;Exiting Neovim&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note that there are several ways more, but those are the ones I have used over time, note that for the ones starting with semicolon &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; is that it will show at the bottom right the editor the characters you enter and then just press enter when you are done.&lt;/p&gt;
-
-&lt;p&gt;In order to open neovim in an existing directory you can just go &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim (path)&lt;/code&gt; which I usally cd in to the project and write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim .&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h2&gt;
-
-&lt;p&gt;We are moving now a leap forward and assuming you are familiar with neovim modes and concepts such as buffers, windows, tabs… And jumping directly to &lt;a href=&quot;https://www.youtube.com/watch?v=m8C0Cq9Uv9o&quot;&gt;TJ DeVries video - The Only Video You need to Get Started With Neovim&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It basically lets you set up a pretty complete set up using kickstart.nvim and ge you started, it is very important that you watch the video and google a little bit around, play around with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Tutor&lt;/code&gt; and watch a few videos.&lt;/p&gt;
-
-&lt;p&gt;If you ever feel stuck or feel like a feature is missing as we progress in this post, investigate and see how feasible is to implemenet it (it probably is, the question is how hard).&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-a-python-nvim-installation&quot;&gt;Setting up a Python Nvim installation&lt;/h2&gt;
-
-&lt;p&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy&lt;/code&gt; its quite easy, we are looking for the following features in our IDE:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Linter: We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt; from astral.&lt;/li&gt;
-  &lt;li&gt;Typing: We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; from astral.&lt;/li&gt;
-  &lt;li&gt;Support for testing.&lt;/li&gt;
-  &lt;li&gt;Support for debugging.&lt;/li&gt;
-  &lt;li&gt;Manage virtual environments&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;linter-and-typing&quot;&gt;Linter and typing&lt;/h3&gt;
-
-&lt;p&gt;We will be tackling those two at once given that they are kinda related, one is going to make our code look pretty and the other make sure the types in our code match the signature of our methods.&lt;/p&gt;
-
-&lt;p&gt;This should be quite easy and wherever we are declaring all of our plugins using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy&lt;/code&gt;, you should look something like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;require(&apos;lazy&apos;).setup&lt;/code&gt; in your code, in the server table:&lt;/p&gt;
-
-&lt;div class=&quot;language-lua highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &lt;span class=&quot;n&quot;&gt;ruff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;on_attach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server_capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hoverProvider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- ty takes over hover&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This will just make sure that both ruff and ty are set up in our LSP, we just set the hover priority over &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; for types rather than &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt;. Other than that you can find the lsp configurations for each of the plugins and see all the options that can be passed.&lt;/p&gt;
-
-&lt;p&gt;Really the work of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruff&lt;/code&gt; is mostly automatic and it will basically format on save or when pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+f&lt;/code&gt;. For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ty&lt;/code&gt; we will be getting warnings whenever, for example, there is a type missmatch:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/03_ty_typin.png&quot; alt=&quot;Ty Typing&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
-
-&lt;p&gt;For testing I really wanted a visual way to understand how the tests are doing and the output of the testing incase it fails, this really comes out of the box for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neotest&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neotest-python&lt;/code&gt;, for example with such a dummy test files if we just push &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+t+f&lt;/code&gt; as per test file we can see the status of the tests on the left:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/04_failing_test.png&quot; alt=&quot;Failed test on file&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Also you can do test summary with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+t+s&lt;/code&gt; to see this fancy tab (see the pattern of leader+keystrokes that match our intention?):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/05_test_resume.png&quot; alt=&quot;Test resume&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
-
-&lt;p&gt;Debugging is critical, very similar, at any point in code if we push &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+d+b&lt;/code&gt; it toggles a breakpoint, see the small &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B&lt;/code&gt; on the left:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/06_debug_breakpoint.png&quot; alt=&quot;Add break point&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Then if we just launch a session &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+d+c&lt;/code&gt; and it will stop and you will be able to explore the entire debug session:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/07_debug_session.png&quot; alt=&quot;Debug session&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;virtual-environment&quot;&gt;Virtual Environment&lt;/h3&gt;
-
-&lt;p&gt;Quite simple, pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;leader+c+v&lt;/code&gt; will prompt you for which venv to use:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/08_venv_select.png&quot; alt=&quot;Debug session&quot; class=&quot;d-block mx-auto&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;going-forward&quot;&gt;Going forward&lt;/h2&gt;
-
-&lt;p&gt;This was just a simple guide of someone who is kinda familiar with Neovim, if you decide to reuse the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init.lua&lt;/code&gt; I have on my repo –TODO add link, I also recommend checking on snippets the neovim one to get familiar with the commands.&lt;/p&gt;
-
-&lt;p&gt;I probably also need to post a second part talking about oil, but please try Neovim and have the cheathseet opened in another tab to have quick access to the commands.&lt;/p&gt;
-
-&lt;p&gt;Again, Neovim can be hard at the beginning, the set up and the motions but I encourage you to give it a shot, if you come from VSCode enable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim&lt;/code&gt; mode there and try to use neovim later on directly.&lt;/p&gt;
-
-&lt;h3 id=&quot;additional-resources&quot;&gt;Additional resources&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://neovim.io/&quot;&gt;Neovim official page&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/@teej_dv/videos&quot;&gt;Teej Dv Youtube chanel&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iqdCshrIKIg&quot;&gt;Telescope nvim&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
 		</entry>
