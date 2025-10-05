@@ -141,36 +141,6 @@ Notes
 
 Pytest user commands (add to your `init.lua`)
 
-```lua
--- Run pytest with a -k pattern: :PytestPattern <pattern>
-vim.api.nvim_create_user_command('PytestPattern', function(opts)
-  local pattern = opts.args
-  local cmd = { 'pytest', '-k', pattern }
-  vim.cmd('vnew')                       -- open a vertical split
-  vim.fn.termopen(cmd)
-  vim.cmd('startinsert')
-end, { nargs = 1, complete = 'file' })
-
--- Run full pytest discovery and suite: :PytestAll
-vim.api.nvim_create_user_command('PytestAll', function()
-  local cmd = { 'pytest' }
-  vim.cmd('vnew')
-  vim.fn.termopen(cmd)
-  vim.cmd('startinsert')
-end, {})
-
--- Optional keymaps
-vim.keymap.set('n', '<leader>tp', function()
-  local pat = vim.fn.input('pytest -k pattern: ')
-  if pat ~= '' then vim.cmd('PytestPattern ' .. pat) end
-end, { desc = 'pytest -k <pattern>' })
-
-vim.keymap.set('n', '<leader>ta', function()
-  vim.cmd('PytestAll')
-end, { desc = 'pytest (all)' })
-```
-
-
 ## 8) Debugging (nvim‑dap + dap‑ui + dap‑python)
 
 | Keys / Command | Description |
