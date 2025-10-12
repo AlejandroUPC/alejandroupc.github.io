@@ -156,3 +156,6 @@ figure.figure { margin: 1.25rem 0; text-align: center; }
 .center-img { display: block; margin: 0 auto; }
 .figure a { display: inline-block; }
 .figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; }
+
+/* Big O header image at 75% width (responsive) */
+.center-img[src$="big-o-blog-header.webp"] { width: 75%; max-width: 100%; }

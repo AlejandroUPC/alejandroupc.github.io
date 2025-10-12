@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-10-13T01:04:11+02:00</updated>
+	<updated>2025-10-13T01:10:24+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -18,6 +18,8 @@
 			<updated>2025-10-13T00:00:00+02:00</updated>
 			<id>http://alejandroupc.github.io/blog/2025/10/13/big-o-notation</id>
 			<content type="html">&lt;p&gt;Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in &lt;a href=&quot;https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md&quot;&gt;CS50 Week 3&lt;/a&gt;. This post combines my notes from several resources.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big-o-blog-header.webp&quot; alt=&quot;Big O header&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; I’m still learning — feel free to open a merge request if you spot a mistake.&lt;/p&gt;
 

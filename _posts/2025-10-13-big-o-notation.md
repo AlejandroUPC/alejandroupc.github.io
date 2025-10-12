@@ -10,6 +10,8 @@ redirect_from:
 
 Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in [CS50 Week 3](https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md). This post combines my notes from several resources.
 
+![Big O header]({{ '/assets/images/post_big_o_notation/big-o-blog-header.webp' | relative_url }}){: .center-img }
+
 **Disclaimer:** I’m still learning — feel free to open a merge request if you spot a mistake.
 
 ## Introduction
