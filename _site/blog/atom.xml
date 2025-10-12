@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-10-03T21:57:06+02:00</updated>
+	<updated>2025-10-13T01:00:46+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -13,25 +13,302 @@
 
 	
 		<entry>
-			<title>Learning DSA</title>
-			<link href="http://alejandroupc.github.io/blog/2025/10/03/learning-dsa/"/>
-			<updated>2025-10-03T00:00:00+02:00</updated>
-			<id>http://alejandroupc.github.io/blog/2025/10/03/learning-dsa</id>
-			<content type="html">&lt;p&gt;Am I too old to learn DSA? I dont know, been programming for a while and I feel like I just know the basics, would really like to master this topic, find it interesting and its an underlying foundation for a lot of stuff used daily.&lt;/p&gt;
+			<title>Big O Notation for Time Complexity</title>
+			<link href="http://alejandroupc.github.io/blog/2025/10/13/big-o-notation/"/>
+			<updated>2025-10-13T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/blog/2025/10/13/big-o-notation</id>
+			<content type="html">&lt;p&gt;Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in &lt;a href=&quot;https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md&quot;&gt;CS50 Week 3&lt;/a&gt;. This post combines my notes from several resources.&lt;/p&gt;
 
-&lt;p&gt;Tried to half LLM a learning plan to be somewhat competent w/ DSA, I plan to do one post with every phase or chapter, depending how long it takes and go from there, hopefully you can learn something.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; I’m still learning — feel free to open a merge request if you spot a mistake.&lt;/p&gt;
 
-&lt;p&gt;Each chapter contains:&lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;A computer can only execute as many instructions as its clock allows — its &lt;strong&gt;clock speed&lt;/strong&gt;, usually measured in GHz.&lt;br /&gt;
+For example, 3GHz ≈ 3 billion cycles per second.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;same algorithm&lt;/em&gt; can run fast on a modern CPU and slow on an old one. So instead of measuring absolute time, we measure &lt;strong&gt;how many steps&lt;/strong&gt; it takes as a function of input size &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Many other factors affect performance (compiler optimizations, caching, hardware parallelism), but Big O ignores these and focuses purely on how runtime grows with input size.&lt;/p&gt;
+
+&lt;h2 id=&quot;reading-complexity-from-code&quot;&gt;Reading complexity from code&lt;/h2&gt;
+
+&lt;p&gt;You’ll see in this post several claims that a function or algorithm has a certain time complexity.&lt;br /&gt;
+This small (and simple) introduction explains &lt;em&gt;how&lt;/em&gt; those claims are made — in the form of: &lt;strong&gt;when you see X, expect Y.&lt;/strong&gt;&lt;/p&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Core concepts&lt;/strong&gt; (what to learn)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Resources&lt;/strong&gt; (videos, articles, books)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Practice&lt;/strong&gt; (LeetCode problems)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal&lt;/strong&gt; (what you should master that)&lt;/li&gt;
+  &lt;li&gt;Two sequential loops (not nested) → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n) + O(n)&lt;/code&gt; simplifies to &lt;strong&gt;O(n)&lt;/strong&gt; asymptotically, since constants are ignored.&lt;/li&gt;
+  &lt;li&gt;Two nested loops → the total work is the product of both loop sizes, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n) * O(m)&lt;/code&gt; = &lt;strong&gt;O(n·m)&lt;/strong&gt; (and &lt;strong&gt;O(n²)&lt;/strong&gt; if &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n == m&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;A recursive function that halves its input each call → &lt;strong&gt;O(log n)&lt;/strong&gt; (as in the phonebook example).&lt;/li&gt;
+  &lt;li&gt;An operation that halves its input but must be repeated &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; times → &lt;strong&gt;O(n log n)&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Some Python built-ins, such as sorting (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list.sort()&lt;/code&gt;), are not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(1)&lt;/code&gt; but &lt;strong&gt;O(n log n)&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Should structure the learning by making a post per chater or phase not sure.&lt;/p&gt;
+&lt;p&gt;A common rule of thumb: when you see a simple for-loop iterating over all elements, it’s usually &lt;strong&gt;O(n)&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Additional disclaimer, ignore the problems and its #, I just added leetcode because I know the website but this might change in the future and probably will add a link to every problem I do.&lt;/p&gt;
+&lt;p&gt;For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt; loops, it helps to focus on &lt;em&gt;how the controlling variable changes each iteration&lt;/em&gt;.&lt;br /&gt;
+For example, this loop runs in &lt;strong&gt;O(log n)&lt;/strong&gt; because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; halves every time:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Each iteration reduces the problem size by a constant factor, leading to logarithmic growth.&lt;/p&gt;
+
+&lt;h2 id=&quot;o1--constant-time&quot;&gt;O(1) — Constant Time&lt;/h2&gt;
+
+&lt;p&gt;Also known as constant time, when an algorithm’s runtime doesn’t depend on the input size. No matter how large the array or dataset, the operation always takes the same number of steps.&lt;/p&gt;
+
+&lt;p&gt;Common examples:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Accessing an array element by its index.&lt;/li&gt;
+  &lt;li&gt;Accessing a dictionary key in Python.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you see no loops, recursion, or size-dependent iteration, it’s usually O(1).&lt;br /&gt;
+Be careful though — a function like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;array.sort()&lt;/code&gt; looks simple but runs in &lt;strong&gt;O(n log n)&lt;/strong&gt; under the hood.&lt;/p&gt;
+
+&lt;h2 id=&quot;on--linear-time&quot;&gt;O(n) — Linear Time&lt;/h2&gt;
+
+&lt;p&gt;Runtime grows linearly with the input size.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find_in_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Found &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; in &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; steps.&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Even though finding the first element is fast, Big O considers the &lt;strong&gt;worst case&lt;/strong&gt; — scanning the entire array → &lt;strong&gt;O(n)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Imagine a doctor taking 30 minutes per patient — doubling the patients doubles the total time.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_O1.png&quot; alt=&quot;O(1)&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;olog-n--logarithmic-time&quot;&gt;O(log n) — Logarithmic Time&lt;/h2&gt;
+
+&lt;p&gt;A classic example is &lt;strong&gt;binary search&lt;/strong&gt; — repeatedly splitting a sorted list in half until you find the target.&lt;/p&gt;
+
+&lt;p&gt;If a phonebook has 100 pages:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;100 → 50 → 25 → 12 → 6 → 3 → 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s about 7 steps ≈ log₂(100) ≈ 6.6.&lt;br /&gt;
+Each step halves the remaining search space → &lt;strong&gt;O(log n)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This only works if the input is &lt;strong&gt;sorted&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_Ologn.png&quot; alt=&quot;O(log n)&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;on-log-n--log-linear-time&quot;&gt;O(n log n) — Log-Linear Time&lt;/h2&gt;
+
+&lt;p&gt;This appears in efficient sorting algorithms like &lt;strong&gt;merge sort&lt;/strong&gt; or &lt;strong&gt;quicksort&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merged&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Each merge handles &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; elements, and there are log₂(n) recursive levels → &lt;strong&gt;O(n log n)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_Onlogn.png&quot; alt=&quot;O(n log n)&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;on--quadratic-time&quot;&gt;O(n²) — Quadratic Time&lt;/h2&gt;
+
+&lt;p&gt;When every element is compared or combined with every other element.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Two nested loops = n × n iterations → &lt;strong&gt;O(n²)&lt;/strong&gt;.&lt;br /&gt;
+Three nested loops → &lt;strong&gt;O(n³)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_On2.png&quot; alt=&quot;O(n²)&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;o2ⁿ--exponential-time&quot;&gt;O(2ⁿ) — Exponential Time&lt;/h2&gt;
+
+&lt;p&gt;When work &lt;strong&gt;doubles&lt;/strong&gt; with each additional input — e.g., the naive recursive Fibonacci.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Each call spawns two new calls until n ≤ 1 → about 2ⁿ total calls.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fib(5)
+├── fib(4)
+│   ├── fib(3)
+│   └── fib(2)
+└── fib(3)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A huge amount of repeated work! Memoization can reduce this to O(n).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_O2n.png&quot; alt=&quot;O(2ⁿ)&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;on--factorial-time&quot;&gt;O(n!) — Factorial Time&lt;/h2&gt;
+
+&lt;p&gt;Factorial time happens when an algorithm generates &lt;strong&gt;all possible permutations&lt;/strong&gt;, e.g., brute-forcing the traveling salesman problem.&lt;/p&gt;
+
+&lt;p&gt;For n = 10 → 10! = 3.6 million possibilities.&lt;br /&gt;
+For n = 20 → 2.4 quintillion!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_On_fact.png&quot; alt=&quot;O(n!)&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;Big O helps compare algorithms abstractly — not by how fast they run, but by &lt;em&gt;how their runtime grows&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most real-world algorithms fall between &lt;strong&gt;O(1)&lt;/strong&gt; and &lt;strong&gt;O(n log n)&lt;/strong&gt;.&lt;br /&gt;
+Beyond &lt;strong&gt;O(n²)&lt;/strong&gt;, performance becomes impractical for large inputs.&lt;/p&gt;
+
+&lt;p&gt;There are deeper topics worth exploring — &lt;strong&gt;amortized analysis&lt;/strong&gt; (balancing expensive vs cheap operations) and &lt;strong&gt;space complexity&lt;/strong&gt; (memory usage).&lt;/p&gt;
+
+&lt;p&gt;Here’s a simple comparison chart of time complexities:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post_big_o_notation/big_o_comparison.png&quot; alt=&quot;Comparison&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;questionnaire--test-your-understanding&quot;&gt;Questionnaire — Test Your Understanding&lt;/h2&gt;
+
+&lt;p&gt;A few questions to check what was just explained, some of the q’s are explained as exmaples so try to answer without loooking.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; Two separate loops, not nested.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;p&gt;Each loop runs &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; times → total &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n + n = 2n&lt;/code&gt; → &lt;strong&gt;O(n)&lt;/strong&gt; (constants are ignored).&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; Inner loop runs fully each outer iteration.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n * n = n²&lt;/code&gt; → &lt;strong&gt;O(n²)&lt;/strong&gt;, quadratic growth.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; The variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; halves every time.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;p&gt;The number of iterations is log₂(n) → &lt;strong&gt;O(log n)&lt;/strong&gt;.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; Inner loop shrinks each round.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;p&gt;Total work = n + n/2 + n/4 + … = 2n → &lt;strong&gt;O(n)&lt;/strong&gt;.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; Each call splits the input in half and recurses twice.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;T(n) = 2T(n/2) + O(1)&lt;/code&gt; → &lt;strong&gt;O(n)&lt;/strong&gt; (like traversing all nodes in a binary tree).&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; Each call spawns two recursive calls.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;p&gt;Each level doubles the number of calls → &lt;strong&gt;O(2ⁿ)&lt;/strong&gt;.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Mo4vesaut8g&quot;&gt;Big O Notation - Full Course (YouTube)&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bigocheatsheet.com/&quot;&gt;Big O Cheat Sheet&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://neetcode.io/courses/lessons/big-o-notation&quot;&gt;Neetcode cheatsheet&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Master DSA — Pattern-First Study Plan</title>
+			<link href="http://alejandroupc.github.io/blog/2025/10/04/learning-dsa/"/>
+			<updated>2025-10-04T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/blog/2025/10/04/learning-dsa</id>
+			<content type="html">&lt;p&gt;I’ve been programming for a while but always felt like my data structures and algorithms knowledge was surface-level.&lt;br /&gt;
+This is my attempt to &lt;em&gt;master DSA properly&lt;/em&gt; — pattern-first, following the&lt;br /&gt;
+&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/&quot;&gt;Tech Interview Handbook Study Cheatsheet&lt;/a&gt;&lt;br /&gt;
+as the main structure, and pairing it with &lt;strong&gt;LeetCode Explore Cards&lt;/strong&gt; for applied practice.&lt;/p&gt;
+
+&lt;p&gt;Each chapter follows the same format:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Core concepts&lt;/strong&gt; – what to learn&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources&lt;/strong&gt; – best explanations (videos, articles, or books)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Practice&lt;/strong&gt; – LeetCode Explore cards and curated problems&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal&lt;/strong&gt; – what you should master before moving on&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;hr /&gt;
 
@@ -42,11 +319,21 @@
   &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; indexing, iteration, two pointers, sliding window, prefix/suffix sums.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=GrV3MTR_Uk0&quot;&gt;Neetcode Arrays &amp;amp; Hashing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/array/&quot;&gt;Tech Interview Handbook – Array Techniques&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/featured/card/fun-with-arrays/&quot;&gt;LeetCode Arrays 101&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/array-and-string/&quot;&gt;LeetCode Array &amp;amp; String Explore&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;CLRS, Ch. 2 (&lt;em&gt;Getting Started&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Array cost model (index O(1), mid insert/delete O(n)); Python list operations.&lt;/li&gt;
+      &lt;li&gt;Two pointers (forward compaction, backward write).&lt;/li&gt;
+      &lt;li&gt;Sliding window (fixed vs dynamic).&lt;/li&gt;
+      &lt;li&gt;Prefix sums for range calculations.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; review the LeetCode Array and String Explore cards.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; confidently apply sliding window and two-pointer patterns.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -54,32 +341,49 @@
 
 &lt;h3 id=&quot;chapter-2-hashing-sets--maps&quot;&gt;Chapter 2: Hashing (Sets &amp;amp; Maps)&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; hashmaps, sets, frequency counting, collisions, when to trade space for time.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; hashmaps, sets, frequency counting, collisions, and space-time tradeoffs.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=shs0KM3wKv8&quot;&gt;Neetcode Hashing&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/hashing-data-structure/&quot;&gt;Hashing article (GeeksforGeeks)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/array/&quot;&gt;Tech Interview Handbook – Hashmaps&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=shs0KM3wKv8&quot;&gt;NeetCode Hashing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/hashing-data-structure/&quot;&gt;GeeksforGeeks – Hashing&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;CLRS, Ch. 11 (&lt;em&gt;Hash Tables&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; solve grouping, frequency, and uniqueness problems with hashing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Hash functions, collisions, load factor.&lt;/li&gt;
+      &lt;li&gt;Average-case O(1) map/set operations.&lt;/li&gt;
+      &lt;li&gt;Frequency maps, grouping, and lookup caching.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/hash-table/&quot;&gt;LeetCode Hash Table Explore Card&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; solve grouping, frequency, and uniqueness problems using hashing.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;chapter-3-linked-lists-stacks-queues&quot;&gt;Chapter 3: Linked Lists, Stacks, Queues&lt;/h3&gt;
+&lt;h3 id=&quot;chapter-3-linked-lists-stacks-and-queues&quot;&gt;Chapter 3: Linked Lists, Stacks, and Queues&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; pointers, reversal, cycle detection, monotonic stack, BFS with queue.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; pointers, reversal, cycle detection, monotonic stacks, BFS queues.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Hj_rA0dhr2I&quot;&gt;Neetcode Linked List&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wjI1WNcIntg&quot;&gt;Neetcode Stack&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=okr-XE8yTO8&quot;&gt;Neetcode Queue&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/linked-list/&quot;&gt;Tech Interview Handbook – Linked Lists&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Hj_rA0dhr2I&quot;&gt;NeetCode Linked List&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wjI1WNcIntg&quot;&gt;NeetCode Stack&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/linked-list/&quot;&gt;LeetCode Linked List Explore&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;CLRS, Ch. 10 (&lt;em&gt;Elementary Data Structures&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; quickly implement stack/queue logic, spot monotonic stack problems.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Pointer mechanics; head/tail operations and complexities.&lt;/li&gt;
+      &lt;li&gt;Fast/slow pointer and cycle detection invariants.&lt;/li&gt;
+      &lt;li&gt;LIFO/FIFO models and amortized analysis.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/queue-stack/&quot;&gt;LeetCode Queue &amp;amp; Stack Explore Card&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; quickly implement linked list operations and identify monotonic stack problems.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
@@ -91,11 +395,20 @@
   &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; recursion, traversals (pre/in/post-order), height, diameter, LCA.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=fAAZixBzIAI&quot;&gt;Neetcode Trees&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/tree/&quot;&gt;Tech Interview Handbook – Trees&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=fAAZixBzIAI&quot;&gt;NeetCode Trees&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/data-structure-tree/&quot;&gt;LeetCode Tree Explore&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;CLRS, Ch. 12 (&lt;em&gt;Binary Search Trees&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Recursion and call stack intuition.&lt;/li&gt;
+      &lt;li&gt;Traversal orders and subtree invariants.&lt;/li&gt;
+      &lt;li&gt;Height/balance properties.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/data-structure-tree/&quot;&gt;LeetCode Binary Tree Explore&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; reduce problems into recursive traversals.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -103,75 +416,113 @@
 
 &lt;h3 id=&quot;chapter-5-bsts--heaps&quot;&gt;Chapter 5: BSTs &amp;amp; Heaps&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; BST invariants, balanced BSTs, min-heap/max-heap, priority queues.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; BST invariants, heaps, and priority queues.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=K0u_JqrbJeY&quot;&gt;Neetcode BST&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=HqPJF2L5h9U&quot;&gt;Neetcode Heap&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/heap/&quot;&gt;Tech Interview Handbook – Heaps&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=HqPJF2L5h9U&quot;&gt;NeetCode Heap&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;CLRS, Ch. 6 (&lt;em&gt;Heapsort&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; recognize when to use heap for “top-k” and scheduling problems.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;BST inorder properties and balance.&lt;/li&gt;
+      &lt;li&gt;Heap property, array representation, push/pop complexities.&lt;/li&gt;
+      &lt;li&gt;Priority queues for top-k, scheduling, and streaming.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/heap/&quot;&gt;LeetCode Heap Explore&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; recognize heap-based top-k and scheduling patterns.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;chapter-6-graph-traversals&quot;&gt;Chapter 6: Graph Traversals&lt;/h3&gt;
+&lt;h3 id=&quot;chapter-6-graphs&quot;&gt;Chapter 6: Graphs&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; adjacency list/matrix, BFS, DFS, connected components, topological sort.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; adjacency list/matrix, BFS/DFS, connected components, topological sort.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tWVWeAqZ0WU&quot;&gt;Neetcode Graphs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/graph/&quot;&gt;Tech Interview Handbook – Graphs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tWVWeAqZ0WU&quot;&gt;NeetCode Graphs&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/graph/&quot;&gt;LeetCode Graph Explore&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;CLRS, Ch. 22 (&lt;em&gt;Graph Algorithms&lt;/em&gt;)&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 22–24 (&lt;em&gt;Graph Algorithms&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; map graph problems to BFS/DFS patterns.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Graph representations and traversal invariants.&lt;/li&gt;
+      &lt;li&gt;Shortest path (unweighted) via BFS.&lt;/li&gt;
+      &lt;li&gt;Topological sort and DAG detection.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/graph/&quot;&gt;LeetCode Graph Explore Card&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; classify graph problems by traversal and connectivity type.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;chapter-7-shortest-paths--union-find&quot;&gt;Chapter 7: Shortest Paths &amp;amp; Union-Find&lt;/h3&gt;
+&lt;h2 id=&quot;phase-3-searching--sorting&quot;&gt;Phase 3: Searching &amp;amp; Sorting&lt;/h2&gt;
+
+&lt;h3 id=&quot;chapter-7-sorting&quot;&gt;Chapter 7: Sorting&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; Dijkstra, Bellman-Ford, Kruskal/Prim MST, disjoint sets (union-find).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; merge, quick, counting; sorting + scanning patterns.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=EFg3u_E6eHU&quot;&gt;Neetcode Dijkstra&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/union-find/&quot;&gt;Union-Find (GeeksforGeeks)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;CLRS, Ch. 23–24 (&lt;em&gt;MST &amp;amp; Shortest Paths&lt;/em&gt;)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; solve weighted graphs &amp;amp; connectivity efficiently.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;phase-3-sorting--searching&quot;&gt;Phase 3: Sorting &amp;amp; Searching&lt;/h2&gt;
-
-&lt;h3 id=&quot;chapter-8-sorting&quot;&gt;Chapter 8: Sorting&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; merge sort, quicksort, heap sort, interval scheduling, greedy sort.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=PgBzjlCcFvc&quot;&gt;Neetcode Sorting&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/sorting/&quot;&gt;Tech Interview Handbook – Sorting&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=PgBzjlCcFvc&quot;&gt;NeetCode Sorting&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;CLRS, Ch. 7 (&lt;em&gt;Quicksort&lt;/em&gt;)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; identify sorting as preprocessing step.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Stable vs unstable sorts; partitioning and merging.&lt;/li&gt;
+      &lt;li&gt;Sorting as preprocessing (two-pointer / greedy).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/sorting/&quot;&gt;LeetCode Sorting Explore&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; identify sorting as a preprocessing or optimization step.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;chapter-9-binary-search&quot;&gt;Chapter 9: Binary Search&lt;/h3&gt;
+&lt;h3 id=&quot;chapter-8-binary-search&quot;&gt;Chapter 8: Binary Search&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; binary search patterns, lower/upper bound, search-on-answer.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; binary search on index, range, or answer space.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=U4yPae3GEO0&quot;&gt;Neetcode Binary Search&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/binary-search/&quot;&gt;Tech Interview Handbook – Binary Search&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=U4yPae3GEO0&quot;&gt;NeetCode Binary Search&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/binary-search/&quot;&gt;LeetCode Binary Search Explore&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Invariant on bounds and termination.&lt;/li&gt;
+      &lt;li&gt;Lower/upper bound, monotonic predicate design.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; master binary search variants.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-9-greedy-algorithms&quot;&gt;Chapter 9: Greedy Algorithms&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; local vs global optimum, sorting-based selection.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/greedy/&quot;&gt;Tech Interview Handbook – Greedy&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=H9bfqozjoqs&quot;&gt;NeetCode Greedy&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 16 (&lt;em&gt;Greedy Algorithms&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Foundations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Proving correctness with exchange arguments.&lt;/li&gt;
+      &lt;li&gt;Interval scheduling, coin change, and meeting problems.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; identify when a local choice leads to global optimality.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
@@ -181,59 +532,264 @@
 &lt;h3 id=&quot;chapter-10-1d-dp&quot;&gt;Chapter 10: 1D DP&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; recursion → memoization → tabulation.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=tyB0ztf0DNY&quot;&gt;Neetcode DP Intro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/dynamic-programming/&quot;&gt;Tech Interview Handbook – Dynamic Programming&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tyB0ztf0DNY&quot;&gt;NeetCode DP Intro&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;After Learning:&lt;/strong&gt; &lt;a href=&quot;https://leetcode.com/explore/learn/card/dynamic-programming/&quot;&gt;LeetCode DP Explore&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; design states and transitions for linear recurrence problems.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;chapter-11-2d-dp&quot;&gt;Chapter 11: 2D DP&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-11-2d-dp-and-knapsack&quot;&gt;Chapter 11: 2D DP and Knapsack&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; grids, subsequences, edit distance.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=h6FmiyYDjmk&quot;&gt;Neetcode 2D DP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; grids, subsequences, edit distance, 0/1 knapsack.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=h6FmiyYDjmk&quot;&gt;NeetCode 2D DP&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 15 (&lt;em&gt;Dynamic Programming&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; handle table-based DP and subproblem dependencies.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;chapter-12-knapsack--variants&quot;&gt;Chapter 12: Knapsack &amp;amp; Variants&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-12-state-compression-and-hard-dp&quot;&gt;Chapter 12: State Compression and Hard DP&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt; CLRS, Ch. 15 (&lt;em&gt;Dynamic Programming&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; bitmasking, space optimization, combinatorial DP.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://cp-algorithms.com/dynamic_programming/state_compression.html&quot;&gt;CP-Algorithms Bitmask DP&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/tag/dynamic-programming/&quot;&gt;LeetCode Hard DP Problems&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; optimize memory and state transitions for large-state DP.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h3 id=&quot;chapter-13-state-compression&quot;&gt;Chapter 13: State Compression&lt;/h3&gt;
-
-&lt;h3 id=&quot;chapter-14-mixed-hard-dp&quot;&gt;Chapter 14: Mixed Hard DP&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Practice: hard DP problems from LeetCode&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; reduce recursion → memoization → tabulation; solve any DP-tagged LC problem.&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;phase-5-advanced-topics&quot;&gt;Phase 5: Advanced Topics&lt;/h2&gt;
 
+&lt;h3 id=&quot;chapter-13-backtracking-and-recursion&quot;&gt;Chapter 13: Backtracking and Recursion&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Greedy:&lt;/strong&gt; 55, 45, 135&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Backtracking:&lt;/strong&gt; 78, 46, 51&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Segment Trees / Fenwick Trees:&lt;/strong&gt; 307, 315&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Strings (KMP, Trie):&lt;/strong&gt; 208, 211, 14, 28&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Bit Manipulation:&lt;/strong&gt; 136, 191, 338&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; permutation generation, constraint satisfaction.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=s7AvT7cGdSo&quot;&gt;NeetCode Backtracking&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/recursion-ii/&quot;&gt;LeetCode Recursion II&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; model search problems as recursion trees.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;learn-workflow&quot;&gt;Learn workflow&lt;/h2&gt;
+&lt;h3 id=&quot;chapter-14-tries-and-string-algorithms&quot;&gt;Chapter 14: Tries and String Algorithms&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; prefix trees, substring search (KMP).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/trie/&quot;&gt;Tech Interview Handbook – Trie&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=oObQBwA4MTI&quot;&gt;NeetCode Tries&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/string/&quot;&gt;LeetCode String Explore&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; implement trie-based lookups and prefix pattern matching.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-15-segment-trees-and-fenwick-trees&quot;&gt;Chapter 15: Segment Trees and Fenwick Trees&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; range queries and point updates.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://cp-algorithms.com/data_structures/segment_tree.html&quot;&gt;CP-Algorithms Segment Tree&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CLRS, Ch. 14 (&lt;em&gt;Augmenting Data Structures&lt;/em&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; design efficient range-query data structures.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;chapter-16-bit-manipulation-and-math&quot;&gt;Chapter 16: Bit Manipulation and Math&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Concepts:&lt;/strong&gt; bitmask enumeration, parity, modular arithmetic.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resources:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/bit-manipulation/&quot;&gt;Tech Interview Handbook – Bit Manipulation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/bit-manipulation/&quot;&gt;LeetCode Bit Manipulation Explore&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://cp-algorithms.com/&quot;&gt;CP-Algorithms Math Section&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; handle parity checks, subsets, and optimization via bit tricks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;study-workflow&quot;&gt;Study Workflow&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Theory (1–2h):&lt;/strong&gt; watch videos, skim article/book chapter.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Notes (30m):&lt;/strong&gt; write definitions, time complexities, patterns.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Practice (5–10 problems):&lt;/strong&gt; solve progressively harder LC.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Reflection (15m):&lt;/strong&gt; tag problem → data structure/algorithm used.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Theory (1–2h):&lt;/strong&gt; read or watch resources for the chapter.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Notes (30m):&lt;/strong&gt; summarize patterns, invariants, and complexity.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Practice (5–10 problems):&lt;/strong&gt; focus on the pattern, not the solution.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reflection (15m):&lt;/strong&gt; note pattern triggers and edge cases.&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;next-step-apply-the-patterns&quot;&gt;Next Step: Apply the Patterns&lt;/h2&gt;
+
+&lt;p&gt;After finishing each chapter, use the &lt;strong&gt;LeetCode Explore cards&lt;/strong&gt; to reinforce pattern recognition.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Phase&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Chapter&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Explore Card&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Arrays &amp;amp; Strings&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/featured/card/fun-with-arrays/&quot;&gt;Arrays 101&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Hashing&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/hash-table/&quot;&gt;Hash Table&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Linked Lists&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/linked-list/&quot;&gt;Linked List&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Trees&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/data-structure-tree/&quot;&gt;Binary Tree&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;BSTs &amp;amp; Heaps&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/heap/&quot;&gt;Heap&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Graphs&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/graph/&quot;&gt;Graph&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Sorting&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/sorting/&quot;&gt;Sorting Algorithms&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Binary Search&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/binary-search/&quot;&gt;Binary Search&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Dynamic Programming&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/dynamic-programming/&quot;&gt;Dynamic Programming&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Backtracking&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/recursion-ii/&quot;&gt;Recursion II&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Bit Manipulation&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://leetcode.com/explore/learn/card/bit-manipulation/&quot;&gt;Bit Manipulation&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;endgame&quot;&gt;Endgame&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Build a &lt;strong&gt;mental classifier&lt;/strong&gt;: given a problem, know immediately → “Graph BFS,” “Heap top-k,” “DP table,” etc.&lt;/li&gt;
-  &lt;li&gt;Write &lt;strong&gt;concise, clean code&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Compete at &lt;strong&gt;LeetCode contest level&lt;/strong&gt;, but with deep DS/Algo knowledge.&lt;/li&gt;
+  &lt;li&gt;Build a &lt;strong&gt;pattern classifier&lt;/strong&gt;: instantly identify the right strategy for any problem.&lt;/li&gt;
+  &lt;li&gt;Write &lt;strong&gt;clean, efficient code&lt;/strong&gt; with strong reasoning.&lt;/li&gt;
+  &lt;li&gt;Compete at &lt;strong&gt;LeetCode contest level&lt;/strong&gt; with deep DS/Algo intuition.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;“Mastery isn’t memorizing solutions — it’s recognizing the pattern before you start.”&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bigocheatsheet.com/&quot;&gt;Big-O Cheat Sheet&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/&quot;&gt;TechInterviewHandook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>DSA — Arrays & Strings</title>
+			<link href="http://alejandroupc.github.io/blog/2025/10/03/dsa-ch1-array-strings/"/>
+			<updated>2025-10-03T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/blog/2025/10/03/dsa-ch1-array-strings</id>
+			<content type="html">&lt;!-- Keep this section tight and actionable --&gt;
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Pattern: [e.g., sliding window / two pointers / hashmap]&lt;/li&gt;
+  &lt;li&gt;Use when: [short criterion]&lt;/li&gt;
+  &lt;li&gt;Core ops: [expand/shrink; push/pop; etc.]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+
+&lt;!-- 1–2 paragraph overview: intuition and problem shapes it unlocks --&gt;
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+&lt;!-- --TODO: --&gt;
+&lt;p&gt;[Why this topic matters in interviews and real code. Typical shapes and constraints.]&lt;/p&gt;
+
+&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
+
+&lt;h2 id=&quot;core-concepts&quot;&gt;Core Concepts&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Concept 1]&lt;/li&gt;
+  &lt;li&gt;[Concept 2]&lt;/li&gt;
+  &lt;li&gt;[Concept 3]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Video: &lt;a href=&quot;url&quot;&gt;Title&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Article: &lt;a href=&quot;url&quot;&gt;Title&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Book: [CLRS ch. X – Title]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;practice&quot;&gt;Practice&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Warm-up: [ID/Title]&lt;/li&gt;
+  &lt;li&gt;Core: [ID/Title], [ID/Title]&lt;/li&gt;
+  &lt;li&gt;Stretch: [ID/Title]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;goal&quot;&gt;Goal&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;After this chapter you should be able to: [2–4 bullets of outcomes]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Optional but helpful: copy/pasteable patterns --&gt;
+&lt;h2 id=&quot;patterns--templates-optional&quot;&gt;Patterns &amp;amp; Templates (optional)&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Template 1: [Name]
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;```python&lt;/p&gt;
+&lt;h1 id=&quot;template-2-name&quot;&gt;Template 2: [Name]&lt;/h1&gt;
+&lt;p&gt;def solve(…):&lt;/p&gt;
 
 </content>
 		</entry>

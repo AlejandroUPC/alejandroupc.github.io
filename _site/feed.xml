@@ -1,18 +1,286 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-10-03T21:57:06+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC — Software Engineering Notes</title><subtitle>Personal notes on software engineering, Python, Neovim, DSA.</subtitle><author><name>Alejandro Martínez</name></author><entry><title type="html">Learning DSA</title><link href="http://0.0.0.0:4000/blog/2025/10/03/learning-dsa/" rel="alternate" type="text/html" title="Learning DSA" /><published>2025-10-03T00:00:00+02:00</published><updated>2025-10-03T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/03/learning-dsa</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/03/learning-dsa/"><![CDATA[<p>Am I too old to learn DSA? I dont know, been programming for a while and I feel like I just know the basics, would really like to master this topic, find it interesting and its an underlying foundation for a lot of stuff used daily.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-10-13T01:00:46+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC — Software Engineering Notes</title><subtitle>Personal notes on software engineering, Python, Neovim, DSA.</subtitle><author><name>Alejandro Martínez</name></author><entry><title type="html">Big O Notation for Time Complexity</title><link href="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/" rel="alternate" type="text/html" title="Big O Notation for Time Complexity" /><published>2025-10-13T00:00:00+02:00</published><updated>2025-10-13T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/13/big-o-notation</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/"><![CDATA[<p>Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in <a href="https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md">CS50 Week 3</a>. This post combines my notes from several resources.</p>
 
-<p>Tried to half LLM a learning plan to be somewhat competent w/ DSA, I plan to do one post with every phase or chapter, depending how long it takes and go from there, hopefully you can learn something.</p>
+<p><strong>Disclaimer:</strong> I’m still learning — feel free to open a merge request if you spot a mistake.</p>
 
-<p>Each chapter contains:</p>
+<h2 id="introduction">Introduction</h2>
+
+<p>A computer can only execute as many instructions as its clock allows — its <strong>clock speed</strong>, usually measured in GHz.<br />
+For example, 3GHz ≈ 3 billion cycles per second.</p>
+
+<p>The <em>same algorithm</em> can run fast on a modern CPU and slow on an old one. So instead of measuring absolute time, we measure <strong>how many steps</strong> it takes as a function of input size <code class="language-plaintext highlighter-rouge">n</code>.</p>
+
+<p>Many other factors affect performance (compiler optimizations, caching, hardware parallelism), but Big O ignores these and focuses purely on how runtime grows with input size.</p>
+
+<h2 id="reading-complexity-from-code">Reading complexity from code</h2>
+
+<p>You’ll see in this post several claims that a function or algorithm has a certain time complexity.<br />
+This small (and simple) introduction explains <em>how</em> those claims are made — in the form of: <strong>when you see X, expect Y.</strong></p>
+
 <ol>
-  <li><strong>Core concepts</strong> (what to learn)</li>
-  <li><strong>Resources</strong> (videos, articles, books)</li>
-  <li><strong>Practice</strong> (LeetCode problems)</li>
-  <li><strong>Goal</strong> (what you should master that)</li>
+  <li>Two sequential loops (not nested) → <code class="language-plaintext highlighter-rouge">O(n) + O(n)</code> simplifies to <strong>O(n)</strong> asymptotically, since constants are ignored.</li>
+  <li>Two nested loops → the total work is the product of both loop sizes, <code class="language-plaintext highlighter-rouge">O(n) * O(m)</code> = <strong>O(n·m)</strong> (and <strong>O(n²)</strong> if <code class="language-plaintext highlighter-rouge">n == m</code>).</li>
+  <li>A recursive function that halves its input each call → <strong>O(log n)</strong> (as in the phonebook example).</li>
+  <li>An operation that halves its input but must be repeated <code class="language-plaintext highlighter-rouge">n</code> times → <strong>O(n log n)</strong>.</li>
+  <li>Some Python built-ins, such as sorting (<code class="language-plaintext highlighter-rouge">list.sort()</code>), are not <code class="language-plaintext highlighter-rouge">O(1)</code> but <strong>O(n log n)</strong>.</li>
 </ol>
 
-<p>Should structure the learning by making a post per chater or phase not sure.</p>
+<p>A common rule of thumb: when you see a simple for-loop iterating over all elements, it’s usually <strong>O(n)</strong>.</p>
 
-<p>Additional disclaimer, ignore the problems and its #, I just added leetcode because I know the website but this might change in the future and probably will add a link to every problem I do.</p>
+<p>For <code class="language-plaintext highlighter-rouge">while</code> loops, it helps to focus on <em>how the controlling variable changes each iteration</em>.<br />
+For example, this loop runs in <strong>O(log n)</strong> because <code class="language-plaintext highlighter-rouge">k</code> halves every time:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">k</span> <span class="o">=</span> <span class="n">n</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">//=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p>Each iteration reduces the problem size by a constant factor, leading to logarithmic growth.</p>
+
+<h2 id="o1--constant-time">O(1) — Constant Time</h2>
+
+<p>Also known as constant time, when an algorithm’s runtime doesn’t depend on the input size. No matter how large the array or dataset, the operation always takes the same number of steps.</p>
+
+<p>Common examples:</p>
+
+<ol>
+  <li>Accessing an array element by its index.</li>
+  <li>Accessing a dictionary key in Python.</li>
+</ol>
+
+<p>If you see no loops, recursion, or size-dependent iteration, it’s usually O(1).<br />
+Be careful though — a function like <code class="language-plaintext highlighter-rouge">array.sort()</code> looks simple but runs in <strong>O(n log n)</strong> under the hood.</p>
+
+<h2 id="on--linear-time">O(n) — Linear Time</h2>
+
+<p>Runtime grows linearly with the input size.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">find_in_array</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Found </span><span class="si">{</span><span class="n">target</span><span class="o">=</span><span class="si">}</span><span class="s"> in </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s"> steps.</span><span class="sh">"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Even though finding the first element is fast, Big O considers the <strong>worst case</strong> — scanning the entire array → <strong>O(n)</strong>.</p>
+
+<p>Imagine a doctor taking 30 minutes per patient — doubling the patients doubles the total time.</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_O1.png" alt="O(1)" class="center-img" /></p>
+
+<h2 id="olog-n--logarithmic-time">O(log n) — Logarithmic Time</h2>
+
+<p>A classic example is <strong>binary search</strong> — repeatedly splitting a sorted list in half until you find the target.</p>
+
+<p>If a phonebook has 100 pages:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100 → 50 → 25 → 12 → 6 → 3 → 1
+</code></pre></div></div>
+
+<p>That’s about 7 steps ≈ log₂(100) ≈ 6.6.<br />
+Each step halves the remaining search space → <strong>O(log n)</strong>.</p>
+
+<p>This only works if the input is <strong>sorted</strong>.</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_Ologn.png" alt="O(log n)" class="center-img" /></p>
+
+<h2 id="on-log-n--log-linear-time">O(n log n) — Log-Linear Time</h2>
+
+<p>This appears in efficient sorting algorithms like <strong>merge sort</strong> or <strong>quicksort</strong>.</p>
+
+<p>Example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arr</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">merged</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">merged</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">merged</span><span class="p">.</span><span class="nf">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">:]);</span> <span class="n">merged</span><span class="p">.</span><span class="nf">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">merged</span>
+</code></pre></div></div>
+
+<p>Each merge handles <code class="language-plaintext highlighter-rouge">n</code> elements, and there are log₂(n) recursive levels → <strong>O(n log n)</strong>.</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_Onlogn.png" alt="O(n log n)" class="center-img" /></p>
+
+<h2 id="on--quadratic-time">O(n²) — Quadratic Time</h2>
+
+<p>When every element is compared or combined with every other element.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_pairs</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Two nested loops = n × n iterations → <strong>O(n²)</strong>.<br />
+Three nested loops → <strong>O(n³)</strong>.</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_On2.png" alt="O(n²)" class="center-img" /></p>
+
+<h2 id="o2ⁿ--exponential-time">O(2ⁿ) — Exponential Time</h2>
+
+<p>When work <strong>doubles</strong> with each additional input — e.g., the naive recursive Fibonacci.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Each call spawns two new calls until n ≤ 1 → about 2ⁿ total calls.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fib(5)
+├── fib(4)
+│   ├── fib(3)
+│   └── fib(2)
+└── fib(3)
+</code></pre></div></div>
+
+<p>A huge amount of repeated work! Memoization can reduce this to O(n).</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_O2n.png" alt="O(2ⁿ)" class="center-img" /></p>
+
+<h2 id="on--factorial-time">O(n!) — Factorial Time</h2>
+
+<p>Factorial time happens when an algorithm generates <strong>all possible permutations</strong>, e.g., brute-forcing the traveling salesman problem.</p>
+
+<p>For n = 10 → 10! = 3.6 million possibilities.<br />
+For n = 20 → 2.4 quintillion!</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_On_fact.png" alt="O(n!)" class="center-img" /></p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Big O helps compare algorithms abstractly — not by how fast they run, but by <em>how their runtime grows</em>.</p>
+
+<p>Most real-world algorithms fall between <strong>O(1)</strong> and <strong>O(n log n)</strong>.<br />
+Beyond <strong>O(n²)</strong>, performance becomes impractical for large inputs.</p>
+
+<p>There are deeper topics worth exploring — <strong>amortized analysis</strong> (balancing expensive vs cheap operations) and <strong>space complexity</strong> (memory usage).</p>
+
+<p>Here’s a simple comparison chart of time complexities:</p>
+
+<p><img src="/assets/images/post_big_o_notation/big_o_comparison.png" alt="Comparison" class="center-img" /></p>
+
+<h2 id="questionnaire--test-your-understanding">Questionnaire — Test Your Understanding</h2>
+
+<p>A few questions to check what was just explained, some of the q’s are explained as exmaples so try to answer without loooking.</p>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> Two separate loops, not nested.</p>
+
+<details>
+  <p>Each loop runs <code class="language-plaintext highlighter-rouge">n</code> times → total <code class="language-plaintext highlighter-rouge">n + n = 2n</code> → <strong>O(n)</strong> (constants are ignored).</p>
+</details>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> Inner loop runs fully each outer iteration.</p>
+
+<details>
+  <p><code class="language-plaintext highlighter-rouge">n * n = n²</code> → <strong>O(n²)</strong>, quadratic growth.</p>
+</details>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">k</span> <span class="o">=</span> <span class="n">n</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">//=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> The variable <code class="language-plaintext highlighter-rouge">k</code> halves every time.</p>
+
+<details>
+  <p>The number of iterations is log₂(n) → <strong>O(log n)</strong>.</p>
+</details>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">k</span> <span class="o">=</span> <span class="n">n</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">//=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> Inner loop shrinks each round.</p>
+
+<details>
+  <p>Total work = n + n/2 + n/4 + … = 2n → <strong>O(n)</strong>.</p>
+</details>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="nf">foo</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nf">foo</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> Each call splits the input in half and recurses twice.</p>
+
+<details>
+  <p><code class="language-plaintext highlighter-rouge">T(n) = 2T(n/2) + O(1)</code> → <strong>O(n)</strong> (like traversing all nodes in a binary tree).</p>
+</details>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> Each call spawns two recursive calls.</p>
+
+<details>
+  <p>Each level doubles the number of calls → <strong>O(2ⁿ)</strong>.</p>
+</details>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=Mo4vesaut8g">Big O Notation - Full Course (YouTube)</a>.</li>
+  <li><a href="https://www.bigocheatsheet.com/">Big O Cheat Sheet</a>.</li>
+  <li><a href="https://neetcode.io/courses/lessons/big-o-notation">Neetcode cheatsheet</a>.</li>
+</ul>]]></content><author><name>Alejandro Martínez</name></author><category term="cs" /><category term="dsa" /><category term="algorithms" /><category term="big-o" /><summary type="html"><![CDATA[Understanding how algorithm runtime grows as input size increases.]]></summary></entry><entry><title type="html">Master DSA — Pattern-First Study Plan</title><link href="http://0.0.0.0:4000/blog/2025/10/04/learning-dsa/" rel="alternate" type="text/html" title="Master DSA — Pattern-First Study Plan" /><published>2025-10-04T00:00:00+02:00</published><updated>2025-10-04T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/04/learning-dsa</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/04/learning-dsa/"><![CDATA[<p>I’ve been programming for a while but always felt like my data structures and algorithms knowledge was surface-level.<br />
+This is my attempt to <em>master DSA properly</em> — pattern-first, following the<br />
+<a href="https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/">Tech Interview Handbook Study Cheatsheet</a><br />
+as the main structure, and pairing it with <strong>LeetCode Explore Cards</strong> for applied practice.</p>
+
+<p>Each chapter follows the same format:</p>
+<ol>
+  <li><strong>Core concepts</strong> – what to learn</li>
+  <li><strong>Resources</strong> – best explanations (videos, articles, or books)</li>
+  <li><strong>Practice</strong> – LeetCode Explore cards and curated problems</li>
+  <li><strong>Goal</strong> – what you should master before moving on</li>
+</ol>
 
 <hr />
 
@@ -23,11 +291,21 @@
   <li><strong>Concepts:</strong> indexing, iteration, two pointers, sliding window, prefix/suffix sums.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=GrV3MTR_Uk0">Neetcode Arrays &amp; Hashing</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/array/">Tech Interview Handbook – Array Techniques</a></li>
+      <li><a href="https://leetcode.com/explore/featured/card/fun-with-arrays/">LeetCode Arrays 101</a></li>
       <li><a href="https://leetcode.com/explore/learn/card/array-and-string/">LeetCode Array &amp; String Explore</a></li>
       <li>CLRS, Ch. 2 (<em>Getting Started</em>)</li>
     </ul>
   </li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Array cost model (index O(1), mid insert/delete O(n)); Python list operations.</li>
+      <li>Two pointers (forward compaction, backward write).</li>
+      <li>Sliding window (fixed vs dynamic).</li>
+      <li>Prefix sums for range calculations.</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> review the LeetCode Array and String Explore cards.</li>
   <li><strong>Goal:</strong> confidently apply sliding window and two-pointer patterns.</li>
 </ul>
 
@@ -35,32 +313,49 @@
 
 <h3 id="chapter-2-hashing-sets--maps">Chapter 2: Hashing (Sets &amp; Maps)</h3>
 <ul>
-  <li><strong>Concepts:</strong> hashmaps, sets, frequency counting, collisions, when to trade space for time.</li>
+  <li><strong>Concepts:</strong> hashmaps, sets, frequency counting, collisions, and space-time tradeoffs.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=shs0KM3wKv8">Neetcode Hashing</a></li>
-      <li><a href="https://www.geeksforgeeks.org/hashing-data-structure/">Hashing article (GeeksforGeeks)</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/array/">Tech Interview Handbook – Hashmaps</a></li>
+      <li><a href="https://www.youtube.com/watch?v=shs0KM3wKv8">NeetCode Hashing</a></li>
+      <li><a href="https://www.geeksforgeeks.org/hashing-data-structure/">GeeksforGeeks – Hashing</a></li>
       <li>CLRS, Ch. 11 (<em>Hash Tables</em>)</li>
     </ul>
   </li>
-  <li><strong>Goal:</strong> solve grouping, frequency, and uniqueness problems with hashing.</li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Hash functions, collisions, load factor.</li>
+      <li>Average-case O(1) map/set operations.</li>
+      <li>Frequency maps, grouping, and lookup caching.</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/hash-table/">LeetCode Hash Table Explore Card</a></li>
+  <li><strong>Goal:</strong> solve grouping, frequency, and uniqueness problems using hashing.</li>
 </ul>
 
 <hr />
 
-<h3 id="chapter-3-linked-lists-stacks-queues">Chapter 3: Linked Lists, Stacks, Queues</h3>
+<h3 id="chapter-3-linked-lists-stacks-and-queues">Chapter 3: Linked Lists, Stacks, and Queues</h3>
 <ul>
-  <li><strong>Concepts:</strong> pointers, reversal, cycle detection, monotonic stack, BFS with queue.</li>
+  <li><strong>Concepts:</strong> pointers, reversal, cycle detection, monotonic stacks, BFS queues.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=Hj_rA0dhr2I">Neetcode Linked List</a></li>
-      <li><a href="https://www.youtube.com/watch?v=wjI1WNcIntg">Neetcode Stack</a></li>
-      <li><a href="https://www.youtube.com/watch?v=okr-XE8yTO8">Neetcode Queue</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/linked-list/">Tech Interview Handbook – Linked Lists</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Hj_rA0dhr2I">NeetCode Linked List</a></li>
+      <li><a href="https://www.youtube.com/watch?v=wjI1WNcIntg">NeetCode Stack</a></li>
       <li><a href="https://leetcode.com/explore/learn/card/linked-list/">LeetCode Linked List Explore</a></li>
       <li>CLRS, Ch. 10 (<em>Elementary Data Structures</em>)</li>
     </ul>
   </li>
-  <li><strong>Goal:</strong> quickly implement stack/queue logic, spot monotonic stack problems.</li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Pointer mechanics; head/tail operations and complexities.</li>
+      <li>Fast/slow pointer and cycle detection invariants.</li>
+      <li>LIFO/FIFO models and amortized analysis.</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/queue-stack/">LeetCode Queue &amp; Stack Explore Card</a></li>
+  <li><strong>Goal:</strong> quickly implement linked list operations and identify monotonic stack problems.</li>
 </ul>
 
 <hr />
@@ -72,11 +367,20 @@
   <li><strong>Concepts:</strong> recursion, traversals (pre/in/post-order), height, diameter, LCA.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=fAAZixBzIAI">Neetcode Trees</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/tree/">Tech Interview Handbook – Trees</a></li>
+      <li><a href="https://www.youtube.com/watch?v=fAAZixBzIAI">NeetCode Trees</a></li>
       <li><a href="https://leetcode.com/explore/learn/card/data-structure-tree/">LeetCode Tree Explore</a></li>
       <li>CLRS, Ch. 12 (<em>Binary Search Trees</em>)</li>
     </ul>
   </li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Recursion and call stack intuition.</li>
+      <li>Traversal orders and subtree invariants.</li>
+      <li>Height/balance properties.</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/data-structure-tree/">LeetCode Binary Tree Explore</a></li>
   <li><strong>Goal:</strong> reduce problems into recursive traversals.</li>
 </ul>
 
@@ -84,75 +388,113 @@
 
 <h3 id="chapter-5-bsts--heaps">Chapter 5: BSTs &amp; Heaps</h3>
 <ul>
-  <li><strong>Concepts:</strong> BST invariants, balanced BSTs, min-heap/max-heap, priority queues.</li>
+  <li><strong>Concepts:</strong> BST invariants, heaps, and priority queues.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=K0u_JqrbJeY">Neetcode BST</a></li>
-      <li><a href="https://www.youtube.com/watch?v=HqPJF2L5h9U">Neetcode Heap</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/heap/">Tech Interview Handbook – Heaps</a></li>
+      <li><a href="https://www.youtube.com/watch?v=HqPJF2L5h9U">NeetCode Heap</a></li>
       <li>CLRS, Ch. 6 (<em>Heapsort</em>)</li>
     </ul>
   </li>
-  <li><strong>Goal:</strong> recognize when to use heap for “top-k” and scheduling problems.</li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>BST inorder properties and balance.</li>
+      <li>Heap property, array representation, push/pop complexities.</li>
+      <li>Priority queues for top-k, scheduling, and streaming.</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/heap/">LeetCode Heap Explore</a></li>
+  <li><strong>Goal:</strong> recognize heap-based top-k and scheduling patterns.</li>
 </ul>
 
 <hr />
 
-<h3 id="chapter-6-graph-traversals">Chapter 6: Graph Traversals</h3>
+<h3 id="chapter-6-graphs">Chapter 6: Graphs</h3>
 <ul>
-  <li><strong>Concepts:</strong> adjacency list/matrix, BFS, DFS, connected components, topological sort.</li>
+  <li><strong>Concepts:</strong> adjacency list/matrix, BFS/DFS, connected components, topological sort.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=tWVWeAqZ0WU">Neetcode Graphs</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/graph/">Tech Interview Handbook – Graphs</a></li>
+      <li><a href="https://www.youtube.com/watch?v=tWVWeAqZ0WU">NeetCode Graphs</a></li>
       <li><a href="https://leetcode.com/explore/learn/card/graph/">LeetCode Graph Explore</a></li>
-      <li>CLRS, Ch. 22 (<em>Graph Algorithms</em>)</li>
+      <li>CLRS, Ch. 22–24 (<em>Graph Algorithms</em>)</li>
     </ul>
   </li>
-  <li><strong>Goal:</strong> map graph problems to BFS/DFS patterns.</li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Graph representations and traversal invariants.</li>
+      <li>Shortest path (unweighted) via BFS.</li>
+      <li>Topological sort and DAG detection.</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/graph/">LeetCode Graph Explore Card</a></li>
+  <li><strong>Goal:</strong> classify graph problems by traversal and connectivity type.</li>
 </ul>
 
 <hr />
 
-<h3 id="chapter-7-shortest-paths--union-find">Chapter 7: Shortest Paths &amp; Union-Find</h3>
+<h2 id="phase-3-searching--sorting">Phase 3: Searching &amp; Sorting</h2>
+
+<h3 id="chapter-7-sorting">Chapter 7: Sorting</h3>
 <ul>
-  <li><strong>Concepts:</strong> Dijkstra, Bellman-Ford, Kruskal/Prim MST, disjoint sets (union-find).</li>
+  <li><strong>Concepts:</strong> merge, quick, counting; sorting + scanning patterns.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=EFg3u_E6eHU">Neetcode Dijkstra</a></li>
-      <li><a href="https://www.geeksforgeeks.org/union-find/">Union-Find (GeeksforGeeks)</a></li>
-      <li>CLRS, Ch. 23–24 (<em>MST &amp; Shortest Paths</em>)</li>
-    </ul>
-  </li>
-  <li><strong>Goal:</strong> solve weighted graphs &amp; connectivity efficiently.</li>
-</ul>
-
-<hr />
-
-<h2 id="phase-3-sorting--searching">Phase 3: Sorting &amp; Searching</h2>
-
-<h3 id="chapter-8-sorting">Chapter 8: Sorting</h3>
-<ul>
-  <li><strong>Concepts:</strong> merge sort, quicksort, heap sort, interval scheduling, greedy sort.</li>
-  <li><strong>Resources:</strong>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=PgBzjlCcFvc">Neetcode Sorting</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/sorting/">Tech Interview Handbook – Sorting</a></li>
+      <li><a href="https://www.youtube.com/watch?v=PgBzjlCcFvc">NeetCode Sorting</a></li>
       <li>CLRS, Ch. 7 (<em>Quicksort</em>)</li>
     </ul>
   </li>
-  <li><strong>Goal:</strong> identify sorting as preprocessing step.</li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Stable vs unstable sorts; partitioning and merging.</li>
+      <li>Sorting as preprocessing (two-pointer / greedy).</li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/sorting/">LeetCode Sorting Explore</a></li>
+  <li><strong>Goal:</strong> identify sorting as a preprocessing or optimization step.</li>
 </ul>
 
 <hr />
 
-<h3 id="chapter-9-binary-search">Chapter 9: Binary Search</h3>
+<h3 id="chapter-8-binary-search">Chapter 8: Binary Search</h3>
 <ul>
-  <li><strong>Concepts:</strong> binary search patterns, lower/upper bound, search-on-answer.</li>
+  <li><strong>Concepts:</strong> binary search on index, range, or answer space.</li>
   <li><strong>Resources:</strong>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=U4yPae3GEO0">Neetcode Binary Search</a></li>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/binary-search/">Tech Interview Handbook – Binary Search</a></li>
+      <li><a href="https://www.youtube.com/watch?v=U4yPae3GEO0">NeetCode Binary Search</a></li>
       <li><a href="https://leetcode.com/explore/learn/card/binary-search/">LeetCode Binary Search Explore</a></li>
     </ul>
   </li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Invariant on bounds and termination.</li>
+      <li>Lower/upper bound, monotonic predicate design.</li>
+    </ul>
+  </li>
   <li><strong>Goal:</strong> master binary search variants.</li>
+</ul>
+
+<hr />
+
+<h3 id="chapter-9-greedy-algorithms">Chapter 9: Greedy Algorithms</h3>
+<ul>
+  <li><strong>Concepts:</strong> local vs global optimum, sorting-based selection.</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/greedy/">Tech Interview Handbook – Greedy</a></li>
+      <li><a href="https://www.youtube.com/watch?v=H9bfqozjoqs">NeetCode Greedy</a></li>
+      <li>CLRS, Ch. 16 (<em>Greedy Algorithms</em>)</li>
+    </ul>
+  </li>
+  <li><strong>Foundations:</strong>
+    <ul>
+      <li>Proving correctness with exchange arguments.</li>
+      <li>Interval scheduling, coin change, and meeting problems.</li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> identify when a local choice leads to global optimality.</li>
 </ul>
 
 <hr />
@@ -162,59 +504,255 @@
 <h3 id="chapter-10-1d-dp">Chapter 10: 1D DP</h3>
 <ul>
   <li><strong>Concepts:</strong> recursion → memoization → tabulation.</li>
-  <li><strong>Resources:</strong> <a href="https://www.youtube.com/watch?v=tyB0ztf0DNY">Neetcode DP Intro</a></li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/dynamic-programming/">Tech Interview Handbook – Dynamic Programming</a></li>
+      <li><a href="https://www.youtube.com/watch?v=tyB0ztf0DNY">NeetCode DP Intro</a></li>
+    </ul>
+  </li>
+  <li><strong>After Learning:</strong> <a href="https://leetcode.com/explore/learn/card/dynamic-programming/">LeetCode DP Explore</a></li>
+  <li><strong>Goal:</strong> design states and transitions for linear recurrence problems.</li>
 </ul>
 
-<h3 id="chapter-11-2d-dp">Chapter 11: 2D DP</h3>
+<hr />
+
+<h3 id="chapter-11-2d-dp-and-knapsack">Chapter 11: 2D DP and Knapsack</h3>
 <ul>
-  <li><strong>Concepts:</strong> grids, subsequences, edit distance.</li>
-  <li><strong>Resources:</strong> <a href="https://www.youtube.com/watch?v=h6FmiyYDjmk">Neetcode 2D DP</a></li>
+  <li><strong>Concepts:</strong> grids, subsequences, edit distance, 0/1 knapsack.</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=h6FmiyYDjmk">NeetCode 2D DP</a></li>
+      <li>CLRS, Ch. 15 (<em>Dynamic Programming</em>)</li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> handle table-based DP and subproblem dependencies.</li>
 </ul>
 
-<h3 id="chapter-12-knapsack--variants">Chapter 12: Knapsack &amp; Variants</h3>
+<hr />
+
+<h3 id="chapter-12-state-compression-and-hard-dp">Chapter 12: State Compression and Hard DP</h3>
 <ul>
-  <li><strong>Resources:</strong> CLRS, Ch. 15 (<em>Dynamic Programming</em>)</li>
+  <li><strong>Concepts:</strong> bitmasking, space optimization, combinatorial DP.</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://cp-algorithms.com/dynamic_programming/state_compression.html">CP-Algorithms Bitmask DP</a></li>
+      <li><a href="https://leetcode.com/tag/dynamic-programming/">LeetCode Hard DP Problems</a></li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> optimize memory and state transitions for large-state DP.</li>
 </ul>
-
-<h3 id="chapter-13-state-compression">Chapter 13: State Compression</h3>
-
-<h3 id="chapter-14-mixed-hard-dp">Chapter 14: Mixed Hard DP</h3>
-<ul>
-  <li>Practice: hard DP problems from LeetCode</li>
-</ul>
-
-<p><strong>Goal:</strong> reduce recursion → memoization → tabulation; solve any DP-tagged LC problem.</p>
 
 <hr />
 
 <h2 id="phase-5-advanced-topics">Phase 5: Advanced Topics</h2>
 
+<h3 id="chapter-13-backtracking-and-recursion">Chapter 13: Backtracking and Recursion</h3>
 <ul>
-  <li><strong>Greedy:</strong> 55, 45, 135</li>
-  <li><strong>Backtracking:</strong> 78, 46, 51</li>
-  <li><strong>Segment Trees / Fenwick Trees:</strong> 307, 315</li>
-  <li><strong>Strings (KMP, Trie):</strong> 208, 211, 14, 28</li>
-  <li><strong>Bit Manipulation:</strong> 136, 191, 338</li>
+  <li><strong>Concepts:</strong> permutation generation, constraint satisfaction.</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=s7AvT7cGdSo">NeetCode Backtracking</a></li>
+      <li><a href="https://leetcode.com/explore/learn/card/recursion-ii/">LeetCode Recursion II</a></li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> model search problems as recursion trees.</li>
 </ul>
 
 <hr />
 
-<h2 id="learn-workflow">Learn workflow</h2>
+<h3 id="chapter-14-tries-and-string-algorithms">Chapter 14: Tries and String Algorithms</h3>
+<ul>
+  <li><strong>Concepts:</strong> prefix trees, substring search (KMP).</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/trie/">Tech Interview Handbook – Trie</a></li>
+      <li><a href="https://www.youtube.com/watch?v=oObQBwA4MTI">NeetCode Tries</a></li>
+      <li><a href="https://leetcode.com/explore/learn/card/string/">LeetCode String Explore</a></li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> implement trie-based lookups and prefix pattern matching.</li>
+</ul>
+
+<hr />
+
+<h3 id="chapter-15-segment-trees-and-fenwick-trees">Chapter 15: Segment Trees and Fenwick Trees</h3>
+<ul>
+  <li><strong>Concepts:</strong> range queries and point updates.</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://cp-algorithms.com/data_structures/segment_tree.html">CP-Algorithms Segment Tree</a></li>
+      <li>CLRS, Ch. 14 (<em>Augmenting Data Structures</em>)</li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> design efficient range-query data structures.</li>
+</ul>
+
+<hr />
+
+<h3 id="chapter-16-bit-manipulation-and-math">Chapter 16: Bit Manipulation and Math</h3>
+<ul>
+  <li><strong>Concepts:</strong> bitmask enumeration, parity, modular arithmetic.</li>
+  <li><strong>Resources:</strong>
+    <ul>
+      <li><a href="https://www.techinterviewhandbook.org/algorithms/bit-manipulation/">Tech Interview Handbook – Bit Manipulation</a></li>
+      <li><a href="https://leetcode.com/explore/learn/card/bit-manipulation/">LeetCode Bit Manipulation Explore</a></li>
+      <li><a href="https://cp-algorithms.com/">CP-Algorithms Math Section</a></li>
+    </ul>
+  </li>
+  <li><strong>Goal:</strong> handle parity checks, subsets, and optimization via bit tricks.</li>
+</ul>
+
+<hr />
+
+<h2 id="study-workflow">Study Workflow</h2>
 <ol>
-  <li><strong>Theory (1–2h):</strong> watch videos, skim article/book chapter.</li>
-  <li><strong>Notes (30m):</strong> write definitions, time complexities, patterns.</li>
-  <li><strong>Practice (5–10 problems):</strong> solve progressively harder LC.</li>
-  <li><strong>Reflection (15m):</strong> tag problem → data structure/algorithm used.</li>
+  <li><strong>Theory (1–2h):</strong> read or watch resources for the chapter.</li>
+  <li><strong>Notes (30m):</strong> summarize patterns, invariants, and complexity.</li>
+  <li><strong>Practice (5–10 problems):</strong> focus on the pattern, not the solution.</li>
+  <li><strong>Reflection (15m):</strong> note pattern triggers and edge cases.</li>
 </ol>
+
+<hr />
+
+<h2 id="next-step-apply-the-patterns">Next Step: Apply the Patterns</h2>
+
+<p>After finishing each chapter, use the <strong>LeetCode Explore cards</strong> to reinforce pattern recognition.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Phase</th>
+      <th style="text-align: left">Chapter</th>
+      <th style="text-align: left">Explore Card</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">Arrays &amp; Strings</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/featured/card/fun-with-arrays/">Arrays 101</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">Hashing</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/hash-table/">Hash Table</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">Linked Lists</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/linked-list/">Linked List</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">Trees</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/data-structure-tree/">Binary Tree</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">BSTs &amp; Heaps</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/heap/">Heap</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">Graphs</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/graph/">Graph</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">Sorting</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/sorting/">Sorting Algorithms</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">Binary Search</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/binary-search/">Binary Search</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">Dynamic Programming</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/dynamic-programming/">Dynamic Programming</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">Backtracking</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/recursion-ii/">Recursion II</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">Bit Manipulation</td>
+      <td style="text-align: left"><a href="https://leetcode.com/explore/learn/card/bit-manipulation/">Bit Manipulation</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
 <h2 id="endgame">Endgame</h2>
 <ul>
-  <li>Build a <strong>mental classifier</strong>: given a problem, know immediately → “Graph BFS,” “Heap top-k,” “DP table,” etc.</li>
-  <li>Write <strong>concise, clean code</strong>.</li>
-  <li>Compete at <strong>LeetCode contest level</strong>, but with deep DS/Algo knowledge.</li>
-</ul>]]></content><author><name>Alejandro Martínez</name></author><category term="cs" /><category term="dsa" /><category term="data-structures" /><summary type="html"><![CDATA[A structured plan to learn data structures and algorithms with resources, practice, and goals.]]></summary></entry><entry><title type="html">Setting up Nvim for Python</title><link href="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/" rel="alternate" type="text/html" title="Setting up Nvim for Python" /><published>2025-09-28T00:00:00+02:00</published><updated>2025-09-28T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/"><![CDATA[<p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
+  <li>Build a <strong>pattern classifier</strong>: instantly identify the right strategy for any problem.</li>
+  <li>Write <strong>clean, efficient code</strong> with strong reasoning.</li>
+  <li>Compete at <strong>LeetCode contest level</strong> with deep DS/Algo intuition.</li>
+</ul>
+
+<p>“Mastery isn’t memorizing solutions — it’s recognizing the pattern before you start.”</p>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://www.bigocheatsheet.com/">Big-O Cheat Sheet</a></li>
+  <li><a href="https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/">TechInterviewHandook</a></li>
+</ul>]]></content><author><name>Alejandro Martínez</name></author><category term="cs" /><category term="dsa" /><category term="algorithms" /><category term="study-plan" /><summary type="html"><![CDATA[A structured roadmap to master Data Structures and Algorithms using the Tech Interview Handbook and LeetCode Explore cards.]]></summary></entry><entry><title type="html">DSA — Arrays &amp;amp; Strings</title><link href="http://0.0.0.0:4000/blog/2025/10/03/dsa-ch1-array-strings/" rel="alternate" type="text/html" title="DSA — Arrays &amp;amp; Strings" /><published>2025-10-03T00:00:00+02:00</published><updated>2025-10-03T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/03/dsa-ch1-array-strings</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/03/dsa-ch1-array-strings/"><![CDATA[<!-- Keep this section tight and actionable -->
+<h2 id="tldr">TL;DR</h2>
+<ul>
+  <li>Pattern: [e.g., sliding window / two pointers / hashmap]</li>
+  <li>Use when: [short criterion]</li>
+  <li>Core ops: [expand/shrink; push/pop; etc.]</li>
+</ul>
+
+<h2 id="contents">Contents</h2>
+
+<!-- 1–2 paragraph overview: intuition and problem shapes it unlocks -->
+<h2 id="overview">Overview</h2>
+<!-- --TODO: -->
+<p>[Why this topic matters in interviews and real code. Typical shapes and constraints.]</p>
+
+<h4 id="introduction">Introduction</h4>
+
+<h2 id="core-concepts">Core Concepts</h2>
+<ul>
+  <li>[Concept 1]</li>
+  <li>[Concept 2]</li>
+  <li>[Concept 3]</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li>Video: <a href="url">Title</a></li>
+  <li>Article: <a href="url">Title</a></li>
+  <li>Book: [CLRS ch. X – Title]</li>
+</ul>
+
+<h2 id="practice">Practice</h2>
+<ul>
+  <li>Warm-up: [ID/Title]</li>
+  <li>Core: [ID/Title], [ID/Title]</li>
+  <li>Stretch: [ID/Title]</li>
+</ul>
+
+<h2 id="goal">Goal</h2>
+<ul>
+  <li>After this chapter you should be able to: [2–4 bullets of outcomes]</li>
+</ul>
+
+<!-- Optional but helpful: copy/pasteable patterns -->
+<h2 id="patterns--templates-optional">Patterns &amp; Templates (optional)</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Template 1: [Name]
+</span><span class="k">def</span> <span class="nf">solve</span><span class="p">(...):</span>
+    <span class="k">pass</span>
+</code></pre></div></div>
+
+<p>```python</p>
+<h1 id="template-2-name">Template 2: [Name]</h1>
+<p>def solve(…):</p>]]></content><author><name>Alejandro Martínez</name></author><category term="dsa" /><category term="ararys" /><category term="string" /><summary type="html"><![CDATA[Learning about indexing, iteration, two pointers, sliding windows, preffix and suffix sums.]]></summary></entry><entry><title type="html">Setting up Nvim for Python</title><link href="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/" rel="alternate" type="text/html" title="Setting up Nvim for Python" /><published>2025-09-28T00:00:00+02:00</published><updated>2025-09-28T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/"><![CDATA[<p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
 
 <p>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.</p>

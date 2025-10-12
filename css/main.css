@@ -76,7 +76,7 @@ code, pre, kbd, samp {
 }
 pre { background: var(--surface); color: var(--text); padding: 1rem; border-radius: .5rem; border: 1px solid var(--border); overflow-x: auto; }
 
-img { max-width: 100%; height: auto; border-radius: .25rem; }
+img { max-width: 100%; height: auto; border-radius: .75rem; border: 1px solid rgba(255, 255, 255, 0.6); }
 
 .list-group.list-group-flush .list-group-item {
   color: var(--text) !important;
@@ -153,4 +153,6 @@ img { max-width: 100%; height: auto; border-radius: .25rem; }
 
 figure.figure { margin: 1.25rem 0; text-align: center; }
 .figure img { display: block; margin: 0 auto; }
+.center-img { display: block; margin: 0 auto; }
+.figure a { display: inline-block; }
 .figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; }

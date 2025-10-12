@@ -1,3 +1,9 @@
 _site/*
 _drafts/
 .DS_Store
+pyproject.toml
+poetry.lock
+notebooks/
+uv.lock
+*.py
+.python-version
