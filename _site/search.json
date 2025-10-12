@@ -10,14 +10,6 @@
   },
 
   {
-    "title": "DSA — Arrays & Strings",
-    "url": "/blog/2025/10/03/dsa-ch1-array-strings/",
-    "date": "2025-10-03",
-    "tags": ["dsa","ararys","string"],
-    "content": "TL;DR Pattern: [e.g., sliding window / two pointers / hashmap] Use when: [short criterion] Core ops: [expand/shrink; push/pop; etc.] Contents Overview [Why this topic matters in interviews and real code. Typical shapes and constraints.] Introduction Core Concepts [Concept 1] [Concept 2] [Concept 3] Resources Video: Title Article: Title Book: [CLRS ch. X – Title] Practice Warm-up: [ID/Title] Core: [ID/Title], [ID/Title] Stretch: [ID/Title] Goal After this chapter you should be able to: [2–4 bullets of outcomes] Patterns &amp; Templates (optional) # Template 1: [Name] def solve(...): pass ```python Template 2: [Name] def solve(…):"
-  },
-
-  {
     "title": "Setting up Nvim for Python",
     "url": "/blog/2025/09/28/setting-up-nvim-for-python/",
     "date": "2025-09-28",

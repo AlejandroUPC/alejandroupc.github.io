@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-10-13T01:10:24+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC — Software Engineering Notes</title><subtitle>Personal notes on software engineering, Python, Neovim, DSA.</subtitle><author><name>Alejandro Martínez</name></author><entry><title type="html">Big O Notation for Time Complexity</title><link href="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/" rel="alternate" type="text/html" title="Big O Notation for Time Complexity" /><published>2025-10-13T00:00:00+02:00</published><updated>2025-10-13T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/13/big-o-notation</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/"><![CDATA[<p>Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in <a href="https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md">CS50 Week 3</a>. This post combines my notes from several resources.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-10-13T01:11:56+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC — Software Engineering Notes</title><subtitle>Personal notes on software engineering, Python, Neovim, DSA.</subtitle><author><name>Alejandro Martínez</name></author><entry><title type="html">Big O Notation for Time Complexity</title><link href="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/" rel="alternate" type="text/html" title="Big O Notation for Time Complexity" /><published>2025-10-13T00:00:00+02:00</published><updated>2025-10-13T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/13/big-o-notation</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/"><![CDATA[<p>Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in <a href="https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md">CS50 Week 3</a>. This post combines my notes from several resources.</p>
 
 <p><img src="/assets/images/post_big_o_notation/big-o-blog-header.webp" alt="Big O header" class="center-img" /></p>
 
@@ -271,59 +271,7 @@ Beyond <strong>O(n²)</strong>, performance becomes impractical for large inputs
   <li><a href="https://www.youtube.com/watch?v=Mo4vesaut8g">Big O Notation - Full Course (YouTube)</a>.</li>
   <li><a href="https://www.bigocheatsheet.com/">Big O Cheat Sheet</a>.</li>
   <li><a href="https://neetcode.io/courses/lessons/big-o-notation">Neetcode cheatsheet</a>.</li>
-</ul>]]></content><author><name>Alejandro Martínez</name></author><category term="cs" /><category term="dsa" /><category term="algorithms" /><category term="big-o" /><summary type="html"><![CDATA[Understanding how algorithm runtime grows as input size increases.]]></summary></entry><entry><title type="html">DSA — Arrays &amp;amp; Strings</title><link href="http://0.0.0.0:4000/blog/2025/10/03/dsa-ch1-array-strings/" rel="alternate" type="text/html" title="DSA — Arrays &amp;amp; Strings" /><published>2025-10-03T00:00:00+02:00</published><updated>2025-10-03T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/03/dsa-ch1-array-strings</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/03/dsa-ch1-array-strings/"><![CDATA[<!-- Keep this section tight and actionable -->
-<h2 id="tldr">TL;DR</h2>
-<ul>
-  <li>Pattern: [e.g., sliding window / two pointers / hashmap]</li>
-  <li>Use when: [short criterion]</li>
-  <li>Core ops: [expand/shrink; push/pop; etc.]</li>
-</ul>
-
-<h2 id="contents">Contents</h2>
-
-<!-- 1–2 paragraph overview: intuition and problem shapes it unlocks -->
-<h2 id="overview">Overview</h2>
-<!-- --TODO: -->
-<p>[Why this topic matters in interviews and real code. Typical shapes and constraints.]</p>
-
-<h4 id="introduction">Introduction</h4>
-
-<h2 id="core-concepts">Core Concepts</h2>
-<ul>
-  <li>[Concept 1]</li>
-  <li>[Concept 2]</li>
-  <li>[Concept 3]</li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-<ul>
-  <li>Video: <a href="url">Title</a></li>
-  <li>Article: <a href="url">Title</a></li>
-  <li>Book: [CLRS ch. X – Title]</li>
-</ul>
-
-<h2 id="practice">Practice</h2>
-<ul>
-  <li>Warm-up: [ID/Title]</li>
-  <li>Core: [ID/Title], [ID/Title]</li>
-  <li>Stretch: [ID/Title]</li>
-</ul>
-
-<h2 id="goal">Goal</h2>
-<ul>
-  <li>After this chapter you should be able to: [2–4 bullets of outcomes]</li>
-</ul>
-
-<!-- Optional but helpful: copy/pasteable patterns -->
-<h2 id="patterns--templates-optional">Patterns &amp; Templates (optional)</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Template 1: [Name]
-</span><span class="k">def</span> <span class="nf">solve</span><span class="p">(...):</span>
-    <span class="k">pass</span>
-</code></pre></div></div>
-
-<p>```python</p>
-<h1 id="template-2-name">Template 2: [Name]</h1>
-<p>def solve(…):</p>]]></content><author><name>Alejandro Martínez</name></author><category term="dsa" /><category term="ararys" /><category term="string" /><summary type="html"><![CDATA[Learning about indexing, iteration, two pointers, sliding windows, preffix and suffix sums.]]></summary></entry><entry><title type="html">Setting up Nvim for Python</title><link href="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/" rel="alternate" type="text/html" title="Setting up Nvim for Python" /><published>2025-09-28T00:00:00+02:00</published><updated>2025-09-28T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/"><![CDATA[<p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
+</ul>]]></content><author><name>Alejandro Martínez</name></author><category term="cs" /><category term="dsa" /><category term="algorithms" /><category term="big-o" /><summary type="html"><![CDATA[Understanding how algorithm runtime grows as input size increases.]]></summary></entry><entry><title type="html">Setting up Nvim for Python</title><link href="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/" rel="alternate" type="text/html" title="Setting up Nvim for Python" /><published>2025-09-28T00:00:00+02:00</published><updated>2025-09-28T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/09/28/setting-up-nvim-for-python/"><![CDATA[<p><strong>Disclaimer</strong> by no means I am a Neovim expert and might not fully understand all of the internals of the tools I am going to talk about, this is just me learning by setting up a Nvim installation for Python.</p>
 
 <p>I have used nvim in the past, I use it often (like writing this blog) but when coding I still use vscode as it has a few features that I find useful such as the UI for tests, environment/run configurations and debugging.
 Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, besides making you very efficient using the keyboard, its kind of a game, while you code.</p>

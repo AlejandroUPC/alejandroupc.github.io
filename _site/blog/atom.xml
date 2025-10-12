@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-10-13T01:10:24+02:00</updated>
+	<updated>2025-10-13T01:11:56+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -291,68 +291,6 @@ Beyond &lt;strong&gt;O(n²)&lt;/strong&gt;, performance becomes impractical for 
   &lt;li&gt;&lt;a href=&quot;https://www.bigocheatsheet.com/&quot;&gt;Big O Cheat Sheet&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://neetcode.io/courses/lessons/big-o-notation&quot;&gt;Neetcode cheatsheet&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-		</entry>
-	
-		<entry>
-			<title>DSA — Arrays & Strings</title>
-			<link href="http://alejandroupc.github.io/blog/2025/10/03/dsa-ch1-array-strings/"/>
-			<updated>2025-10-03T00:00:00+02:00</updated>
-			<id>http://alejandroupc.github.io/blog/2025/10/03/dsa-ch1-array-strings</id>
-			<content type="html">&lt;!-- Keep this section tight and actionable --&gt;
-&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Pattern: [e.g., sliding window / two pointers / hashmap]&lt;/li&gt;
-  &lt;li&gt;Use when: [short criterion]&lt;/li&gt;
-  &lt;li&gt;Core ops: [expand/shrink; push/pop; etc.]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
-
-&lt;!-- 1–2 paragraph overview: intuition and problem shapes it unlocks --&gt;
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-&lt;!-- --TODO: --&gt;
-&lt;p&gt;[Why this topic matters in interviews and real code. Typical shapes and constraints.]&lt;/p&gt;
-
-&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
-
-&lt;h2 id=&quot;core-concepts&quot;&gt;Core Concepts&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;[Concept 1]&lt;/li&gt;
-  &lt;li&gt;[Concept 2]&lt;/li&gt;
-  &lt;li&gt;[Concept 3]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Video: &lt;a href=&quot;url&quot;&gt;Title&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Article: &lt;a href=&quot;url&quot;&gt;Title&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Book: [CLRS ch. X – Title]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;practice&quot;&gt;Practice&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Warm-up: [ID/Title]&lt;/li&gt;
-  &lt;li&gt;Core: [ID/Title], [ID/Title]&lt;/li&gt;
-  &lt;li&gt;Stretch: [ID/Title]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;goal&quot;&gt;Goal&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;After this chapter you should be able to: [2–4 bullets of outcomes]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- Optional but helpful: copy/pasteable patterns --&gt;
-&lt;h2 id=&quot;patterns--templates-optional&quot;&gt;Patterns &amp;amp; Templates (optional)&lt;/h2&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Template 1: [Name]
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;```python&lt;/p&gt;
-&lt;h1 id=&quot;template-2-name&quot;&gt;Template 2: [Name]&lt;/h1&gt;
-&lt;p&gt;def solve(…):&lt;/p&gt;
-
 </content>
 		</entry>
 	
