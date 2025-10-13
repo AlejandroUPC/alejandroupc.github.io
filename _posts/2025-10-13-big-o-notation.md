@@ -4,6 +4,10 @@ title: Big O Notation for Time Complexity
 date: 2025-10-13
 description: Understanding how algorithm runtime grows as input size increases.
 tags: [cs, dsa, algorithms, big-o]
+image: /assets/images/post_big_o_notation/big_o_comparison.png
+image_alt: "Comparison chart of common Big O time complexities"
+twitter:
+  card: summary_large_image
 redirect_from:
   - /blog/2025/10/13/master-dsa
 ---
