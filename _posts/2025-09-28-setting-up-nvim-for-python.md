@@ -28,7 +28,7 @@ I really recommend that if you come across this post and have not tried yet, giv
 This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:
 
 ```sh
-brew install neovim ripgrep fd
+brew install neovim ripgrep fd lazygit
 ```
 The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
 If you run then in your terminal `nvim` you should be greeted by a very simple window:

@@ -277,5 +277,46 @@ Tip: Great for reading/writing docs inside Neovim; toggle off to edit raw markup
 | REPL | `<leader>rp`, `<leader>rS` |
 | Markdown | `<leader>mr` |
 | Buffers/Windows/Tabs | `<leader>bn/bp/bd/bo/a`, `<leader>wv/ws/wc/wo/w=`, `<leader>ta/tc/to/t1..t9` |
+| Git | <leader>gg (repo), <leader>gf (file), :LazyGit |
 
 Master these and you’ll navigate, refactor, test, and debug at speed — all inside Neovim.
+
+## 18) Git (LazyGit)
+
+| Keys / Command | Description |
+| --- | --- |
+| `<leader>gg` | Open LazyGit in repo root (floating window) |
+| `<leader>gf` | Open LazyGit focused on current file |
+| `:LazyGit` | Command: open LazyGit at repo root |
+| `:LazyGitCurrentFile` | Command: open for current file |
+| `:LazyGitConfig` | Command: open git config in LazyGit |
+| `:LazyGitFilter` | Command: LazyGit filtered by query |
+| `:LazyGitFilterCurrentFile` | Command: Filtered view for current file |
+
+Tips
+- Requires the `lazygit` binary installed on your system.
+- The UI opens in a floating window; press `q` in LazyGit to quit.
+- Works from the project root; mappings are available under the `<leader>g` group.
+- If Telescope is available: `:Telescope lazygit` for an alternate entry.
+
+### LazyGit Workflows + Keys (defaults)
+
+| Action | Keys (in LazyGit) |
+| --- | --- |
+| Show help for current panel | `?` |
+| Navigate | `j`/`k` up/down, `h`/`l` or arrow keys left/right |
+| Expand file / open diff | `<Enter>` |
+| Stage/unstage selected (file/hunk) | `<Space>` |
+| Commit staged changes | `c` |
+| Push current branch | `P` |
+| Pull (rebase) | `p` |
+| Fetch | `f` |
+| Branches view / checkout/create | `b` |
+| View log/history | `l` |
+| Open file in editor | `e` or `o` |
+| Quit LazyGit | `q` |
+
+Notes
+- Keys are context‑aware and may differ by panel; press `?` to see the exact, up‑to‑date bindings in your version.
+- Use `<Space>` on a file to stage/unstage; press `<Enter>` to drill into hunks and stage at hunk level.
+- For conflict resolution, open the conflicted file (`<Enter>`), resolve in your editor, then stage (`<Space>`) and continue the merge/rebase.
