@@ -7,3 +7,4 @@ notebooks/
 uv.lock
 *.py
 .python-version
+_tmp_code/

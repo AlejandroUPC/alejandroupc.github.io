@@ -13,10 +13,26 @@ defaults:
       type: "snippets"
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: book
+  - scope:
+      path: ""
+      type: "chapters"
+    values:
+      layout: chapter
 collections:
   snippets:
     output: true
     permalink: /snippets/:name/
+  books:
+    output: true
+    permalink: /books/:name/
+  chapters:
+    output: true
+    permalink: /books/:path/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

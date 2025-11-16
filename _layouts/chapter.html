@@ -1,0 +1,69 @@
+---
+layout: default
+---
+{% assign parts = page.url | split: '/' %}
+{% assign book_slug = parts[2] %}
+{% assign book = site.books | where: 'slug', book_slug | first %}
+
+<div class="mb-2">
+  {% if book %}
+    <a class="text-decoration-none" href="{{ book.url }}">&larr; Back to: {{ book.title }}</a>
+  {% else %}
+    <a class="text-decoration-none" href="/books/">&larr; Back to Books</a>
+  {% endif %}
+  {% if page.order %}
+    <span class="badge rounded-pill ms-2" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);">Chapter {{ page.order }}</span>
+  {% endif %}
+  {% if page.tags and page.tags.size > 0 %}
+    <span class="ms-2">
+      {% for tag in page.tags %}
+        <a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="{{ '/tags/#' | append: tag | slugify | relative_url }}">#{{ tag }}</a>
+      {% endfor %}
+    </span>
+  {% endif %}
+  
+</div>
+
+<h1>{{ page.title }}</h1>
+{% if page.date %}
+  <p class="meta">{{ page.date | date: "%b %-d, %Y" }}</p>
+{% endif %}
+
+<div class="post">
+  {{ content }}
+</div>
+
+<hr />
+<div>
+  {% if book %}
+    {% assign siblings = site.chapters | where_exp: 'c', 'c.url contains book.url' | sort: 'order' %}
+    {% assign prev = nil %}
+    {% assign next = nil %}
+    {% assign last = nil %}
+    {% assign found = false %}
+    {% for s in siblings %}
+      {% if s.url == page.url %}
+        {% assign prev = last %}
+        {% assign found = true %}
+      {% elsif found and next == nil %}
+        {% assign next = s %}
+      {% endif %}
+      {% assign last = s %}
+    {% endfor %}
+    <div class="d-flex justify-content-between">
+      <div>
+        {% if prev %}
+          <a class="btn btn-outline-light btn-sm" href="{{ prev.url }}">&larr; {{ prev.title }}</a>
+        {% endif %}
+      </div>
+      <div>
+        <a class="btn btn-outline-light btn-sm" href="{{ book.url }}">All chapters</a>
+      </div>
+      <div>
+        {% if next %}
+          <a class="btn btn-outline-light btn-sm" href="{{ next.url }}">{{ next.title }} &rarr;</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>

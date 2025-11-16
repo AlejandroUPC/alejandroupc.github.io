@@ -1,0 +1,19 @@
+---
+layout: default
+title: Books
+permalink: /books/
+description: Book reviews with per-chapter notes.
+---
+<section class="container py-3">
+  <h1 class="h3 mb-4">{{ page.title }}</h1>
+  <div class="list-group list-group-flush">
+    {% assign items = site.books | sort: 'date' | reverse %}
+    {% for b in items %}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ b.url }}" title="{{ b.title }}" style="border-color: var(--border);">
+        <span class="me-3">{{ b.title }}</span>
+        {% if b.date %}<span class="text-muted small">{{ b.date | date: "%b %-d, %Y" }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+</section>
+

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+{% if page.date %}
+  <p class="meta">{{ page.date | date: "%b %-d, %Y" }}</p>
+{% endif %}
+
+<div class="post">
+  {{ content }}
+  {% if page.updated %}
+    <p class="text-muted small mt-3">Last updated {{ page.updated | date: "%b %-d, %Y" }}</p>
+  {% endif %}
+  {% if page.tags and page.tags.size > 0 %}
+    <div class="mb-3">
+      {% for tag in page.tags %}
+        <a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="{{ '/tags/#' | append: tag | slugify | relative_url }}">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<hr />
+<h2 class="h5">Chapters</h2>
+{% assign chapters = site.chapters | where_exp: 'c', 'c.url contains page.url' | sort: 'order' %}
+{% if chapters and chapters.size > 0 %}
+  <div class="list-group list-group-flush">
+    {% for c in chapters %}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ c.url }}" title="{{ c.title }}" style="border-color: var(--border);">
+        <span class="me-3">{% if c.order %}{{ c.order | plus: 0 | prepend: '' }}. {% endif %}{{ c.title }}</span>
+        {% if c.date %}<span class="text-muted small">{{ c.date | date: "%b %-d, %Y" }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="text-muted">No chapters yet.</p>
+{% endif %}
+
