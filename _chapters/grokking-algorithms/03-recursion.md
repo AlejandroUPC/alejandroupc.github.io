@@ -84,4 +84,5 @@ A recursion is when a function calls itself, and is ultimately split into base a
 
 All those calls go into a LIFO stack, where things are pushed and poped + evaluated, we have to be careful with the stack as it takes memory.
 
+My personal opinion is that even if very elegant, it can get complicated really quick so it should only be used in clear contexts where you are pretty sure the stack will not get out of control.
 
