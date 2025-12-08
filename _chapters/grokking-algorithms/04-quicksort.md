@@ -1,6 +1,6 @@
 ---
 title: Chapter 4 - Quicksort
-order: 5
+order: 4
 date: 2025-12-07
 tags: [books, algorithms, grokking-algorithms]
 ---
