@@ -4,7 +4,7 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2025-10-14T05:40:21+02:00</updated>
+	<updated>2026-05-16T09:10:08+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
@@ -318,7 +318,7 @@ Regardless, I use the nvim extension for the motions in VSCode. I think Neovim, 
 
 &lt;p&gt;This is a guide on how to install Neovim on a MacOS M3, but it should work pretty much on any Linux distro. You could just copy in your terminal:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;neovim ripgrep fd
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;neovim ripgrep fd lazygit
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;The first package neovim is quite self explanaotry, and then ripgrep and fd are improvements of grep and find, respectively, that are faster. The first one is to find text in files and the second one is to find files (if you are not familiar with those two commons I would recommend googling a little bit around).
 If you run then in your terminal &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim&lt;/code&gt; you should be greeted by a very simple window:
