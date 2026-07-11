@@ -46,7 +46,7 @@ So if we wanted to search a number, we e.g 2 we could:
 
 So as you can expect from the previous example, the shortes a tree is the fastest we can search it, we introduce the concept of height. For example, for a 7 node tree we could have the previous example where it was perfectly balanced:
 
-![standard bst]({{ '/assets/images/grokking_algos_chapter_8/bst-simple.svg' | relative_url }}){: .center-img }
+![standard bst]({{ '/assets/images/grokking_algos_chapter_8/simple-bst.svg' | relative_url }}){: .center-img }
 
 Where there is a total of 2 jumps to go from root to leaf, so the height is 2.
 
