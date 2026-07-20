@@ -292,3 +292,11 @@ Some of the cases of DP are:
 - Every DP involves thinking with terms of a grid, where the values is what we try to optimize and the edges the constraints.
 
 - Each cell can be thought of a sub problem.
+
+To remember:
+
+  - dp[i][j] = best value using the first i items and capacity j.
+  - Each item creates a take/skip choice.
+  - The previous row prevents reusing an item in 0/1 knapsack.
+  - DP needs overlapping subproblems and optimal substructure.
+  - DP is not necessarily brute force; it avoids repeated work by caching states.
