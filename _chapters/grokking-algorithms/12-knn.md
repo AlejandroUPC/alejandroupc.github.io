@@ -229,3 +229,15 @@ In this case feature extraction, what is relevant, is more complicated than the 
 
 
 To remember:
+
+- In classification, KNN looks at the most common class among the closest neighbours; in regression, it averages their numeric values.
+
+- Euclidean distance measures the distance between points, while cosine similarity compares the angle between vectors.
+
+- Features should be normalized or standardized so features with larger numeric ranges do not dominate the distance.
+
+- The value of `k` matters: small values are more sensitive to noise, while larger values produce smoother predictions but can miss local patterns.
+
+- KNN is a lazy learner: it does little work during training and calculates distances when making a prediction.
+
+- Irrelevant features and too many dimensions can make neighbours less meaningful and lead to incorrect predictions.
