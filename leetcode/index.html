@@ -1,0 +1,23 @@
+---
+layout: default
+title: LeetCode Deep Dives
+permalink: /leetcode/
+description: One problem per post, with slow, concept-first breakdowns.
+---
+<section class="container py-3">
+  <h1 class="h3 mb-2">{{ page.title }}</h1>
+  <p class="text-muted mb-4">Single-problem notes with a slow, concept-first breakdown.</p>
+  <p class="text-muted small mb-4">The full collection of solutions is available in the <a href="https://github.com/AlejandroUPC/leetcode/tree/main" target="_blank" rel="noopener">LeetCode repository</a>.</p>
+  <div class="list-group list-group-flush">
+    {% assign leetcode_posts = site.posts | where_exp: "p", "p.tags contains 'leetcode'" | sort: "date" | reverse %}
+    {% for post in leetcode_posts %}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ post.url }}" title="{{ post.title }}" style="border-color: var(--border);">
+        <span class="me-3">{{ post.title }}</span>
+        <span class="text-muted small">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </a>
+    {% endfor %}
+  </div>
+  {% if leetcode_posts.size == 0 %}
+    <p class="text-muted mt-3 mb-0">No LeetCode posts yet. Add the tag <code>leetcode</code> to a post to list it here.</p>
+  {% endif %}
+</section>
