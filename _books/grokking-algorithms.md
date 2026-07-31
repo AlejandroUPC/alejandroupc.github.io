@@ -14,5 +14,3 @@ I recommend you to buy this book and take your time to digest all of it, it's ve
 
 **Disclaimer** Those are just notes about the book, in no way they are as good as the content in the book which I recommend (again) to grab it and read it carefuly.
 
-
-# Closing
