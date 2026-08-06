@@ -121,6 +121,40 @@ img { max-width: 100%; height: auto; border-radius: .75rem; border: 1px solid rg
 }
 .post pre code { background: transparent; padding: 0; }
 
+.post table {
+  width: 100%;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: var(--text);
+}
+.post th,
+.post td {
+  padding: .65rem .8rem;
+  border: 1px solid var(--border);
+  text-align: center;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+.post th {
+  color: var(--accent-2);
+  background: rgba(94, 234, 212, 0.08);
+  font-weight: 600;
+}
+.post tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+@media (max-width: 576px) {
+  .post table {
+    font-size: .875rem;
+  }
+  .post th,
+  .post td {
+    padding: .45rem .35rem;
+  }
+}
+
 .highlight { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: .5rem; }
 .highlight pre { margin: 0; padding: 1rem; background: transparent; }
 .highlight .c { color: #8b9bb0; font-style: italic; }
