@@ -11,4 +11,6 @@ Notes on *Code: The Hidden Language of Computer Hardware and Software* by Charle
 
 The book builds a computer from first principles, logic gates, circuits... a bit scary but we will see.
 
+Also, its basically split per one chapter without any further structure, meaning thats just a big wall of text after every chapter (and this is reflected in the blog entries, also not critizing, just pointing out), I might try to split it myself but not sure if it will work out.
+
 **Disclaimer:** These are personal notes and summaries, not a replacement for the book. I recommend reading the original for its complete explanations and examples.
