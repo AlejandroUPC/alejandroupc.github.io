@@ -5,7 +5,7 @@ date: 2026-08-06
 tags: [books, computer-architecture, code-the-hidden-language]
 ---
 
-# Chapter notes
+## Chapter notes
 
 Imagine you got a very good friend which happeens to be your neighbor, and you love to spend all day long talking, but when night comes you want to still talk. You don't have yet a phone, so you need to think of a way to communicate to eachother.
 
@@ -41,6 +41,6 @@ In standard International Morse code, a dot lasts one unit and a dash lasts thre
 Another problems can happen here, how long is a dot and a dash? A fast sender might do a dash the same duration as a dot from a slower sender? This is something both communications have to agree/figure out; what is important that the duration is fixed and its easy to distinct between symbols.
 
 
-# Closing notes
+## Closing notes
 
 Nothing special, initial introduction of how to represent language into alternative ways, using codes, in this case Morse that is a variable-length, two-symbol code using dots and dashes, plus timing gaps to separate symbols, letters, and words.

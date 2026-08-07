@@ -5,7 +5,7 @@ date: 2026-08-06
 tags: [books, computer-architecture, code-the-hidden-language]
 ---
 
-# Chapter Notes
+## Chapter Notes
 
 
 Morse code was developed alongside the electric telegraph through the collaboration of Samuel Morse and Alfred Vail. The table below shows International Morse code, which evolved from the earlier American Morse system:
