@@ -19,7 +19,7 @@ A standard Braille character is encoded in a two-column by three-row cell. The p
 3 | ○ ○ | 6
 ```
 
-For these examples, `○` means flat and `●` means raised. Six binary positions produce `2^6 = 64` possible cells. That total includes the completely blank cell, so 63 combinations contain at least one raised dot. These patterns are not all letters: they can represent letters, punctuation, contractions, indicators, and other symbols.
+For these examples, `○` means flat and `●` means raised. Six binary positions produce $$2^6 = 64$$ possible cells. That total includes the completely blank cell, so 63 combinations contain at least one raised dot. These patterns are not all letters: they can represent letters, punctuation, contractions, indicators, and other symbols.
 
 The basic lowercase alphabet looks like this:
 

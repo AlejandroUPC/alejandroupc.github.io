@@ -121,6 +121,12 @@ img { max-width: 100%; height: auto; border-radius: .75rem; border: 1px solid rg
 }
 .post pre code { background: transparent; padding: 0; }
 
+.post .braille-alphabet {
+  width: min(1100px, calc(100vw - 2rem));
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .post table {
   width: 100%;
   margin: 1.5rem auto;
