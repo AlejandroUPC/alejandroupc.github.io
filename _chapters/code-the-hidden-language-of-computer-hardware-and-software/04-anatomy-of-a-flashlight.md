@@ -91,6 +91,8 @@ $$
 
 It is measured in amperes, aka amps. One ampere is one coulomb of charge per second, equivalent to approximately $$6.24 \times 10^{18}$$ elementary charges passing a point each second. In the water analogy, current is like the amount of water flowing through the pipe per second.
 
+In a metal wire, conventional current is defined as flowing from the positive terminal (`+`) to the negative terminal (`-`), while the negatively charged electrons drift from negative to positive; these are two descriptions of the same electrical activity, not two separate flows.
+
 ### Resistance
 
 Resistance is the opposition a component offers to electric current, and it is measured in ohms, represented by the uppercase Greek letter $$\Omega$$. In the water analogy, a narrower pipe provides more resistance to the flow than a wider one.
