@@ -10,7 +10,11 @@ description: All blog posts on software engineering, Python, Neovim, and DSA.
     {% for post in posts %}
       {% unless post.tags contains 'snippet' %}
         <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ post.url }}" title="{{ post.title }}" style="border-color: var(--border);">
-          <span class="me-3">{{ post.title }}</span>
+          <span class="d-flex align-items-center gap-2 me-3">
+            <i class="bi bi-file-earmark-text content-type-icon content-type-post" aria-hidden="true" title="Blog post"></i>
+            <span class="visually-hidden">Blog post: </span>
+            <span>{{ post.title }}</span>
+          </span>
           <span class="text-muted small">{{ post.date | date: "%b %-d, %Y" }}</span>
         </a>
       {% endunless %}
