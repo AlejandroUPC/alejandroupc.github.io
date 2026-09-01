@@ -1,0 +1,54 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+description: Personal software projects, technical experiments, and learning work by Alejandro Martínez.
+---
+{% assign project_groups = site.data.projects.groups %}
+
+<section class="container py-3">
+  <header class="mb-4">
+    <h1 class="h3 mb-2">{{ page.title }}</h1>
+    <p class="text-muted mb-3">Personal software projects, experiments, and ongoing learning work.</p>
+    <div class="project-note" role="note">
+      <i class="bi bi-lock me-2" aria-hidden="true"></i>
+      Much of my recent project work lives in private repositories. If you would like to learn more or request access where possible,
+      <a href="mailto:amartinezotal@gmail.com">email me</a>.
+    </div>
+  </header>
+
+  {% for group in project_groups %}
+    <section class="mb-5" aria-labelledby="project-group-{{ forloop.index }}">
+      <h2 class="h5 mb-3" id="project-group-{{ forloop.index }}">{{ group.name }}</h2>
+      <div class="row g-3">
+        {% for project in group.projects %}
+          <div class="col-12 col-md-6">
+            <article class="project-card h-100">
+              <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
+                <h3 class="h6 mb-0">{{ project.name }}</h3>
+                <span class="text-muted small text-nowrap">{{ project.period }}</span>
+              </div>
+              <div class="project-status mb-3">{{ project.status }}</div>
+              <p class="text-muted small">{{ project.description }}</p>
+              <ul class="project-stack list-unstyled d-flex flex-wrap gap-2 mb-3" aria-label="Technology stack">
+                {% for technology in project.stack %}
+                  <li>{{ technology }}</li>
+                {% endfor %}
+              </ul>
+              <div class="d-flex flex-wrap gap-3 mt-auto small">
+                <a href="{{ project.repository }}" target="_blank" rel="noopener">
+                  <i class="bi bi-github me-1" aria-hidden="true"></i>Source
+                </a>
+                {% if project.page %}
+                  <a href="{{ project.page | relative_url }}">
+                    <i class="bi bi-journal-code me-1" aria-hidden="true"></i>Notes
+                  </a>
+                {% endif %}
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</section>

@@ -206,5 +206,43 @@ figure.figure { margin: 1.25rem 0; text-align: center; }
 .figure a { display: inline-block; }
 .figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; }
 
+.project-note {
+  padding: .85rem 1rem;
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  border-radius: .5rem;
+  background: rgba(94, 234, 212, 0.06);
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: .65rem;
+  background: rgba(20, 28, 39, 0.72);
+}
+
+.project-card:hover {
+  border-color: rgba(94, 234, 212, 0.4);
+}
+
+.project-status {
+  color: var(--accent-2);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.project-stack li {
+  padding: .15rem .45rem;
+  border: 1px solid var(--border);
+  border-radius: .3rem;
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--muted);
+  font-size: .72rem;
+}
+
 /* Big O header image at 75% width (responsive) */
 .center-img[src$="big-o-blog-header.webp"] { width: 75%; max-width: 100%; }

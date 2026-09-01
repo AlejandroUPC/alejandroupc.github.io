@@ -1,0 +1,89 @@
+groups:
+  - name: Featured Projects
+    projects:
+      - name: Python Microservices
+        period: "2021"
+        status: Completed
+        description: An event-driven system that captures supermarket transactions and calculates customer and store metrics across several services.
+        stack:
+          - Python
+          - Django
+          - Flask
+          - Kafka
+          - Docker
+          - MySQL
+        repository: https://github.com/AlejandroUPC/pythonmicroservices
+
+      - name: zType Bot
+        period: "2021"
+        status: Completed
+        description: A bot for a speed-typing game that reads words from the screen with OCR and types them automatically.
+        stack:
+          - Python
+          - OpenCV
+          - Tesseract OCR
+          - PyAutoGUI
+          - NumPy
+        repository: https://github.com/AlejandroUPC/ztypebot
+
+      - name: CryptoWallet
+        period: "2021"
+        status: Prototype
+        description: A web application for tracking cryptocurrency holdings, portfolio allocation, and value over time using external market-data APIs.
+        stack:
+          - Node.js
+          - MongoDB
+          - EJS
+          - Bootstrap
+          - Docker
+        repository: https://github.com/AlejandroUPC/cryptoWallet
+
+      - name: Pisos Scraper
+        period: "2019"
+        status: Academic project
+        description: A configurable command-line pipeline that collects Spanish rental listings, preprocesses the results, and exports datasets and visualizations.
+        stack:
+          - Python
+          - Web scraping
+          - Data processing
+          - Data visualization
+        repository: https://github.com/AlejandroUPC/pisos_scrapper
+
+  - name: Learning & Practice
+    projects:
+      - name: LeetCode Practice
+        period: "2026–present"
+        status: Active
+        description: Tested Python solutions and concept-first notes for data-structure and algorithm problems, organized around reusable problem-solving patterns.
+        stack:
+          - Python
+          - Algorithms
+          - Data structures
+          - Testing
+        repository: https://github.com/AlejandroUPC/leetcode
+        page: /leetcode/
+
+  - name: Experiments
+    projects:
+      - name: Dagster Jobs on NATS Events
+        period: "2023"
+        status: Experiment
+        description: An event-driven orchestration experiment in which Dagster sensors consume NATS messages and trigger tenant-management jobs.
+        stack:
+          - Python
+          - Dagster
+          - NATS
+          - Docker
+        repository: https://github.com/AlejandroUPC/dagster-nats-sensor
+
+  - name: Small Builds
+    projects:
+      - name: Password Generator
+        period: "2021"
+        status: Completed
+        description: A small browser-based utility for generating passwords with configurable character options.
+        stack:
+          - JavaScript
+          - HTML
+          - CSS
+        repository: https://github.com/AlejandroUPC/pwdgenerator
