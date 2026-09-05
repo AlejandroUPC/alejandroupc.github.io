@@ -1,4 +1,233 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2026-08-22T10:53:55+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC — Software Engineering Notes</title><subtitle>Personal notes on software engineering, Python, Neovim, DSA.</subtitle><author><name>Alejandro Martínez</name></author><entry><title type="html">Big O Notation for Time Complexity</title><link href="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/" rel="alternate" type="text/html" title="Big O Notation for Time Complexity" /><published>2025-10-13T00:00:00+02:00</published><updated>2025-10-13T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/13/big-o-notation</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/"><![CDATA[<p>Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in <a href="https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md">CS50 Week 3</a>. This post combines my notes from several resources.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2026-09-05T08:08:30+02:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">AlejandroUPC — Software Engineering Notes</title><subtitle>Personal notes on software engineering, Python, Neovim, DSA.</subtitle><author><name>Alejandro Martínez</name></author><entry><title type="html">Learning tmux (and terminals/shells)</title><link href="http://0.0.0.0:4000/blog/2026/09/03/learning-tmux-and-terms/" rel="alternate" type="text/html" title="Learning tmux (and terminals/shells)" /><published>2026-09-03T00:00:00+02:00</published><updated>2026-09-03T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2026/09/03/learning-tmux-and-terms</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2026/09/03/learning-tmux-and-terms/"><![CDATA[<p>Now with agents, tmux seems to be more popular than ever, but it is a tool I have always wanted to explore. At first it might look like just a way to split a terminal, but there is more happening behind it. In this post I will try to understand what tmux is, what it is good for, and how terminals and shells fit into the picture.</p>
+
+<h2 id="what-is-a-terminal">What is a terminal?</h2>
+
+<p>A terminal is a physical device to interact with a computer, think of a just a small keyboard and a screen you’d plug in into a giant rack. Nowadays this might be harder to imagine, as with laptops for example, the computer and terminal are together. That’s why they are not real terminals per se (an actual device), but <strong>terminal emulators</strong>.</p>
+
+<p>Now keep in mind that a single computer might serve multilple terminals.</p>
+
+<p><img src="/assets/images/learning-tmux/simple-terminal-diagram.svg" alt="Simple terminal diagram" class="center-img" /></p>
+
+<h3 id="terminal--shell">Terminal ≠ shell</h3>
+
+<p>Whenever you open your laptop terminal you will (most of the time) see something like:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alejandro@macbook ~ %
+</code></pre></div></div>
+
+<p>Now there are two parts to distinguish working together here:</p>
+
+<ol>
+  <li>The terminal emulator that as explained before handles the text based interface: displays output from computer using the screen and takes input from the keyboard.</li>
+  <li>The shell; that let’s you execute commands.</li>
+</ol>
+
+<p>There are plenty of shells over there such as <code class="language-plaintext highlighter-rouge">zsh</code>, <code class="language-plaintext highlighter-rouge">bash</code>, <code class="language-plaintext highlighter-rouge">fish</code>, etc…</p>
+
+<p>That means that are two different components and you can combine them, e.g use <code class="language-plaintext highlighter-rouge">iTerm2</code> as terminal emulator in one laptop and use <code class="language-plaintext highlighter-rouge">bash</code> as the shell and in your other laptop use the same emulator but <code class="language-plaintext highlighter-rouge">zsh</code> instead.</p>
+
+<h3 id="what-happens-when-i-type-a-command">What happens when I type a command?</h3>
+
+<p>Whenever you type a command (for example, to run a Python script), the terminal emulator sends your keystrokes through a pseudo-terminal to the foreground process, which is usually the shell:</p>
+
+<p><img src="/assets/images/learning-tmux/simple-input-output-command.svg" alt="Simple command input and output diagram" class="center-img" /></p>
+
+<p>This diagram is deliberately simplified. The terminal emulator does not execute the command: the shell reads and parses it, then launches the requested program. The shell, the Python program and tmux are all processes. While the Python program is running in the foreground, it receives input from the terminal and writes its output back through the pseudo-terminal for the terminal emulator to display.</p>
+
+<h2 id="one-layer-deeper-ttys-vs-ptys">One layer deeper: TTYs vs PTYs</h2>
+
+<p>So far we have discussed two visible components: the terminal emulator and the shell. Modern Unix systems have another layer between them: a PTY, or pseudo-terminal. A PTY is a pair of endpoints. The terminal emulator controls the master side, while the shell or foreground program is connected to the slave side. Historically, Unix communicated with physical terminals through TTY devices; PTYs provide similar behavior in software. tmux uses them to give every pane its own terminal.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keyboard -&gt; terminal emulator -&gt; PTY master -&gt; PTY slave -&gt; foreground process
+                                                               |
+screen   &lt;- terminal emulator &lt;- PTY master &lt;- PTY slave &lt;-----+
+</code></pre></div></div>
+
+<h2 id="what-does-multiplexer-really-mean">What does multiplexer really mean?</h2>
+
+<p>Multiplexing (outside tmux world) is a broader general concept in engineering which means multiple logical streams sharing an underlying resource/channel, somethingl like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A ---\                                        /--- A
+B ---|-----MULTIPLEXER --- shared channel ----|--- B
+C ---/                                        \--- C
+</code></pre></div></div>
+
+<p>This is very common on network, I/O, etc… But now we can kinda of start thinking what a terminal multiplexer is and what tmux allows: manage multiple terminals through terminal connections/interfaces.</p>
+
+<p>Multiplexing does not necessarily require the streams to be split again. A multiplexer allows multiple inputs to share one resource; a demultiplexer is only needed when the receiving side must recover the individual streams. In tmux, multiple terminal programs share one outside terminal. Showing several panes at once is a useful feature, but it is not what makes tmux a multiplexer.</p>
+
+<h2 id="tmux">tmux</h2>
+
+<p>If we start then mixing all of the concepts we learnt from terminals, shells, processes, multiplexing and so on we can go from the simple terminal process:</p>
+
+<p><img src="/assets/images/learning-tmux/simple-diagram.svg" alt="Simple tmux diagram" class="center-img" /></p>
+
+<p>Now if we add multiplexing to the mix:</p>
+
+<p><img src="/assets/images/learning-tmux/terminal-mpexed.svg" alt="Multiplexed terminal diagram" class="center-img" /></p>
+
+<p>tmux uses a client-server architecture. The client runs inside the outside terminal and communicates with the tmux server through a Unix socket. The server owns the sessions, keeps track of their windows and panes, and gives each pane its own PTY and running program.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terminal emulator
+    ↕ outside PTY
+tmux client
+    ↕ Unix socket
+tmux server
+    ├── pane PTY ↔ shell/program
+    └── pane PTY ↔ shell/program
+</code></pre></div></div>
+
+<p>This separation is what allows the client to disappear while the server and the programs inside its panes keep running.</p>
+
+<h3 id="the-detach-command">The detach command</h3>
+
+<p>In the previous diagram, the terminal emulator reaches the session through the tmux client. Detaching removes that client connection without stopping the tmux server or the programs it manages:</p>
+
+<p><img src="/assets/images/learning-tmux/dettach-example.svg" alt="Detached tmux client example" class="center-img" /></p>
+
+<p>Although the client is gone, the tmux server still owns the session and keeps the programs in its panes running. You can attach a new client later and continue working, which is particularly useful for long-running tasks.</p>
+
+<p><img src="/assets/images/learning-tmux/simple-diagram-client-server.svg" alt="Simple tmux client-server diagram" class="center-img" /></p>
+
+<p>In a remote SSH setup, the terminal emulator and SSH client run on your local computer, while the shell and tmux server run on the remote machine. In a local tmux session, all of these components run on the same computer.</p>
+
+<p>If the network connection drops, the SSH client disconnects, but a tmux server on the remote machine keeps its sessions running. After reconnecting with SSH, you can attach a new tmux client to the existing session. Without tmux or a similar tool, programs tied to the disconnected terminal may terminate or become inaccessible.</p>
+
+<h3 id="sessions-windows-and-panes">Sessions, windows and panes</h3>
+
+<p><code class="language-plaintext highlighter-rouge">tmux</code> can be, as a starting point, split into these three pieces following a hierarchy:</p>
+
+<ol>
+  <li>Session: A persistent workspace that groups one or more windows and can have zero or more clients attached.</li>
+  <li>Window: A screen within a session that contains one or more panes. It is similar to a tab in a terminal emulator.</li>
+  <li>Pane: A rectangular region within a window containing its own terminal and running program.</li>
+</ol>
+
+<p>You can imagine something as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tmux
+│
+└── session: my-project
+    │
+    ├── window: editor
+    │   ├── pane: vim
+    │   └── pane: shell
+    │
+    ├── window: server
+    │   └── pane: python app.py
+    │
+    └── window: database
+        └── pane: psql
+</code></pre></div></div>
+
+<h3 id="first-practical-session">First practical session</h3>
+
+<p>Make sure you follow the instructions to install <code class="language-plaintext highlighter-rouge">tmux</code> <a href="https://github.com/tmux/tmux/wiki/Installing">from the official website</a>.</p>
+
+<p><img src="/assets/images/learning-tmux/tmux-session.png" alt="tmux session" class="center-img" /></p>
+
+<p>Now, before digging deep you can start doing all kind of stuff with this simplified, check official page of commands <a href="https://man.openbsd.org/tmux.1">here</a>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Action</th>
+      <th style="text-align: left">Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Start tmux</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">tmux</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Create named session</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">tmux new -s learning</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">List sessions</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">tmux ls</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Attach to session</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">tmux attach -t learning</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Detach</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b d</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">New window</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b c</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Next window</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b n</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Previous window</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b p</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Choose window</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b w</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Split into left and right panes</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b %</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Split into top and bottom panes</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b "</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Next pane</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b o</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Show pane numbers</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b q</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Copy / scroll mode</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b [</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Help / key bindings</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Ctrl-b ?</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The default tmux prefix is <code class="language-plaintext highlighter-rouge">Ctrl-b</code>: press <code class="language-plaintext highlighter-rouge">Ctrl</code> and <code class="language-plaintext highlighter-rouge">b</code> together, release them, and then press the key for the command you want. For example, <code class="language-plaintext highlighter-rouge">Ctrl-b c</code> creates a new window.</p>
+
+<p>For example opening multiple panes:</p>
+
+<p><img src="/assets/images/learning-tmux/tmux-session-panes.png" alt="tmux session with multiple panes" class="center-img" /></p>
+
+<h2 id="is-tmux-worth-it">Is tmux worth it?</h2>
+
+<p>Now you could have a tmux session for a specific repository, attach and detach from it, and keep its processes running on an external machine. tmux makes a lot of sense on remote machines because, if the connection is interrupted, the session keeps running and you can attach to it again later.</p>
+
+<p>But tmux can also be useful on a modern laptop. Your workflow is no longer tied to a particular terminal window, and you can keep a persistent workspace for each project. Additionally, tmux offers plenty of configuration, similar to Vim, to speed up the way you work with sessions, windows and panes.</p>
+
+<p>I’d say tmux is worth trying if some of these apply to you:</p>
+
+<ul>
+  <li>You use SSH frequently.</li>
+  <li>You run long-running processes.</li>
+  <li>You enjoy keyboard-driven terminal workflows.</li>
+  <li>You like to organize and persist project workspaces.</li>
+  <li>You often keep many shells open.</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="/snippets/tmux-cheatsheet/">tmux Cheatsheet</a>.</li>
+  <li><a href="https://github.com/tmux/tmux/wiki/Getting-Started">Official tmux Getting Started guide</a>.</li>
+  <li><a href="https://man.openbsd.org/tmux.1">tmux manpage</a>.</li>
+</ul>]]></content><author><name>Alejandro Martínez</name></author><category term="tmux" /><category term="terminal" /><category term="shell" /><category term="unix" /><summary type="html"><![CDATA[Peeking into tmux and investigating what terminals and shells are.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/learning-tmux/tmux-session-panes.png" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/learning-tmux/tmux-session-panes.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Big O Notation for Time Complexity</title><link href="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/" rel="alternate" type="text/html" title="Big O Notation for Time Complexity" /><published>2025-10-13T00:00:00+02:00</published><updated>2025-10-13T00:00:00+02:00</updated><id>http://0.0.0.0:4000/blog/2025/10/13/big-o-notation</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/13/big-o-notation/"><![CDATA[<p>Big O notation helps us understand, approximately, how expensive it is for an algorithm to run. I first encountered this in <a href="https://github.com/AlejandroUPC/cs-vault/blob/main/01_Core_Foundations/CS50/03_Week.md">CS50 Week 3</a>. This post combines my notes from several resources.</p>
 
 <p><img src="/assets/images/post_big_o_notation/big-o-blog-header.webp" alt="Big O header" class="center-img" /></p>
 

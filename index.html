@@ -11,8 +11,7 @@ description: Articles on software engineering, Python, Neovim, and data structur
     <h2 class="h5 mb-3">Latest Posts</h2>
     <div class="list-group list-group-flush">
       {% assign posts_and_books = site.posts | concat: site.books %}
-      {% assign merged = posts_and_books | concat: site.snippets %}
-      {% assign items = merged | sort: 'date' | reverse %}
+      {% assign items = posts_and_books | sort: 'date' | reverse %}
       {% assign count = 0 %}
       {% for item in items %}
         {% if count < 5 %}
@@ -21,9 +20,6 @@ description: Articles on software engineering, Python, Neovim, and data structur
               {% if item.collection == 'books' %}
                 <i class="bi bi-book content-type-icon content-type-book" aria-hidden="true" title="Book"></i>
                 <span class="visually-hidden">Book: </span>
-              {% elsif item.collection == 'snippets' %}
-                <i class="bi bi-code-square content-type-icon content-type-snippet" aria-hidden="true" title="Snippet"></i>
-                <span class="visually-hidden">Snippet: </span>
               {% else %}
                 <i class="bi bi-file-earmark-text content-type-icon content-type-post" aria-hidden="true" title="Blog post"></i>
                 <span class="visually-hidden">Blog post: </span>

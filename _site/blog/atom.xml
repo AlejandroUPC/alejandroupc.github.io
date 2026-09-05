@@ -4,13 +4,251 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2026-09-02T00:03:03+02:00</updated>
+	<updated>2026-09-05T08:08:30+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
 		<email>amartinezotal@gmail.com</email>
 	</author>
 
+	
+		<entry>
+			<title>Learning tmux (and terminals/shells)</title>
+			<link href="http://alejandroupc.github.io/blog/2026/09/03/learning-tmux-and-terms/"/>
+			<updated>2026-09-03T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/blog/2026/09/03/learning-tmux-and-terms</id>
+			<content type="html">&lt;p&gt;Now with agents, tmux seems to be more popular than ever, but it is a tool I have always wanted to explore. At first it might look like just a way to split a terminal, but there is more happening behind it. In this post I will try to understand what tmux is, what it is good for, and how terminals and shells fit into the picture.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-a-terminal&quot;&gt;What is a terminal?&lt;/h2&gt;
+
+&lt;p&gt;A terminal is a physical device to interact with a computer, think of a just a small keyboard and a screen you’d plug in into a giant rack. Nowadays this might be harder to imagine, as with laptops for example, the computer and terminal are together. That’s why they are not real terminals per se (an actual device), but &lt;strong&gt;terminal emulators&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now keep in mind that a single computer might serve multilple terminals.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/simple-terminal-diagram.svg&quot; alt=&quot;Simple terminal diagram&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;terminal--shell&quot;&gt;Terminal ≠ shell&lt;/h3&gt;
+
+&lt;p&gt;Whenever you open your laptop terminal you will (most of the time) see something like:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alejandro@macbook ~ %
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now there are two parts to distinguish working together here:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The terminal emulator that as explained before handles the text based interface: displays output from computer using the screen and takes input from the keyboard.&lt;/li&gt;
+  &lt;li&gt;The shell; that let’s you execute commands.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There are plenty of shells over there such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zsh&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fish&lt;/code&gt;, etc…&lt;/p&gt;
+
+&lt;p&gt;That means that are two different components and you can combine them, e.g use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iTerm2&lt;/code&gt; as terminal emulator in one laptop and use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash&lt;/code&gt; as the shell and in your other laptop use the same emulator but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zsh&lt;/code&gt; instead.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-happens-when-i-type-a-command&quot;&gt;What happens when I type a command?&lt;/h3&gt;
+
+&lt;p&gt;Whenever you type a command (for example, to run a Python script), the terminal emulator sends your keystrokes through a pseudo-terminal to the foreground process, which is usually the shell:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/simple-input-output-command.svg&quot; alt=&quot;Simple command input and output diagram&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This diagram is deliberately simplified. The terminal emulator does not execute the command: the shell reads and parses it, then launches the requested program. The shell, the Python program and tmux are all processes. While the Python program is running in the foreground, it receives input from the terminal and writes its output back through the pseudo-terminal for the terminal emulator to display.&lt;/p&gt;
+
+&lt;h2 id=&quot;one-layer-deeper-ttys-vs-ptys&quot;&gt;One layer deeper: TTYs vs PTYs&lt;/h2&gt;
+
+&lt;p&gt;So far we have discussed two visible components: the terminal emulator and the shell. Modern Unix systems have another layer between them: a PTY, or pseudo-terminal. A PTY is a pair of endpoints. The terminal emulator controls the master side, while the shell or foreground program is connected to the slave side. Historically, Unix communicated with physical terminals through TTY devices; PTYs provide similar behavior in software. tmux uses them to give every pane its own terminal.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;keyboard -&amp;gt; terminal emulator -&amp;gt; PTY master -&amp;gt; PTY slave -&amp;gt; foreground process
+                                                               |
+screen   &amp;lt;- terminal emulator &amp;lt;- PTY master &amp;lt;- PTY slave &amp;lt;-----+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;what-does-multiplexer-really-mean&quot;&gt;What does multiplexer really mean?&lt;/h2&gt;
+
+&lt;p&gt;Multiplexing (outside tmux world) is a broader general concept in engineering which means multiple logical streams sharing an underlying resource/channel, somethingl like:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A ---\                                        /--- A
+B ---|-----MULTIPLEXER --- shared channel ----|--- B
+C ---/                                        \--- C
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is very common on network, I/O, etc… But now we can kinda of start thinking what a terminal multiplexer is and what tmux allows: manage multiple terminals through terminal connections/interfaces.&lt;/p&gt;
+
+&lt;p&gt;Multiplexing does not necessarily require the streams to be split again. A multiplexer allows multiple inputs to share one resource; a demultiplexer is only needed when the receiving side must recover the individual streams. In tmux, multiple terminal programs share one outside terminal. Showing several panes at once is a useful feature, but it is not what makes tmux a multiplexer.&lt;/p&gt;
+
+&lt;h2 id=&quot;tmux&quot;&gt;tmux&lt;/h2&gt;
+
+&lt;p&gt;If we start then mixing all of the concepts we learnt from terminals, shells, processes, multiplexing and so on we can go from the simple terminal process:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/simple-diagram.svg&quot; alt=&quot;Simple tmux diagram&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now if we add multiplexing to the mix:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/terminal-mpexed.svg&quot; alt=&quot;Multiplexed terminal diagram&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;tmux uses a client-server architecture. The client runs inside the outside terminal and communicates with the tmux server through a Unix socket. The server owns the sessions, keeps track of their windows and panes, and gives each pane its own PTY and running program.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terminal emulator
+    ↕ outside PTY
+tmux client
+    ↕ Unix socket
+tmux server
+    ├── pane PTY ↔ shell/program
+    └── pane PTY ↔ shell/program
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This separation is what allows the client to disappear while the server and the programs inside its panes keep running.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-detach-command&quot;&gt;The detach command&lt;/h3&gt;
+
+&lt;p&gt;In the previous diagram, the terminal emulator reaches the session through the tmux client. Detaching removes that client connection without stopping the tmux server or the programs it manages:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/dettach-example.svg&quot; alt=&quot;Detached tmux client example&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Although the client is gone, the tmux server still owns the session and keeps the programs in its panes running. You can attach a new client later and continue working, which is particularly useful for long-running tasks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/simple-diagram-client-server.svg&quot; alt=&quot;Simple tmux client-server diagram&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In a remote SSH setup, the terminal emulator and SSH client run on your local computer, while the shell and tmux server run on the remote machine. In a local tmux session, all of these components run on the same computer.&lt;/p&gt;
+
+&lt;p&gt;If the network connection drops, the SSH client disconnects, but a tmux server on the remote machine keeps its sessions running. After reconnecting with SSH, you can attach a new tmux client to the existing session. Without tmux or a similar tool, programs tied to the disconnected terminal may terminate or become inaccessible.&lt;/p&gt;
+
+&lt;h3 id=&quot;sessions-windows-and-panes&quot;&gt;Sessions, windows and panes&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmux&lt;/code&gt; can be, as a starting point, split into these three pieces following a hierarchy:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Session: A persistent workspace that groups one or more windows and can have zero or more clients attached.&lt;/li&gt;
+  &lt;li&gt;Window: A screen within a session that contains one or more panes. It is similar to a tab in a terminal emulator.&lt;/li&gt;
+  &lt;li&gt;Pane: A rectangular region within a window containing its own terminal and running program.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can imagine something as:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tmux
+│
+└── session: my-project
+    │
+    ├── window: editor
+    │   ├── pane: vim
+    │   └── pane: shell
+    │
+    ├── window: server
+    │   └── pane: python app.py
+    │
+    └── window: database
+        └── pane: psql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;first-practical-session&quot;&gt;First practical session&lt;/h3&gt;
+
+&lt;p&gt;Make sure you follow the instructions to install &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmux&lt;/code&gt; &lt;a href=&quot;https://github.com/tmux/tmux/wiki/Installing&quot;&gt;from the official website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/tmux-session.png&quot; alt=&quot;tmux session&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, before digging deep you can start doing all kind of stuff with this simplified, check official page of commands &lt;a href=&quot;https://man.openbsd.org/tmux.1&quot;&gt;here&lt;/a&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Action&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Command&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Start tmux&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmux&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Create named session&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmux new -s learning&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;List sessions&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmux ls&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Attach to session&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmux attach -t learning&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Detach&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b d&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;New window&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b c&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Next window&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b n&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Previous window&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b p&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Choose window&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b w&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Split into left and right panes&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b %&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Split into top and bottom panes&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b &quot;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Next pane&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b o&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Show pane numbers&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b q&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Copy / scroll mode&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b [&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Help / key bindings&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b ?&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The default tmux prefix is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b&lt;/code&gt;: press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt; together, release them, and then press the key for the command you want. For example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-b c&lt;/code&gt; creates a new window.&lt;/p&gt;
+
+&lt;p&gt;For example opening multiple panes:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/learning-tmux/tmux-session-panes.png&quot; alt=&quot;tmux session with multiple panes&quot; class=&quot;center-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;is-tmux-worth-it&quot;&gt;Is tmux worth it?&lt;/h2&gt;
+
+&lt;p&gt;Now you could have a tmux session for a specific repository, attach and detach from it, and keep its processes running on an external machine. tmux makes a lot of sense on remote machines because, if the connection is interrupted, the session keeps running and you can attach to it again later.&lt;/p&gt;
+
+&lt;p&gt;But tmux can also be useful on a modern laptop. Your workflow is no longer tied to a particular terminal window, and you can keep a persistent workspace for each project. Additionally, tmux offers plenty of configuration, similar to Vim, to speed up the way you work with sessions, windows and panes.&lt;/p&gt;
+
+&lt;p&gt;I’d say tmux is worth trying if some of these apply to you:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You use SSH frequently.&lt;/li&gt;
+  &lt;li&gt;You run long-running processes.&lt;/li&gt;
+  &lt;li&gt;You enjoy keyboard-driven terminal workflows.&lt;/li&gt;
+  &lt;li&gt;You like to organize and persist project workspaces.&lt;/li&gt;
+  &lt;li&gt;You often keep many shells open.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/snippets/tmux-cheatsheet/&quot;&gt;tmux Cheatsheet&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/tmux/tmux/wiki/Getting-Started&quot;&gt;Official tmux Getting Started guide&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://man.openbsd.org/tmux.1&quot;&gt;tmux manpage&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		</entry>
 	
 		<entry>
 			<title>Big O Notation for Time Complexity</title>
