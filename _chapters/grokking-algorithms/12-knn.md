@@ -52,16 +52,14 @@ d = sqrt((point_a[0]-point_b[0])^2 + (point_a[1] - point_b[1])^2)
 Now, if we are checking netflix users... what features should we pick (picking the right features is key for performance). When we can map these features for each user in a plane we can then start computing distances. How does our movie recommendation system does it? Well we can ask them to rate some movie categories, those will be our features:
 
 
-```markdown
 | | Alice | Bob | Charles |
-|--|------|-|-|
+|---|------|---|---|
 | COMEDY | 3 | 4 | 2|
 |ACTION | 4|3|5|
 |DRAMA|4|5|1|
 |HORROR|1|1|3|
 |ROMANCE|4|5|1|
 
-```
 So we could put the features in a plane like (note, those are called vectors):
 
 ```markdown
@@ -152,9 +150,8 @@ After some study we decide that these are the features we will build our dataset
 
 Imagine we have gathered the following dataset:
 
-```markdown
 | day | sold| weather|is_weekend|is_game|
-|-|-|-|-|-|
+|---|---|---|---|---|
 |1|300|5|1|0|
 |2|225|3|1|1|
 |3|75|1|1|0|
@@ -162,7 +159,6 @@ Imagine we have gathered the following dataset:
 |5|150|4|0|0|
 |6|50|2|0|0|
 
-```
 Because of the small number of rows and features you can still see some features, but what will happen when we feed this vector to our algorithm `(4,1,0)`?
 
 - Weather is somewhat good at 4.
@@ -171,16 +167,14 @@ Because of the small number of rows and features you can still see some features
 
 We compute the squared Euclidean distance to every day and obtain:
 
-```markdown
 | day | distance|
-|-|-|
+|---|---|
 |1|1|
 |2|3|
 |3|9|
 |4|2|
 |5|1|
 |6|5|
-```
 
 Days 1, 2, 4, and 5 are the closest (`k=4`), so if we average their sales we predict `218.75`.
 

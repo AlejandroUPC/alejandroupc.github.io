@@ -61,14 +61,12 @@ While for the linked list, simply finding the middle, adding a new node and have
 For deletions in the middle specially, not start/end, we run into a similar problem where arrays have to shuffle everything to have it contiguous, while in linked lists its justrearranging some pointers:
 
 
-```markdown
 | OP              | Array           | LL              |
-| --------------- | --------------- | --------------- |
+|---------------|---------------|---------------|
 | Reading         |       O(1)      |       O(n)      |
 | Insertion       |       O(n)      |       O(1)      |
 | Deletion        |       O(n)      |       O(1)      |
 
-```
 
 
 #### So which is used more?
@@ -121,4 +119,3 @@ def selection_sort(arr: list) -> list:
 1. Basic understanding of how a computer memory works, and when storing somehow related elements it make sense to use an array or LL.
 2. Pros/cons arrays and LL; arrays allow fast reads LL allow fast inserts and deletions.
 3. A basic implementation of selection sort.
-

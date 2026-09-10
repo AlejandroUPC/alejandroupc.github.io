@@ -40,26 +40,22 @@ That is not the fastest path. How does Dijkstra's work?
 
 So first, from start we write our table:
 
-```markdown
 |  Node  | time to node|
 |--------|-------------|
 |    A   |       6     |
 |    B   |       2     |
 | FINISH |    UNKNOWN  |
 
-```
 
 
 It seems it's clear jumping to `B` is cheapest, so we move there and update the table:
 
-```markdown
 | Node   |time to node |
 |--------|-------------|
 |    A   |      3+2    |
 |    B   |       2     |
 | FINISH |       7     |
 
-```
 
 So now:
 
@@ -70,14 +66,12 @@ Those two steps, now that found cheaper ways (`6` to `5` and `UNKNOWN` to `7`) w
 
 Now we move to node `A`:
 
-```markdown
 | Node   |time to node |
 |--------|-------------|
 |    A   |       5     |
 |    B   |       2     |
 | FINISH |       6     |
 
-```
 
 So it takes `6` minutes to get to finish and we went through all the nodes (`A` and `B`), and with our table we know the cheapest:
 
@@ -114,7 +108,6 @@ We have a set of items that we can trade for one another. For example, item `A` 
 So we can start from the book, build the node table, and start moving around the graph. Note that we also need a parent column, which we did not use in the previous examples.
 
 
-```markdown
 |parent| node | cost |
 |------|------|------|
 | Book |  LP  |   5  |
@@ -122,12 +115,10 @@ So we can start from the book, build the node table, and start moving around the
 |   -  |Guitar| inf  |
 |   -  |Drums | inf  |
 |   -  |Piano | inf  |
-```
 
 The cheapest unprocessed node is `Poster`, so we process it and update the table:
 
 
-```markdown
 |parent| node | cost |
 |------|------|------|
 | Book |  LP  |   5  |
@@ -135,11 +126,9 @@ The cheapest unprocessed node is `Poster`, so we process it and update the table
 |Poster|Guitar|  30  |
 |Poster|Drums |  35  |
 |   -  |Piano | inf  |
-```
 
 Now we could move to either `Guitar` or `Drums` from `Poster`, but the cheapest unprocessed node is `LP` with a total cost of 5. We process `LP` and see what happens:
 
-```markdown
 |parent| node | cost |
 |------|------|------|
 | Book |  LP  |   5  |
@@ -147,12 +136,10 @@ Now we could move to either `Guitar` or `Drums` from `Poster`, but the cheapest 
 |  LP  |Guitar|  20  |
 |  LP  |Drums |  25  |
 |   -  |Piano | inf  |
-```
 
 The routes to `Guitar` and `Drums` became 10 cheaper because, although `Poster` is cheaper than `LP` (0 versus 5), its outgoing edges are more expensive. The cheapest unprocessed node is now `Guitar`, so we process it:
 
 
-```markdown
 |parent| node | cost |
 |------|------|------|
 | Book |  LP  |   5  |
@@ -160,11 +147,9 @@ The routes to `Guitar` and `Drums` became 10 cheaper because, although `Poster` 
 |  LP  |Guitar|  20  |
 |  LP  |Drums |  25  |
 |Guitar|Piano |  40  |
-```
 
 We have found a route to `Piano` with a cost of 40. Processing `Guitar` improves that route to 35:
 
-```markdown
 |parent| node | cost |
 |------|------|------|
 | Book |  LP  |   5  |
@@ -172,7 +157,6 @@ We have found a route to `Piano` with a cost of 40. Processing `Guitar` improves
 |  LP  |Guitar|  20  |
 |  LP  |Drums |  25  |
 |Guitar|Piano |  35  |
-```
 
 
 We add the cost to `Guitar` to the new edge cost of 15 and reach `Piano` for 35. The cheapest trade is `Book -> LP -> Guitar -> Piano`, as shown by the parent column.
@@ -199,33 +183,27 @@ The second route is better. If we add another item that the poster can be traded
 
 Our initial table then looks like:
 
-```markdown
 | node | cost |
 |------|------|
 |  LP  |   5  |
 |Poster|   0  |
 | Drums|  inf |
-```
 
 Our first step is then to process `Poster`, whose tentative cost is `0`:
 
-```markdown
 | node | cost |
 |------|------|
 |  LP  |   5  |
 |Poster|   0  |
 | Drums|  35  |
-```
 
 The next cheapest node is `LP`. Processing it reveals a cheaper route to `Poster`, but `Poster` has already been processed:
 
-```markdown
 | node | cost |
 |------|------|
 |  LP  |   5  |
 |~Poster~|   ~-2~ |
 | Drums|  35  |
-```
 We just updated `Poster` to `-2`, which is less than the `0` we had earlier. We found a cheaper route, but Dijkstra's cannot safely revise a node after processing it because that guarantee depends on all edge weights being non-negative.
 
 If we continued, we would already have processed the nodes needed to reach `Drums`, so the algorithm would incorrectly keep the cost at 35.

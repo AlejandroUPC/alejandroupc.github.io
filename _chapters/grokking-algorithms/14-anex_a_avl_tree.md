@@ -62,7 +62,6 @@ minimum_nodes(h) = 1 + minimum_nodes(h - 1) + minimum_nodes(h - 2)
 
 The first values look like this:
 
-```markdown
 | height | minimum nodes |
 |--------|---------------|
 |   0    |       1       |
@@ -72,7 +71,6 @@ The first values look like this:
 |   4    |      12       |
 |   5    |      20       |
 |   6    |      33       |
-```
 
 The number of nodes grows exponentially as the height grows. Turning that around means the height grows logarithmically as the number of nodes grows:
 
@@ -86,13 +84,11 @@ That is the reason AVL operations remain fast even when the tree contains many v
 
 All of the main operations depend on the tree height:
 
-```markdown
 | operation | normal BST, worst case | AVL tree |
 |-----------|------------------------|----------|
 | search    |         O(n)           |  O(log n)|
 | insert    |         O(n)           |  O(log n)|
 | delete    |         O(n)           |  O(log n)|
-```
 
 Searching follows one path from the root, so it takes `O(log n)` in an AVL tree. Insertion first searches for the right position and then may rotate some nodes. Deletion also follows a path and may need to rebalance several ancestors. The path still has logarithmic length, so both operations remain `O(log n)`.
 
@@ -104,14 +100,12 @@ The tree stores one node for every value, so its space complexity is `O(n)`.
 
 AVL trees are useful when we need ordered data and frequent searches:
 
-```markdown
 | structure     | search       | insert       | useful when                    |
 |---------------|--------------|--------------|--------------------------------|
 | unsorted array| O(n)         | O(1)         | data is simple and unsorted    |
 | sorted array  | O(log n)     | O(n)         | searches are common            |
 | linked list   | O(n)         | O(1)         | inserting nodes is the priority|
 | AVL tree      | O(log n)     | O(log n)     | ordered data changes often    |
-```
 
 AVL trees are stricter about balance than some other self-balancing trees. This can mean more rotations during updates, but it also gives very reliable search performance.
 

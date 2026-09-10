@@ -17,19 +17,16 @@ Remember the greedy approach was not optimal for the knapsack problem? Looking a
 
 Imagine the capacity now is 4 LB and the items as follow:
 
-```markdown
 | item | cost | weight |
 |------|------|--------|
-|stereo| 3000 |   4    | 
+|stereo| 3000 |   4    |
 |laptop| 2000 |   3    |
 |guitar| 1500 |   1    |
-```
 
 ### Simples solution
 
 One of the simplest solution would be to check all possible combinations, without repetition and including empty, and then discard the ones that don't fit, so that would be `O(2^n)`:
 
-```markdown
 |    combination       | value | weight |
 |----------------------|-------|--------|
 |        nothing       |   0   |    0   |
@@ -40,7 +37,6 @@ One of the simplest solution would be to check all possible combinations, withou
 |    guitar + laptop   |  3500 |    4   |
 |    stereo + laptop   |  4500 |    7   |
 | guitar+stereo+laptop |  6500 |    8   |
-```
 
 
 So what's the biggest value we can keep at or below 4 LB? Seems to be guitar + laptop for a total of 3500.
@@ -54,44 +50,36 @@ So instead of using a greedy algorithm to compute the approximate solution, what
 We are going to start by solving smaller versions of the problems, let's break up the current knapsack into smaller knapscack and lal of the potential items so we end up with such a matrix/table:
 
 
-```markdown
 | _  | 1 | 2 | 3 | 4 |
 |----|---|---|---|---|
 | guitar| | | | |
 | stereo| | | | |
 | laptop| | | | |
-```
 
 For the first row we try to fit a guitar on each of the knapsack and add the value, because its just 1lb, we can fit in em all
 
-```markdown
 | _  | 1 | 2 | 3 | 4 |
 |----|---|---|---|---|
 | guitar| 1500 | 1500 | 1500 |  1500 |
 | stereo| | | | |
 | laptop| | | | |
-```
 
 Now for the stereo it stargs to get interesting:
 
 
-```markdown
 | _  | 1 | 2 | 3 | 4 |
 |----|---|---|---|---|
 | guitar| 1500 g| 1500 g| 1500 g| 1500 g|
 | stereo| 1500 g| 1500 g| 1500 g| 3000 sup|
 | laptop| | | | |
-```
 
 The row is looking exactly the same until we can fit the stereo (removing the guitar!) for the 4lb capacity knapsack, so it's our current bet, we move to the laptop:
 
-```markdown
 | _  | 1 | 2 | 3 | 4 |
 |----|---|---|---|---|
 | guitar| 1500 g| 1500 g| 1500 g| 1500 g|
 | stereo| 1500 g| 1500 g| 1500 g| 3000 sup|
 | laptop| 1500 g| 1500 g| 2000 l | 3500 g + l|
-```
 
 Similarly, for all the columns below 3 the guitar is the best option, but on 3 we can see that we can finally fit a laptopt for 2000! That's an improvement, but what happens for the 4 LB knapsack is that for the first time we can combine two items in one, and its even better than our previous max!
 
@@ -109,13 +97,11 @@ If the current item does not fit, we just use the value from the row above.
 
 It's very interesting how you can use the table/matrix to compute fast, imagine the last case, before we come up to the max:
 
-```markdown
 | _  | 1 | 2 | 3 | 4 |
 |----|---|---|---|---|
 | guitar| 1500 g| 1500 g| 1500 g| 1500 g|
 | stereo| 1500 g| 1500 g| 1500 g| 3000 sup|
 | laptop| 1500 g| 1500 g| 2000 l | 3500 g + l|
-```
 
 
 For the laptop, with a cost of 2000 we are met two choices (1 and listed before), we can either pick the previous max (2000) or check what is the best knapsack for the current capacity - taken already, which is 4 - 1 = 3; so if we go to col 1 (which we computed already), whats the best we can do? Yeah 1500 so its a total of 3500.
@@ -138,43 +124,37 @@ Given a set of placs you want to visit, you have a capacity (time) and rating. Y
 
 If we have this table then:
 
-```markdown
 | place | time | rating |
-|-|-|-|
+|---|---|---|
 |Westminister Abbey | 0.5 | 7 |
 | Globe Theater | 0.5 | 6 |
 |National Gallery | 1 | 9 |
 |British Museum | 2 | 9|
 |St. Paul's Cathedral|0.5 | 8|
-```
 
 So we can build the following table/matrix:
 
 
 
-```markdown
 |  - | 0.5 | 1 | 1.5 | 2 |
-|-|-|-|-|-|
+|---|---|---|---|---|
 |Westminister Abbey | | | |  |
 | Globe Theater |  | | | |
 |National Gallery | | | | |
 |British Museum |  | | | |
 |St. Paul's Cathedral| | | | |
-```
 
 
 Note that the table is built from min(value) to max(value) with min(value) increments, let's start then:
 
 
-```markdown
 |  - | 0.5 | 1 | 1.5 | 2 |
-|-|-|-|-|-|
+|---|---|---|---|---|
 |Westminister Abbey |  7  W | 7 W | 7 W | 7 W |
 | Globe Theater | 7 W | 13 W + G| 13 W +G | 13 W + G|
 |National Gallery | 7 W | 13 W + G | 16 N + W | 22 W + N + G|
 |British Museum | 7 W |  13 W + G | 16 W + G | 22 W +N + G |
 |St. Paul's Cathedral| 8 S | 15 W + S| 21 W + G + S|  24 W + N + S|
-```
 
 ## Longest Common Substring
 

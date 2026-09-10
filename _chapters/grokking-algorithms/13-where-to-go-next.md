@@ -16,13 +16,11 @@ tags: [books, algorithms, grokking-algorithms]
 
 You are trying to sell your `3000` sqm house, you happen to check some other hosues in the neighborhood and its size:
 
-```markdown
 |house|size|price|
-|-|-|-|
+|---|---|---|
 |A|1000|200|
 |B|2000|250|
 |C|4000|300|
-```
 
 Now you could draw a line:
 
@@ -39,25 +37,21 @@ So our house would be around `271`. The line is chosen by minimizing the squared
 
 To see how a simplified search engine works, imagine we have three web pages with simple content:
 
-```markdown
 | website | text |
-|-|-|
+|---|---|
 |A| hi there|
 |B| hi adit|
 |C| there we go|
-```
 
 We could build a hash table per word:
 
-```markdown
 |word|website|
-|-|-|
+|---|---|
 |hi|A,B|
 |there|A,C|
 |adit|B|
 |we|C|
 |go|C|
-```
 
 If a user searches `hi` the sites `A` and `B` would show up, a hash map that maps word to places they appear is called inverted index.
 

@@ -18,15 +18,13 @@ tags: [books, algorithms, grokking-algorithms]
 Changing the example slightly, instead of a classroom imagine you are renting a garage to repair bikes. Each bike takes about one hour to repair, and your agenda contains overlapping appointments. The appointments are listed in order of starting time:
 
 
-```markdown
 | bike | start | end |
 |------|-------|-----|
 |  b1  |  9:00 |10:00|
 |  b2  |  9:30 |10:30|
 |  b3  | 10:00 |11:00|
-|  b4  | 10:30 |11:30| 
+|  b4  | 10:30 |11:30|
 |  b5  | 11:00 |12:00|
-```
 Some appointments overlap and will have to be cancelled. How can you schedule the maximum number of repairs?
 
 Well you can think of an easy algorithm:
@@ -128,13 +126,11 @@ There are two different versions of the knapsack problem:
 Imagine you had the following items to steal from:
 
 
-```markdown
 | item | cost | weight |
 |------|------|--------|
 |stereo| 3000 |   30   |
 |laptop| 2000 |   20   |
 |guitar| 1500 |   15   |
-```
 
 For the 0/1 version, a tempting greedy strategy is to pick the most valuable item that fits:
 

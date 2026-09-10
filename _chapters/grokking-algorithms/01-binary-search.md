@@ -31,14 +31,12 @@ Now if we used binary search, how many steps would we need until we find the num
 
 This is much faster than linear search, which we need to at least have `n` steps where `n` is the size of the space we are searching so we are talking about `100` steps vs `7`, but the numbers are much better with bigger values:
 
-```plaintext
 | n (elements) | Linear Search Steps (≈n) | Binary Search Steps (≈log₂ n) |
 |--------------|---------------------------|-------------------------------|
 | 10           | ~10                       | ~4                           |
 | 100          | ~100                      | ~7                           |
 | 1,000        | ~1,000                    | ~10                          |
 | 1,000,000    | ~1,000,000                | ~20                          |
-```
 
 The pseudocode for binary search would look something like this:
 

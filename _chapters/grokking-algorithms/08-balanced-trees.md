@@ -16,14 +16,12 @@ Linekd lists tho were `O(1)` when adding data, just move some pointers around, b
 
 So if we had this table:
 
-```markdown
 
 |               |   search  | insert |
 |---------------|-----------|--------|
 |  sorted array | O(log(n)) |  O(n)  |
 |  linked list  |   O(n)    |  O(1)  |
 |  new structure|   ????    |   ???  |
-```
 
 
 This new structure is a tree, a **balanced** BST, emphasis on balanced.
@@ -178,14 +176,12 @@ So to unpack what we saw in here before moving forward:
 
 Insertions then are very similar than searching, we just have to search the worse case scenario (the leaft) and just insert, so we can assume that for these types of trees insertion is `O(logn)`, so thats it! BST that are balanced are the best of both worlds:
 
-```markdown
 
 |               |    search  |   insert   |
 |---------------|------------|------------|
 |  sorted array |  O(log(n)) |    O(n)    |
 |  linked list  |    O(n)    |    O(1)    |
 |        bst    |   O(log(n))| O(log(n))  |
-```
 
 
 ## Splay Trees

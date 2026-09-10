@@ -62,13 +62,11 @@ Two important things are:
 
 Hash maps are quite cool, for search, insertion and deletion take `O(1)` on its average, which is constant time, but `O(n)` on the worst case, but still compared to other structures:
 
-```markdown
 | Operation | Hash Table (Avg) | Hash Table (Worst) | Array | Linked List |
 |-----------|------------------|--------------------|-------|-------------|
 | Search    | O(1)             | O(n)               | O(1)  | O(n)        |
 | Insert    | O(1)             | O(n)               | O(n)  | O(1)        |
 | Delete    | O(1)             | O(n)               | O(n)  | O(1)        |
-```
 
 So most of the time, on average, they will have the best of arrays and LL, but worst case they are worse in some points, so we need to pick:
 - A low load factor (distribution of keys).
