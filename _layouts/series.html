@@ -1,0 +1,73 @@
+---
+layout: default
+---
+<div class="mb-2">
+  <a class="text-decoration-none" href="{{ '/blog/' | relative_url }}">&larr; Back to Blog</a>
+  <span class="badge rounded-pill ms-2" style="background-color: rgba(199,146,234,.15); color: #c792ea; border: 1px solid var(--border);">Series</span>
+</div>
+
+<h1>{{ page.title }}</h1>
+{% if page.date %}
+  <p class="meta">{{ page.date | date: "%b %-d, %Y" }}</p>
+{% endif %}
+
+<div class="post">
+  {{ content }}
+  {% if page.updated %}
+    <p class="text-muted small mt-3">Last updated {{ page.updated | date: "%b %-d, %Y" }}</p>
+  {% endif %}
+  {% if page.tags and page.tags.size > 0 %}
+    <div class="mb-3">
+      {% for tag in page.tags %}
+        <a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="{{ '/tags/#' | append: tag | slugify | relative_url }}">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<hr />
+{% assign series_posts = site.series_posts | where: 'series', page.series | sort: 'order' %}
+{% if page.parts and page.parts.size > 0 %}
+  <h2 class="h5">Series roadmap</h2>
+  <div class="series-roadmap">
+    {% for part in page.parts %}
+      <section class="series-part">
+        <h3 class="h6">Part {{ part.number }} — {{ part.title }}</h3>
+        <div class="list-group list-group-flush">
+          {% for planned_post in part.posts %}
+            {% assign matching_posts = series_posts | where: 'order', planned_post.order %}
+            {% assign published_post = matching_posts | first %}
+            <div class="list-group-item d-flex justify-content-between align-items-center bg-transparent" style="border-color: var(--border);">
+              <span class="d-flex align-items-baseline me-3">
+                <span class="series-order">{{ planned_post.order }}.</span>
+                {% if published_post %}
+                  <a class="series-post-link" href="{{ published_post.url | relative_url }}">{{ published_post.title }}</a>
+                {% else %}
+                  <span>{{ planned_post.title }}</span>
+                {% endif %}
+              </span>
+              {% if published_post and published_post.date %}
+                <span class="text-muted small">{{ published_post.date | date: "%b %-d, %Y" }}</span>
+              {% else %}
+                <span class="series-planned">Planned</span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+{% elsif series_posts and series_posts.size > 0 %}
+  <h2 class="h5">Posts in this series</h2>
+  <div class="list-group list-group-flush">
+    {% for series_post in series_posts %}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-transparent" href="{{ series_post.url | relative_url }}" title="{{ series_post.title }}" style="border-color: var(--border);">
+        <span class="me-3">{% if series_post.order %}{{ series_post.order }}. {% endif %}{{ series_post.title }}</span>
+        {% if series_post.date %}<span class="text-muted small">{{ series_post.date | date: "%b %-d, %Y" }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% else %}
+  <h2 class="h5">Posts in this series</h2>
+  <p class="text-muted">No posts in this series yet.</p>
+{% endif %}

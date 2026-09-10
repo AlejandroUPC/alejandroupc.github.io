@@ -20,6 +20,9 @@ description: Articles on software engineering, Python, Neovim, and data structur
               {% if item.collection == 'books' %}
                 <i class="bi bi-book content-type-icon content-type-book" aria-hidden="true" title="Book"></i>
                 <span class="visually-hidden">Book: </span>
+              {% elsif item.layout == 'series' %}
+                <i class="bi bi-collection content-type-icon content-type-series" aria-hidden="true" title="Series"></i>
+                <span class="visually-hidden">Series: </span>
               {% else %}
                 <i class="bi bi-file-earmark-text content-type-icon content-type-post" aria-hidden="true" title="Blog post"></i>
                 <span class="visually-hidden">Blog post: </span>

@@ -97,6 +97,7 @@ img { max-width: 100%; height: auto; border-radius: .75rem; border: 1px solid rg
 }
 .content-type-book { color: #ffcb6b; }
 .content-type-post { color: var(--accent); }
+.content-type-series { color: #c792ea; }
 .content-type-snippet { color: #c792ea; }
 
 .post {
@@ -241,6 +242,33 @@ figure.figure { margin: 1.25rem 0; text-align: center; }
   background: rgba(148, 163, 184, 0.08);
   color: var(--muted);
   font-size: .72rem;
+}
+
+.series-roadmap {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 1.25rem;
+}
+.series-part h3 {
+  color: var(--accent-2);
+  margin-bottom: .6rem;
+}
+.series-order {
+  flex: 0 0 2.25rem;
+  color: var(--muted);
+}
+.series-post-link {
+  color: var(--text);
+  text-decoration: none;
+}
+.series-post-link:hover {
+  color: var(--accent-2);
+}
+.series-planned {
+  color: var(--muted);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
 }
 
 /* Big O header image at 75% width (responsive) */

@@ -4,13 +4,47 @@
 	<title>Hank Quinlan's Blog</title>
 	<link href="http://alejandroupc.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://alejandroupc.github.io/blog"/>
-	<updated>2026-09-10T01:36:11+02:00</updated>
+	<updated>2026-09-10T02:15:40+02:00</updated>
 	<id>http://alejandroupc.github.io/blog</id>
 	<author>
 		<name>AlejandroUPC</name>
 		<email>amartinezotal@gmail.com</email>
 	</author>
 
+	
+		<entry>
+			<title>Learning RAG</title>
+			<link href="http://alejandroupc.github.io/series/learning-rag/"/>
+			<updated>2026-09-10T00:00:00+02:00</updated>
+			<id>http://alejandroupc.github.io/series/learning-rag</id>
+			<content type="html">&lt;h2 id=&quot;goal&quot;&gt;Goal&lt;/h2&gt;
+
+&lt;p&gt;Retrieval-augmented generation, usually shortened to &lt;strong&gt;RAG&lt;/strong&gt;, sounds simple at first: find useful information and give it to a language model before asking for an answer. Of course, once you start digging into it, every part opens another box: documents, chunks, embeddings, retrieval, reranking, prompts, evaluation…
+RAG (Retrrieval augmented generation) is a way to use a language model to get specific (and useful) informatin before askin for an answer, it’s a topic I have not learnt about and there are two things that are motivating me to learn it:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I like learning (and AI)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Have seen more and more mentioned in data engineering positions&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-were-building&quot;&gt;What we’re building&lt;/h2&gt;
+
+&lt;p&gt;The idea is to start learning the basic concepts and then first work with, the smallest RAG pipeline that actually works and gradually turn it into something closer to a production system. That means building retrieval ourselves before reaching for abstractions, measuring whether it works, and then dealing with the less glamorous parts such as document updates, latency, cost, security, and deployment.&lt;/p&gt;
+
+&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;Really the system will have mostly two parts (at the time of this writting):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An &lt;strong&gt;ingestion path&lt;/strong&gt; that loads documents, splits them into chunks, creates searchable representations, and keeps the index updated.&lt;/li&gt;
+  &lt;li&gt;A &lt;strong&gt;query path&lt;/strong&gt; that retrieves relevant information, improves the results when needed, constructs the context, and asks a model to produce a grounded answer.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		</entry>
 	
 		<entry>
 			<title>Learning tmux (and terminals/shells)</title>

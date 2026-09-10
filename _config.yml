@@ -27,6 +27,11 @@ defaults:
       type: "chapters"
     values:
       layout: chapter
+  - scope:
+      path: ""
+      type: "series_posts"
+    values:
+      layout: series-post
 collections:
   snippets:
     output: true
@@ -37,6 +42,9 @@ collections:
   chapters:
     output: true
     permalink: /books/:path/
+  series_posts:
+    output: true
+    permalink: /series/:path/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

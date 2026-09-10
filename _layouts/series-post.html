@@ -1,0 +1,65 @@
+---
+layout: default
+---
+{% assign series_page = site.posts | where: 'series', page.series | where: 'layout', 'series' | first %}
+
+<div class="mb-2">
+  {% if series_page %}
+    <a class="text-decoration-none" href="{{ series_page.url | relative_url }}">&larr; Back to: {{ series_page.title }}</a>
+  {% else %}
+    <a class="text-decoration-none" href="{{ '/blog/' | relative_url }}">&larr; Back to Blog</a>
+  {% endif %}
+  {% if page.order %}
+    <span class="badge rounded-pill ms-2" style="background-color: rgba(199,146,234,.15); color: #c792ea; border: 1px solid var(--border);">Part {{ page.order }}</span>
+  {% endif %}
+  {% if page.tags and page.tags.size > 0 %}
+    <span class="ms-2">
+      {% for tag in page.tags %}
+        <a class="badge rounded-pill text-decoration-none" style="background-color: rgba(94,234,212,.15); color: var(--accent-2); border: 1px solid var(--border);" href="{{ '/tags/#' | append: tag | slugify | relative_url }}">#{{ tag }}</a>
+      {% endfor %}
+    </span>
+  {% endif %}
+</div>
+
+<h1>{{ page.title }}</h1>
+{% if page.date %}
+  <p class="meta">{{ page.date | date: "%b %-d, %Y" }}</p>
+{% endif %}
+
+<div class="post">
+  {{ content }}
+</div>
+
+{% assign siblings = site.series_posts | where: 'series', page.series | sort: 'order' %}
+{% assign previous_post = nil %}
+{% assign next_post = nil %}
+{% assign last_post = nil %}
+{% assign found_current = false %}
+{% for sibling in siblings %}
+  {% if sibling.url == page.url %}
+    {% assign previous_post = last_post %}
+    {% assign found_current = true %}
+  {% elsif found_current and next_post == nil %}
+    {% assign next_post = sibling %}
+  {% endif %}
+  {% assign last_post = sibling %}
+{% endfor %}
+
+<hr />
+<div class="d-flex justify-content-between gap-2">
+  <div>
+    {% if previous_post %}
+      <a class="btn btn-outline-light btn-sm" href="{{ previous_post.url | relative_url }}">&larr; {{ previous_post.title }}</a>
+    {% endif %}
+  </div>
+  <div>
+    {% if series_page %}
+      <a class="btn btn-outline-light btn-sm" href="{{ series_page.url | relative_url }}">All posts</a>
+    {% endif %}
+  </div>
+  <div class="text-end">
+    {% if next_post %}
+      <a class="btn btn-outline-light btn-sm" href="{{ next_post.url | relative_url }}">{{ next_post.title }} &rarr;</a>
+    {% endif %}
+  </div>
+</div>
