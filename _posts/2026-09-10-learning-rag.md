@@ -23,7 +23,7 @@ RAG (Retrrieval augmented generation) is a way to use a language model to get sp
 
 - I like learning (and AI)
 
-- Have seen more and more mentioned in data engineering positions
+- Have seen more and more mentioned in data engineering jd 
 
 
 ## What we're building
