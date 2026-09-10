@@ -159,6 +159,14 @@ img { max-width: 100%; height: auto; border-radius: .75rem; border: 1px solid rg
 .post tbody tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.025);
 }
+.post table.fit-first-column {
+  table-layout: auto;
+}
+.post table.fit-first-column th:first-child,
+.post table.fit-first-column td:first-child {
+  width: 1%;
+  white-space: nowrap;
+}
 
 @media (max-width: 576px) {
   .post table {
