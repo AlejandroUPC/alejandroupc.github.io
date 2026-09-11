@@ -14,6 +14,57 @@ parts:
         title: Why RAG?
       - order: 2
         title: Documents, Tokens and Chunking
+  - number: II
+    title: Retrieval From Scratch
+    posts:
+      - order: 3
+        title: Embeddings and Vector Spaces
+      - order: 4
+        title: Similarity Search From Scratch
+      - order: 5
+        title: Information Retrieval and BM25
+      - order: 6
+        title: Approximate Nearest Neighbors
+  - number: III
+    title: Building RAG
+    posts:
+      - order: 7
+        title: Our First Complete RAG
+      - order: 8
+        title: Hybrid Search and Reranking
+      - order: 9
+        title: Context Construction and Grounding
+  - number: IV
+    title: Measuring RAG
+    posts:
+      - order: 10
+        title: Evaluating Retrieval
+      - order: 11
+        title: Evaluating Answers
+      - order: 12
+        title: Debugging RAG
+  - number: V
+    title: Production RAG
+    posts:
+      - order: 13
+        title: Ingestion and Document Lifecycle
+      - order: 14
+        title: Architecture and APIs
+      - order: 15
+        title: Observability, Latency and Cost
+      - order: 16
+        title: Security
+      - order: 17
+        title: Deployment and Operations
+  - number: VI
+    title: Beyond Basic RAG
+    posts:
+      - order: 18
+        title: Advanced Retrieval
+      - order: 19
+        title: Local vs Hosted Models
+      - order: 20
+        title: What I Learned Building Production RAG
 ---
 
 ## Goal
